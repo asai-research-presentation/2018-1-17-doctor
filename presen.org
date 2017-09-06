@@ -202,9 +202,6 @@ Made by guicho2.71828 (Masataro Asai)
 #+end_row-fluid
 #+end_container-fluid
 
-
-
-
 ** AIと自動プランニング の位置づけ -- /理論/ と /実応用/ の中間
 
  緑は /理論/ 、オレンジは /実応用/ 、 AI はその橋渡し (どれともかぶらない部分もある)
@@ -405,17 +402,13 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
   
 # 実際 *Sokoban など論理思考ゲームでは性能が悪い* ↔ 倉庫番ソルバ
 
-
-
 * 発表概要
 
 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
 
 最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 
-タイブレークと探索非局在化の一般化 (Asai, Fukunaga, ICAPS 2017)
-
-GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
+充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
 
 新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
 
@@ -532,7 +525,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
  #+begin_alignright
  #+begin_larger
- + 推測: そんな細かいことは *書くほどのことでもない* という認識?
+ + そんな細かいことは *書くほどのことでもない* という認識
 
    (なぜなら、下界関数の改善やA*自体の拡張など他に注目しがち)
  #+end_larger
@@ -865,7 +858,6 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+end_row-fluid
  #+end_container-fluid
 
-
 ** 評価 (制限時間内に解けた問題の数)
 
  #+begin_smaller
@@ -967,36 +959,44 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
 * A* のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 
-** A* behavior revisited
+#+begin_larger
+#+begin_center
+なぜ RandomDepth は成功したのか?
+#+end_center
+#+end_larger
+
+** A* の動作 (おさらい)
 
  [[png:astar/astar1]]
 
-*** A* behavior revisited
+*** A* の動作 (おさらい)
 
   [[png:astar/astar2]]
 
-*** A* behavior revisited
+*** A* の動作 (おさらい)
 
   [[png:astar/astar3]]
 
-*** A* behavior revisited
+*** A* の動作 (おさらい)
 
   [[png:astar/astar4]]
 
- + *The order of expansion within each plateau does not affect the optimality of the solution*
+ + 解の最適性: 経路の *コストの和* が最小 → *長さ* はいくらでも長くて良い
 
- + Within each plateau, the path to optimal solutions can be arbitrary longer
+ + A*の f によるプラトー: 同じコストを持つノード集合 → 特にプラトー内では、 いくらでも長くて良い
+
+ + *プラトー内の探索順序がなんであれ最適解を発見*
 
  #+begin_alignright
  #+begin_larger
- + We are runnning a *satisficing search* on each plateau
+ + 実は A* は *プラトー内では(経路の長さを気にしない)充足解探索をしている* (充足解探索: 最短でなくて良い経路探索)
  #+end_larger
  #+end_alignright
 
-** Reinterpret A∗ as */iterations of satisficing search on plateaus/*:
+** A* を *充足解探索の繰り返し* と再定義
 
- + A* $[ f, h, \text{fifo} ]$  : Performing *GBFS [h, fifo] on each plateau(f)*
- + A* $[ f, \text{fifo} ]$  : Performing a *blind breadth-first search [fifo] on each plateau(f)* and therefore slower
+ + A* $[ f, h, \text{fifo} ]$  : *GBFS [h, fifo] を それぞれの plateau(f) で実行*
+ + A* $[ f, \text{fifo} ]$  : *知識なし幅優先探索 [fifo] を それぞれの plateau(f) で実行* , 故に遅い
 
  #+begin_src bash
  while true
@@ -1007,7 +1007,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
         Increase f
  #+end_src
 
-*** A* as satisficing search
+*** A* as 充足解探索
 
   #+begin_src bash
   while true
@@ -1020,7 +1020,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
  [[png:sat/sat-astar1]]
 
-*** A* as satisficing search
+*** A* as 充足解探索
 
   #+begin_src bash
   while true
@@ -1033,7 +1033,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
  [[png:sat/sat-astar2]]
 
-*** A* as satisficing search
+*** A* as 充足解探索
 
   #+begin_src bash
   while true
@@ -1046,7 +1046,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
  [[png:sat/sat-astar3]]
 
-*** A* as satisficing search
+*** A* as 充足解探索
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1063,7 +1063,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+begin_span5
  Implication: 
  #+begin_larger
- + *Any complete satisficing technique* can be embedded in optimal planning
+ + *完全性を保つ充足解探索手法* であれば *なんでも* 最適解探索に埋め込める
  #+end_larger
  #+end_span5
  #+end_row-fluid
@@ -1073,45 +1073,32 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+end_span7
  #+begin_span5
  #+begin_larger
- + Results are optimal as long as *f* is admissible
+ + A* の *f* 値が許容的であれば、解は常に最適
  #+end_larger
  #+end_span5
  #+end_row-fluid
  #+end_container-fluid
 
-** Using some satisficing techniques for optimal planning
+** 最適プランニングに充足解探索を埋め込んで実験
 
- + Standard A* :: $[f, h,$  * $]\;$ where * is one of LIFO, FIFO, Random
+ + 通常のA* :: $[f, h,$  * $]\;$ , ただし * は LIFO, FIFO, Random のいずれか
 
- + Tiebreak with unit-cost heuristics $\hat{h}\;$ : treats every edge costs as 1 (Previously used for LAMA) ::
-      $[f, \hat{h}, * ]$, $[f, h, \hat{h}, * ]$ -- large overhead for $\hat{h}^{\text{LMcut}}, \hat{h}^{\text{M&S}}$
+ + ユニットコスト化した 許容的下界関数 $\hat{h}\;$ でタイブレーク : 辺コストを1で置き換えて計算 (充足解ソルバLAMA[Richter et.al.]などが使用している手法) ::
+      $[f=g+h, \hat{h}, * ]$, $[f, h, \hat{h}, * ]$ の二種類。 -- ただし、同じ下界関数を $h$ と $\hat{h}$ の二回計算するので遅い
 
-      Purpose: to see pure improvements by 
+      ユニットコスト化下界関数は許容的ではない関数
 
- + Tiebreak with unit-cost inadmissible heuristics $\hat{h}^{FF}$ ::
+      実験の目的: 純粋にユニットコスト化しただけで得られる性能向上を計測
+
+ + ユニットコスト化した 非許容的下界関数 $\hat{h}^{FF}$ でタイブレーク ::
       $[f, \hat{h}^{FF}, *]$ , $[f, h, \hat{h}^{FF}, * ]$ -- cheaper, non-path-optimal heuristics
 
- + Combined with random depth tiebreaking [Asai, AAAI16] ::
+ + $\hat{h}^{FF}$ に random depth [Asai, AAAI16] を組合せ ::
       $[f, \hat{h}^{FF}, \langle d \rangle$ , * $]$
-
-** Evaluation (domains)
-
- + IPC^1 Instances (1104 instances)
- + *Zero-cost* domains (620 instances, 28 domains)
-   + Modified IPC^1  optimal track instances
-   + Assign 0 cost to all actions *except one*
-   + which consumes a *realistic key resource*. For example,
-     + =cut= consumes =wood= in Woodworking
-     + =drive-truck= consumes =fuel= in Driverslog (transportation domain)
-     + etc..
-
- #+begin_note
- 1 -- IPC : International Planning Competition
- #+end_note
 
 ** Evaluation ($h=\text{LMcut}$, Zerocost domains)
 
- 5min, 4GB
+ 5min, 4GB, 前章と同じ
 
  |                                        | ＊=FIFO | ＊=LIFO | ＊=Random |
  |----------------------------------------+---------+---------+-----------|
@@ -1125,7 +1112,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
 ** Evaluation ($h=\text{M&S}$, Zerocost domains)
 
- 5min, 4GB
+ 5min, 4GB, 前章と同じ
 
  |                                        | ＊=FIFO | ＊=LIFO | ＊=Random |
  |----------------------------------------+---------+---------+-----------|
@@ -1137,13 +1124,13 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  | $[f,\hat{h}^{FF},\langle d \rangle,*]$ |   *337* |   *333* |   _337.6_ |
  |                                        |   (+50) |   (+30) |     (+50) |
 
-** Simple Dynamic Configuration for Overall Performance
+** 下界関数を二個評価する場合を減らすために動的に切り替え
 
- $[f=g+h, \hat{h}^{FF}]$ --- Computing 2 different heuristics
+ $[f=g+h, \hat{h}^{FF}]$ --- $h$ と \hat{h}^{FF} の2つの下界関数を評価
 
- + Only beneficial when the plateau is huge (especially the domain contains zerocost)
+ + これが役に立つのはプラトーが巨大な場合のみ (特にゼロコスト問題)
 
- + Let's disable it when this is not the case
+ + ゼロコストでない場合には通常の方式にきりかえれば無駄な評価を避けられる
 
  IPC+Zerocost results
 
@@ -1175,152 +1162,160 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  |---+------------------------------------------------------+---------+---------|
  |   | Dynamic Configuration                                |   LMcut |     M&S |
  |---+------------------------------------------------------+---------+---------|
- |   | If zerocost actions exist: C ; Else B                | *911.9* |         |
- |   | If zerocost actions exist: C ; Else A                |         | *832.3* |
+ |   | If ゼロコストがある場合: C ; Else B                  | *911.9* |         |
+ |   | If ゼロコストがある場合: C ; Else A                  |         | *832.3* |
  |---+------------------------------------------------------+---------+---------|
 
-** Completeness of A* on Infinite Graph
+** 無限グラフ上での A* の完全性
 
  Dechter and Pearl (1985): [[spng:pearl-cost]]
 
- + Results do not apply to zerocost domains
- + Turned out, conditions for completeness depends on the tiebreaking
+ + 既存のA*の完全性はゼロコスト問題では成り立たない
+ + *理論的結果*: ゼロコスト問題でのA*の完全性はタイブレーキングに依存する
 
- (P1) If any plateau(f) for f < f^∗ is infinite, then A^∗ does not terminate.
+ (P1) f < f^* なる plateau(f) のサイズに上界がない時, A^∗ は終了しない
 
- (P2) Assume plateau(f) is finite \forall f < f^∗:
+ (P2) \forall f < f^∗ でplateau(f) が有限である際
 
- + Completeness depends on tiebreaking on plateau(f^*)
+ + 完全性は plateau(f^*) でのタイブレークに依存
 
-*** Completeness of A* on Infinite Graph
+*** 無限グラフ上での A* の完全性
 
-  (P2) Assume plateau(f) is finite \forall f < f^∗:
+  (P2) \forall f < f^∗ でplateau(f) が有限である際
 
-  Completeness depends on tiebreaking on plateau(f^*)
+  完全性は plateau(f^*) でのタイブレークに依存
 
-  More specifically, *the completeness of satisficing search algorithm used for tiebreaking*
+  正しくは, *タイブレークのために用いられる充足解探索アルゴリズムの無限グラフでの完全性に依存*
   
-    |                      |                                                                   |
-    | FIFO [f, fifo]       | Complete with a finite outdegree below the minimum solution depth |
-    |                      | → because *Breadth-first search [fifo] requires it*              |
-    | LIFO [f, lifo]       | Complete when plateau(f^*) is also finite                         |
-    |                      | → because *Depth-First Search [lifo] requires it*                |
-    | Random Order [f, ro] | Probabilistically Complete                                        |
-    |                      | → because *[ro] is Prob. Complete [Valenzano AAAI16]*            |
+    |                      | 条件                                                          |
+    |----------------------+---------------------------------------------------------------|
+    | FIFO [f, fifo]       | 最短経路解の深さ以下で分岐度が有限                            |
+    |                      | → なぜなら *幅優先探索[fifo]がそれを必要とするため*          |
+    | LIFO [f, lifo]       | plateau(f^*) が有限                                           |
+    |                      | → なぜなら *深さ優先探索[fifo]がそれを必要とするため*        |
+    | Random Order [f, ro] | 常に確率的完全                                                |
+    |                      | → なぜなら *[ro] が無限グラフで確率的完全[Valenzano AAAI16]* |
 
-  + *We can also carry the completeness proof over to optimal search!*
+  + *A*が充足解探索の繰り返しである と再定義することで、 充足解探索の理論的結果を援用可能!*
 
-** Conclusion & Future Work
+** まとめと今後の展望
 
- + A* as a sequence of satisficing search on each plateau
- + Demonstrated the use of inadmissible heuristics for optimal search
- + Leveraged the completeness proof for satisficing search for optimal search
- + Many potential extensions
-   + Use *plateau-limited macro actions* (cf. Marvin, but different purpose)
-   + *Plateau-limited monte-carlo random walk* (cf. Arvand)
+ + A* を *充足解探索の繰り返し* と再定義
+ + 最適プランニングに充足解探索を埋め込み、有用性を確認
+ + 充足解探索の理論的結果を、最適探索の理論的性質を調べるのに援用
+ + 様々な既存の充足解探索手法が存在するため、多くの応用が考えられる
+   + プラトー内に制限した *マクロアクション* (cf. Marvin)
+   + プラトー内に制限した *モンテカルロ探索* (cf. Arvand)
 
  #  + Direct analogue for model-based planners (SAT/IP/CSP-based planners)
 
-* GBFS の タイブレーク (Asai, Fukunaga, ICAPS 2017)
+* 次のステップ
 
- + New method highlight: *First effective Fractal-based algorithm ever!*
+最適解探索を充足解探索の繰り返しに変換できたため、 *もう最適解探索について悩む必要はない*
 
-** Search Diversification
+以降 *充足解探索のみ考えることとする*
+
+* 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
+
+GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保存する。
+
+ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
+
+充足解探索手法。 --- 多くの場合、 最適性を保証しない *非許容的* 下界関数 と共に用いられる
+
+** GBFSにおける探索非局在化
 
  [[png:diversify/1]]
 
-*** Search Diversification
+*** GBFSにおける探索非局在化
  [[png:diversify/2]]
 
-*** Search Diversification
+*** GBFSにおける探索非局在化
  [[png:diversify/3]]
 
-*** Search Diversification
+*** GBFSにおける探索非局在化
  [[png:diversify/4]]
 
-*** Search Diversification
+*** GBFSにおける探索非局在化
  [[png:diversify/5]]
 
-*** Search Diversification
+*** GBFSにおける探索非局在化
 
  [[png:diversify/final]]
 
  #+begin_alignright
- An art of How *NOT* to trust the heuristic function and still perform effectively?
+ 探索非局在化手法 : いかにして (ときに信頼できない) 下界関数 $h$ を *無視* するか?
  #+end_alignright
 
 ** Preliminaries
 
- + Search algorithm sorting strategy [S_1, S_2 ..., *] ::
-      denotes the key for OPEN list in forward search (dictionary order)
- + Default strategy ::
-      =*= in the sorting strategy; either FIFO, LIFO, Random
+ + 探索アルゴリズムの ソート戦略 [S_1, S_2 ..., *] ::
+      OPEN list をソートする際の key (辞書順ソート)
+ + デフォルト戦略 ::
+      ソート戦略の最後の=*= ; FIFO, LIFO, Random のいずれか
 
-      Every OPEN-list based search has some default tiebreaking
+      OPEN-list を用いるどんなアルゴリズムにも存在
  + Type-based bucket <T_1, T_2 ...> (Xie14) ::
-      Stores the nodes in a *bucket* according to key values e.g. $\langle g,h\rangle$
+      ノードを key 値 ごとの *bucket* に振り分ける 例: $\langle g,h\rangle$
 
-      Select a random node in a random bucket when popping a node from OPEN
+      ノード選択時: ランダムな bucket を選び、そのなかのランダムなノードを選ぶ
  + Alternation Queue alt(Q1,Q2...) ::
-      Maintain multiple queues and alternates opening
+      複数のOPEN リストを保持し、交互に展開
 
-** Background
+** 背景
 
- There are a bunch of *search diversification* approaches
+探索非局在化手法は *たくさん* ある
 
- + Diverse BFS (Imai, AAAI11) (Much more complicated)
- + Monte-Carlo Random Walk (MRW) --- Sometimes runs a random walk
- + Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- Sometimes runs a random search
- + Type-based GBFS --- *alt* ([h,*], <g,h>) --- Sometimes runs a depth-balanced search
- + GBFS-LE (local expansion) --- Runs a randomized search when local minima is detected
+ + Diverse BFS (Imai, AAAI11)
+ + Monte-Carlo Random Walk (MRW) --- 一定の確率でランダムウォーク
+ + Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- 時々ノードを乱択
+ + Type-based GBFS --- *alt* ([h,*], <g,h>) --- 時々 h をランダムに選ぶ
+ + GBFS-LE (local expansion) --- h が向上しなくなった場合にランダムウォークを開始
    + GBFS-LS (local search), GBFS-MRW
 
  #+begin_larger
  #+begin_center
- + *We need a /cleaner, less ad-hoc/ way*
-
-   *to understand their behavior.*
+ + *これらをもっと /単純に、アドホックでなく、解析しやすくする/ 手法が必要*
  #+end_center
  #+end_larger
 
-** Traditional Understanding : Heuristic Error
+** 既存の非局在化手法の背景にある考え : Heuristic Error
 
  \[
     \text{Error} = |h - h^*|
  \]
 
- $h$ : heuristic value, $h^*$ : perfect heuristic
+ $h$ : 下界値, $h^*$ : パーフェクトヒューリスティクス (解までの真の最短経路コスト)
 
- $h>h^*$ : Overestimation $h<h^*$ : Underestimation
+ $h>h^*$ : Overestimation $h<h^*$ : Underestimation 
 
  #+begin_center
  #+begin_larger
- + Is this view sufficient?
+ + この理解で十分か?
  #+end_larger
  #+end_center
 
-*** Heuristic Error
+*** Heuristic Error は
 
  [[png:plateau/1]]
 
-*** Heuristic Error
+*** Heuristic Error は
 
  [[png:plateau/2]]
 
-*** Heuristic Error is */2-dimensional/*
+*** Heuristic Error は 実は */二次元的/*
 
  [[png:plateau/3]]
 
-*** Inter-plateau error
+*** プラトー内 error
 
  [[png:plateau/4]]
 
-
-*** Intra-plateau error
+*** プラトー間 error
 
  [[png:plateau/5]]
 
-*** Inter-plateau error & diversification
+*** プラトー外 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1328,15 +1323,15 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  [[png:plateau/4]]
  #+end_span6
  #+begin_span6
- + *The smallest $h^*$ may have high $h$* (inter-plateau error)
- + *selecting the minimum $h$ is not always good*
- + *Diversifies the next $h$ to expand*
+ + *最小の $h^*$ を持つノードが 高い $h$ を持ちうる*
+ + *高い $h$ を 時折選ぶのも理にかなっている*
+ + *$h$ の選択を非局在化 (最小の $h$ ばかり選ばない)*
  + DBFS, Type-GBFS, $\epsilon$-greedy
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** Intra-plateau error & diversification
+*** プラトー内 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1344,32 +1339,30 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  [[png:plateau/6]]
  #+end_span6
  #+begin_span6
- + *The smallest $h$  may have high $h^*$* (intra-plateau error)
- + *Deterministic Tiebreaking e.g. FIFO/LIFO have a pathological cases*
- + *Randomize the search within h-plateau* so that we (hopefully) *expand a low $h^*$ node*
+ + *最小の $h$ を持つノードの中にも 大きな $h^*$ を持つノードが混じっている*
+ + *決定的なタイブレーク (FIFO/LIFO) はたまたま 大きな $h^*$ ばかり選択する可能性がある*
+ + *プラトー内で探索を非局在化する* 事で *小さな $h^*$ を引く可能性を高める*
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** Let's show!
+** 評価
 
- + IPC11, IPC14 (duplicated domains are excluded), 5min, 4GB
++ IPC11, IPC14, 5min, 4GB
 
- + *Important: Use the same diversification method* for inter-vs-intra
++ *目的: 同じ非局在化手法を プラトー内とプラトー外で用いることで、プラトー内/外 error が独立であることを示す*
 
- + The cloest we can find: *Type-GBFS* (inter) vs *RandomDepth Tiebreaking* (intra)
++ *Type-GBFS* (プラトー外) と *RandomDepth Tiebreaking* (プラトー内)
 
-   + Intra-plateau diversification == randomized tie breaking
+  + Type GBFS --- *Randomize <g,h>*
 
-   + Type GBFS --- *Randomize <g,h>*
+  + RandomDepth --- *プラトー内で Randomize <d>*
 
-   + RandomDepth --- *Randomize <d> within plateau*
+    + d ≡ 同じf,hを持つ最も近い先祖までのステップ数
 
-     + d ≡ number of steps from the nearest ancestor w/ the same f,h
+  + *g, h, d は全て深さに関連した指標*
 
-   + *g, h, d are all depth-related metrics*
-
-*** Intra-vs-Inter are orthogonal & complementary
+*** プラトー内/外 error は 独立
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1377,48 +1370,54 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  [[png:icaps17-results]]
  #+end_span6
  #+begin_span6
- + hd (RandomDepth Tiebreaking) :: Randomize <d> in plateau
+ + hd (RandomDepth) :: プラトー内で Randomize <d>
  + hD (Type GBFS) :: Randomize <g,h>
  + hdD :: */RandomDepth + Type GBFS/*
 
- Results:
+ 結果:
 
- + Different domains require different diversification
- + *With both modes enabled, /effects combine/*
- + _/Take-home message: Whenever you have a diversification method, use it for both modes!/_
+ + ドメインごとに プラトー内 と プラトー外 非局在化 の影響の有無が 綺麗に別れる
+ + *同時に使うことで /効果が綺麗に重なる/*
+ + _/プラトー内外は独立だから、非局在化手法は、内外に同時に使うべし!/_
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-** What's next?
+* 新たな非局在化手法の開発 (Asai, Fukunaga, ICAPS 2017)
 
- #+begin_quote
- Type GBFS: *Randomize <g,h>*
+*非局在化手法は知識なし探索手法* なので、
 
- RandomDepth <d> : *d ≡ number of steps from the nearest ancestor w/ the same f,h*
+もう 最良優先探索 (A*, GBFS) のことすら考えなくて良い
 
- *g, h, d are all depth-related metrics*
- #+end_quote
+*新たな非局在化手法を考えれば十分に性能向上が狙える!*
 
- #+begin_xlarge
- Let's diversify the width!
- #+end_xlarge
+#+begin_quote
+Type GBFS: *Randomize <g,h>*
 
-** Pathological case for all diversification methods
+RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステップ数*
+
+*g, h, d は全て深さに関連した指標*
+#+end_quote
+
+#+begin_xlarge
+探索の幅方向に非局在化する手法を開発
+#+end_xlarge
+
+** 既存の非局在化手法では失敗する例
 
  [[png:model/original]]
 
-*** FIFO (Breadth-first)
+*** FIFO (幅優先)
  [[png:model/fifo1]]
-*** FIFO (Breadth-first)
+*** FIFO (幅優先)
  [[png:model/fifo2]]
-*** FIFO (Breadth-first)
+*** FIFO (幅優先)
  [[png:model/fifo3]]
-*** LIFO (Depth-first)
+*** LIFO (深さ優先)
  [[png:model/lifo1]]
-*** LIFO (Depth-first)
+*** LIFO (深さ優先)
  [[png:model/lifo2]]
-*** LIFO (Depth-first)
+*** LIFO (深さ優先)
  [[png:model/lifo3]]
 *** Random
  [[png:model/ro1]]
@@ -1429,7 +1428,7 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 *** Random-Depth
  [[png:model/rd2]]
 
-** Bond Invasion Percolation (1983)
+** Bond Invasion Percolation (1983) (侵入型パーコレーション)
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1438,17 +1437,16 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+end_span6
  #+begin_span6
  #+begin_larger
- + A well-known *fractal structure*
- + Distribution of fluid slowly invading a porous media
- + e.g., water replacing the oil in a porous rock
- + Application: oil reservoir mining
+ + よく知られた *ランダムフラクタル*
+ + 液体が多孔質の物体に染みこむ際の動作を模倣
+ + e.g., 水が石油を含む岩石に浸透
+ + 実応用: 石油資源開発
  #+end_larger
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** Physics people use the different term
-
+*** 物理学者は別の用語を使う
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1457,18 +1455,17 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+end_span6
  #+begin_span6
  #+begin_larger
- Bond == Edge
+ Bond == 辺
 
- Site == Node
+ Site == ノード
  #+end_larger
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
+*** BIP の生成 (知識なし)
 
-*** Generation of BIP (blind search method)
-
- Shown (Barabasi 96) to be the *same algorithm* as Prim's method for Minimum Spanning Tree (Prim '57)
+ Prim's method for Minimum Spanning Tree (Prim '57) と同一であると示されている (Barabasi 96)
 
  #+begin_src sh
  push(init, OPEN, 0)
@@ -1489,11 +1486,11 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
  #+begin_larger
  #+begin_center
- + *IMPORTANT:* The random value is *fixed/memoised* on the edge (*never reassigned*)
+ + *重要:* ランダム値は それぞれの辺に *固定* される (*再割当てされない*)
  #+end_center
  #+end_larger
 
-*** The */embankment effect/* of fixed random edge value
+*** 固定されたランダム値のもたらす */遮蔽効果/*
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1502,29 +1499,29 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  #+end_span5
  #+begin_span7
  #+begin_larger
- + */Embankment/ : A region surrounded by high-valued edges preventing the invasion*
+ + */遮蔽/ : 高い値を持った辺に囲まれたことによって一部の領域の探索が妨げられること*
 
- + */Fixation/ of random values maintains the fractal structure*
+ + *ランダム値の /固定/ がフラクタルな性質を保つために必要*
 
- + */BIP != Random heuristics/ (reassigns a new value = break the embankment)*
+ + */BIP != Random/ (ノードが評価されるたびに別の値になる = 遮蔽が壊される)*
  #+end_larger
  #+end_span7
  #+end_row-fluid
  #+end_container-fluid
 
-*** BIP avoids the pathological behavior
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip1]]
 
-*** BIP avoids the pathological behavior
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip1-1]]
 
-*** BIP avoids the pathological behavior
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip2]]
 
-*** BIP avoids the pathological behavior
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip2-1]]
 
@@ -1537,21 +1534,23 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
  [[png:icaps17-results2]]
  #+end_span6
  #+begin_span6
- + *hb* : *intra-plateau* (by [h, BIP, *])
- + *hB* : *inter-plateau* (by *alt* ([BIP], [h,*]))
- + *hbB* : *both* (by *alt* ([BIP], [h,BIP,*]) )
+ + *hb* : *プラトー内BIP* ([h, BIP, *])
+ + *hB* : *プラトー外BIP* (*alt* ([BIP], [h,*]))
+ + *hbB* : *同時使用* (*alt* ([BIP], [h,BIP,*]) )
  + *hdD* : *RandomDepth + Type GBFS*
- + _/Inter/intra orthogonality/_ was observed again
- + vs hdD (depth-based diversifications): competitive results
-   + Improvements in *different domains*
-   + hdD diversifies wrto *depth*, hbB diversifies wrto *width*
+ + _/プラトー内外errorの直交性/_ を再び観測
+ + vs hdD (深さベースの非局在化): 同じぐらい効果的
+   + 性能向上は *異なるドメイン* で発生
+   + hdD は *深さ*, hbB は *幅* 非局在化するから
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** Blind search characteristics: reduces the search width
+*** 知識なし探索での ノード展開の特性: 探索幅を減らす
 
- Matches our description on pathological cases
+深さ毎のノード展開数を計測
+
+ 最悪ケースでの分析での説明に合致
 
  　
 
@@ -1559,74 +1558,33 @@ GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
 
 *** VS. State-of-the-Art
 
-
  #+begin_container-fluid
  #+begin_row-fluid
  #+begin_span7
  [[png:icaps17-results3]]
  #+end_span7
  #+begin_span5
- + db^2 DB : Alternates D,B for inter-plateau ; d,b for intra-plateau
- + Because *depth (d,D)* and *width (b,B)* has the different effects
- + Effects mostly combine and improved LAMA
+ + db^2 DB : プラトー外に D,B を切り替え ; プラトー内に d,b を切り替え
+ + *深さ (d,D)* と *幅 (b,B)* で別の効果があるから
+ + 効果がうまく重なりあって state of the art (LAMA) の性能を向上
  #+end_span5
  #+end_row-fluid
  #+end_container-fluid
 
-** Extra Discussion: BWFS and GBFS-W in (Lipovetzky AAAI17)
+* まとめ
 
- Results obtained from (Lipovetzky AAAI17)
+非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
 
- #+begin_container-fluid
- #+begin_row-fluid
- #+begin_span6
- #+begin_smaller
- | / |       | <         |           | >         | <        |          | >        |
- |   |       | <c>       | <c>       | <c>       | <c>      | <c>      | <c>      |
- |   |       | GBFS      | GBFS-W    | BFWS      | GBFS     | GBFS-W   | BFWS     |
- |   |       | (h^{add}) | (h^{add}) | (h^{add}) | (h^{ff}) | (h^{ff}) | (h^{ff}) |
- |---+-------+-----------+-----------+-----------+----------+----------+----------|
- |   | barm  | 0         | 0         | */16/*    | 0        | 0        | */10/*   |
- |   | caved | 5         | *6*       | *6*       | 6        | 6        | 5        |
- |   | child | 0         | 0         | 0         | 0        | 0        | 0        |
- |   | cityc | 0         | *6*       | *6*       | 0        | *4*      | *5*      |
- |   | floor | 2         | 2         | 2         | 2        | 2        | 2        |
- |   | GED   | 0         | *10*      | *16*      | 16       | 13       | */18/*   |
- |   | hikin | 8         | 7         | 8         | 2        | *7*      | *9*      |
- |   | maint | 16        | 16        | 16        | 11       | _/16/_   | 11       |
- |   | opens | 0         | 0         | 0         | 5        | 0        | 5        |
- |   | park  | 0         | 0         | 0         | 0        | 0        | 0        |
- |   | tetri | 1         | _/9/_     | 3         | 1        | _/9/_    | 1        |
- |   | thoug | 13        | 9         | */20/*    | 12       | 11       | */18/*   |
- |   | trans | 2         | *5*       | *6*       | 0        | 0        | 0        |
- |   | visit | 0         | _/8/_     | 1         | 0        | *20*     | *20*     |
- #+end_smaller
- #+end_span6
- #+begin_span6
+→ *なぜうまく行ったのか?*
 
- + _/GBFS-W is intra-plateau/_
- + */BFWS is inter-plateau [w,h]/*
- + Improvements in different domains
-   + Effects are (mostly) orthogonal
- + *Effects are expected to combine with both enabled.*
- + */Benefit of understanding the diversification !!/*
- #+end_span6
- #+end_row-fluid
- #+end_container-fluid
+最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 
- Difference between BIP and IW : *IW assumes propositional states*, BIP does not
+→ 最適解探索を充足解探索の繰り返しに変換できたため、 *もう最適解探索について悩む必要はない*
 
-** Conclusion
+充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
 
- #+begin_larger
- + *Two modes of diversification* --- previous methods are inter-only / mixture of two, no cleanly separated evaluation
-   + */Take-home message/: Whenever you have a diversification method, use it for both modes*
- + *Fractal-based diversification for reducing the search width*
-   + */Take-home message/: Fractals have some potential!*
- #+end_larger
+→ *非局在化手法は知識なし(乱択化)探索手法* なので、もう *最良優先探索 (A^＊ , GBFS) のことすら考えなくて良い*
 
- #+begin_center
- #+begin_larger
- + Thank you for listening!
- #+end_larger
- #+end_center
+新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
+
+→ *新たな知識なし探索手法で性能向上を達成した*
