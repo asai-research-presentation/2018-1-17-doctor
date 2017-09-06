@@ -242,9 +242,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.88701115"
-     inkscape:cx="503.36876"
-     inkscape:cy="296.41011"
+     inkscape:zoom="1.2544232"
+     inkscape:cx="330.79722"
+     inkscape:cy="345.43767"
      inkscape:document-units="in"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -254,10 +254,10 @@
      fit-margin-bottom="0"
      inkscape:snap-center="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="713"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1440"
+     inkscape:window-height="818"
+     inkscape:window-x="768"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -423,11 +423,11 @@
          sodipodi:role="line"
          x="-32.93856"
          y="240.80226"
-         id="tspan9363">LIFO/depth-first behavior</tspan><tspan
+         id="tspan9363">LIFO = 深さ優先探索 = 常に最大depthを探索</tspan><tspan
          sodipodi:role="line"
          x="-32.93856"
          y="285.79156"
-         id="tspan3749">→could miss the solutions in shallow depth</tspan></text>
+         id="tspan3749">→ 浅いところの解を見過ごす可能性あり</tspan></text>
     <path
        sodipodi:nodetypes="scscssssss"
        inkscape:connector-curvature="0"
@@ -475,43 +475,6 @@
          id="tspan9572"
          x="222.05423"
          y="473.19931">all search starts from depth 0</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="596.88959"
-       y="431.97266"
-       id="text9707-2"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9709-1"
-         x="596.88959"
-         y="431.97266">optimal</tspan><tspan
-         sodipodi:role="line"
-         x="596.88959"
-         y="461.97266"
-         id="tspan9804"> solution</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="277.14456"
-       y="654.75305"
-       id="text9707-6"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9709-3"
-         x="277.14456"
-         y="654.75305">optimal solution</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="605.24329"
-       y="531.59656"
-       id="text9707-3-2"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9709-7-0"
-         x="605.24329"
-         y="531.59656">optimal solution</tspan></text>
     <g
        style="display:inline"
        transform="matrix(0.64831724,0,0,0.64831724,669.1504,381.63075)"
@@ -590,22 +553,77 @@
       <text
          xml:space="preserve"
          style="font-size:30.84909439px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#6699cc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         x="-849.83167"
-         y="-113.60854"
+         x="-852.91656"
+         y="-119.77836"
          id="text4972"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan4974"
-           x="-849.83167"
-           y="-113.60854">A* does not</tspan><tspan
+           x="-852.91656"
+           y="-119.77836">A* は楕円の</tspan><tspan
            sodipodi:role="line"
-           x="-849.83167"
-           y="-75.047173"
-           id="tspan4978">search outside</tspan><tspan
+           x="-852.91656"
+           y="-76.643318"
+           id="tspan4290">外側は探索しない</tspan><tspan
            sodipodi:role="line"
-           x="-849.83167"
-           y="-36.485809"
-           id="tspan4290"> ellipse:</tspan></text>
+           x="-852.91656"
+           y="-38.081955"
+           id="tspan3113">なぜなら</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:37.01891327px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         x="-1185.2556"
+         y="-32.966324"
+         id="text9707-7-4"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9709-8-4"
+           x="-1185.2556"
+           y="-32.966324">最適解</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:37.01891327px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         x="-915.72076"
+         y="127.01565"
+         id="text9707-7-2"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9709-8-7"
+           x="-915.72076"
+           y="127.01565">最適解</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:37.01891327px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         x="-830.513"
+         y="278.30304"
+         id="text9707-7-9"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9709-8-5"
+           x="-830.513"
+           y="278.30304">最適解</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:37.01891327px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         x="-1025.2736"
+         y="351.33823"
+         id="text9707-7-5"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9709-8-1"
+           x="-1025.2736"
+           y="351.33823">最適解</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:37.01891327px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         x="-1338.282"
+         y="464.36908"
+         id="text9707-7-3"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan9709-8-43"
+           x="-1338.282"
+           y="464.36908">最適解</tspan></text>
     </g>
     <path
        sodipodi:type="arc"
@@ -937,17 +955,6 @@
        sodipodi:ry="17.537941"
        d="m 802.75938,230.38475 c 0,9.68594 -7.85201,17.53794 -17.53794,17.53794 -9.68594,0 -17.53795,-7.852 -17.53795,-17.53794 0,-9.68594 7.85201,-17.53794 17.53795,-17.53794 9.68593,0 17.53794,7.852 17.53794,17.53794 z"
        transform="matrix(0.61553334,0,0,0.61553334,153.2151,213.85525)" />
-    <text
-       xml:space="preserve"
-       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:0.33177568;fill-rule:nonzero;stroke:none;stroke-width:0.99000001;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="530.97864"
-       y="239.31572"
-       id="text3231"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3233"
-         x="530.97864"
-         y="239.31572">(could be better than FIFO)</tspan></text>
     <path
        sodipodi:type="arc"
        style="opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.32000017;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -958,21 +965,6 @@
        sodipodi:ry="17.537941"
        d="m 802.75938,230.38475 c 0,9.68594 -7.85201,17.53794 -17.53794,17.53794 -9.68594,0 -17.53795,-7.852 -17.53795,-17.53794 0,-9.68594 7.85201,-17.53794 17.53795,-17.53794 9.68593,0 17.53794,7.852 17.53794,17.53794 z"
        transform="translate(-331.51137,146.6293)" />
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:end;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:end;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="430.20251"
-       y="351.92868"
-       id="text9707"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9709"
-         x="430.20251"
-         y="351.92868">optimal</tspan><tspan
-         sodipodi:role="line"
-         x="430.20251"
-         y="381.92865"
-         id="tspan3114">solution</tspan></text>
     <path
        sodipodi:type="arc"
        style="opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.32000017;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -983,17 +975,6 @@
        sodipodi:ry="17.537941"
        d="m 802.75938,230.38475 c 0,9.68594 -7.85201,17.53794 -17.53794,17.53794 -9.68594,0 -17.53795,-7.852 -17.53795,-17.53794 0,-9.68594 7.85201,-17.53794 17.53795,-17.53794 9.68593,0 17.53794,7.852 17.53794,17.53794 z"
        transform="translate(-219.50471,390.0462)" />
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="477.97919"
-       y="600.25208"
-       id="text9707-35"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9709-0"
-         x="477.97919"
-         y="600.25208">optimal solution</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"

@@ -336,9 +336,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.84105529"
-     inkscape:cx="523.66185"
-     inkscape:cy="238.83053"
+     inkscape:zoom="1.1894318"
+     inkscape:cx="288.07572"
+     inkscape:cy="279.66848"
      inkscape:document-units="in"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -348,10 +348,10 @@
      fit-margin-bottom="0"
      inkscape:snap-center="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="713"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1440"
+     inkscape:window-height="818"
+     inkscape:window-x="768"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -436,11 +436,11 @@
          y="192.08517"
          id="tspan15218"
          style="text-align:start;letter-spacing:-0.31px;text-anchor:start;fill:#ccff99;stroke:#015a01;stroke-width:1.50590551;stroke-miterlimit:4;stroke-dasharray:none"><tspan
-   id="tspan4661"
-   style="text-align:start;letter-spacing:-0.31px;text-anchor:start;fill:#0197fd;stroke:none">Depth = # of steps from </tspan>plateau entrance</tspan></text>
+           id="tspan4661"
+           style="text-align:start;letter-spacing:-0.31px;text-anchor:start;fill:#0197fd;stroke:none">Depth =</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        x="21.755154"
        y="259.27457"
        id="text8877-5"
@@ -448,23 +448,23 @@
          sodipodi:role="line"
          x="21.755154"
          y="259.27457"
-         id="tspan4667"> the different (f,h) → depth(child)=0 (<tspan
-   style="text-align:start;text-anchor:start;fill:#ccff99;stroke:#002b3d"
+         id="tspan4667">異なる (f,h) → depth(子)= 0 (<tspan
+   style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ccff99;stroke:#002b3d;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
    id="tspan15244">Plateau entrance</tspan>)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="28.889048"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="46.889046"
        y="288.94446"
        id="text8877-5-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="28.889048"
+         x="46.889046"
          y="288.94446"
-         id="tspan10408">the same (f,h) 　　　　　→ depth(child)= depth(parent)+1</tspan></text>
+         id="tspan10408">同じ (f,h) → depth(子)= depth(親)+1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999995999999995;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        x="-3.1752787"
        y="227.36906"
        id="text4100"
@@ -472,7 +472,18 @@
          sodipodi:role="line"
          id="tspan4102"
          x="-3.1752787"
-         y="227.36906">If a parent node and a child node have</tspan></text>
+         y="227.36906">親ノードと子ノードが</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#98fc66;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.16999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="349.97928"
+       y="187.80977"
+       id="text3102"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3104"
+         x="349.97928"
+         y="187.80977">plateau entrance からの深さ</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"

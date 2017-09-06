@@ -211,11 +211,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2544232"
+     inkscape:zoom="0.88701115"
      inkscape:cx="379.01031"
-     inkscape:cy="176.1208"
+     inkscape:cy="238.30077"
      inkscape:document-units="in"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer2"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -224,9 +224,9 @@
      inkscape:snap-center="true"
      inkscape:snap-global="false"
      inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-height="688"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -317,39 +317,40 @@
        sodipodi:nodetypes="ccccccccc" />
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="258.8168"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="299.10962"
        y="374.6106"
        id="text6623"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="258.8168"
+         x="299.10962"
          y="374.6106"
-         id="tspan6627">W/O tiebreaking, search go astray</tspan><tspan
+         id="tspan3452">タイブレーキングなしでは</tspan><tspan
          sodipodi:role="line"
-         x="258.8168"
+         x="299.10962"
          y="419.6106"
-         id="tspan3452">because f is flat everywhere</tspan></text>
+         id="tspan3033">f が平坦なのでゴールが見つからない</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:5.02043629;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Send);display:inline"
+       style="fill:none;stroke:#000000;stroke-width:5.03999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Mend);display:inline"
        d="m 536.36446,507.19099 -10.95088,22.07307 34.27839,27.02164"
        id="path15908-7-2-1"
        inkscape:connector-curvature="0"
        inkscape:transform-center-x="66.111353"
        inkscape:transform-center-y="92.600773"
-       sodipodi:nodetypes="cc" />
+       sodipodi:nodetypes="ccc" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:5.02043629;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 545.5672,458.37413 74.89762,-44.5951 -58.62384,-42.8405 49.60478,-10.14643"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:5.03999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 545.5672,458.37413 98.01581,-43.00074 -57.49646,-32.69407 48.4774,-20.29286"
        id="path6664"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:5.02043629;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 416.00378,300.04441 -67.64289,39.45835 118.37506,7.89167 -40.58573,51.85955 18.0381,-84.55361"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:5.03999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 416.00378,300.04441 -67.64289,39.45835 117.24768,30.4393 -39.45835,29.31192 18.0381,-84.55361"
        id="path6689"
        inkscape:connector-curvature="0"
-       transform="translate(-24.85536,234.10676)" />
+       transform="translate(-24.85536,234.10676)"
+       sodipodi:nodetypes="ccccc" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -383,14 +384,14 @@
     <text
        sodipodi:linespacing="125%"
        id="text5761"
-       y="272.42801"
-       x="434.07419"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:end;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:end;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:76.31999969;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       y="287.5744"
+       x="-32.142143"
+       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
-         y="272.42801"
-         x="434.07419"
+         y="287.5744"
+         x="-32.142143"
          id="tspan5763"
-         sodipodi:role="line">Most nodes are in the large Final Plateau</tspan></text>
+         sodipodi:role="line">実際はほぼすべてのノードが Final Plateau に存在</tspan></text>
     <image
        y="496.22009"
        x="-40.783882"
@@ -406,7 +407,7 @@
        sodipodi:cy="342.74048"
        sodipodi:rx="128.46185"
        sodipodi:ry="44.751057"
-       d="m 111.6144,342.74048 a 128.46185,44.751057 0 1 1 -256.92371,0 128.46185,44.751057 0 1 1 256.92371,0 z"
+       d="m 111.6144,342.74048 c 0,24.71532 -57.514336,44.75106 -128.461858,44.75106 -70.947522,0 -128.461852,-20.03574 -128.461852,-44.75106 0,-24.71533 57.51433,-44.75106 128.461852,-44.75106 70.947522,0 128.461858,20.03573 128.461858,44.75106 z"
        transform="matrix(0.47397536,-0.47397536,0.47397536,0.47397536,-103.06377,415.20805)" />
   </g>
 </svg>

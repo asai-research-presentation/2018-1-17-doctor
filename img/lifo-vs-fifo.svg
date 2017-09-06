@@ -39,15 +39,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-width="1440"
+     inkscape:window-height="818"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.8237945"
      inkscape:cx="219.27969"
-     inkscape:cy="195.63115"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:cy="105.70874"
+     inkscape:window-x="768"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <image
@@ -59,27 +59,27 @@
      y="0" />
   <text
      xml:space="preserve"
-     style="font-size:18px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:end;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:end;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-     x="189.62073"
-     y="224.00563"
+     style="font-size:18px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:end;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:end;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+     x="180.91162"
+     y="224.79031"
      id="text2987"
      sodipodi:linespacing="125%"
      transform="matrix(0.71527708,-0.69884097,0.69884097,0.71527708,0,0)"><tspan
        sodipodi:role="line"
-       id="tspan2989"
-       x="189.62073"
-       y="224.00563">Performance is comparable</tspan><tspan
+       x="180.91162"
+       y="224.79031"
+       id="tspan3005">ほとんどのドメインでは</tspan><tspan
        sodipodi:role="line"
-       x="189.62073"
-       y="246.50563"
-       id="tspan3005"> in most domains</tspan></text>
+       x="180.91162"
+       y="247.29031"
+       id="tspan3016">性能は同様</tspan></text>
   <rect
      style="opacity:0.89830508;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
      id="rect3030"
-     width="256.05954"
-     height="82.794411"
-     x="150.23621"
-     y="232.21298"
+     width="265.3808"
+     height="80.052864"
+     x="140.91498"
+     y="234.95451"
      rx="0.50176001"
      ry="0.51199996" />
   <rect
@@ -101,15 +101,16 @@
        sodipodi:role="line"
        id="tspan2993"
        x="393.95886"
-       y="258.2576">Openstacks &amp; Cybersec</tspan><tspan
+       y="258.2576">だが Openstacks &amp; Cybersec</tspan><tspan
        sodipodi:role="line"
        x="393.95886"
-       y="280.7576"
-       id="tspan2995">FIFO has &gt; x10 evaluations</tspan><tspan
+       y="283.42627"
+       id="tspan2995">では FIFO は LIFO の 10倍も</tspan><tspan
        sodipodi:role="line"
        x="393.95886"
-       y="303.2576"
-       id="tspan3028">than LIFO</tspan></text>
+       y="305.08545"
+       id="tspan3028"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'">無駄に多くのノードを評価</tspan></text>
   <rect
      style="opacity:0.89830508;color:#000000;fill:none;stroke:#ff00ff;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
      id="rect2999"
@@ -154,15 +155,17 @@
      ry="0.35602647" />
   <text
      xml:space="preserve"
-     style="font-size:18px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:end;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:end;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-     x="375.04227"
+     style="font-size:18px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+     x="227.35394"
      y="355.58215"
      id="text3051"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan3053"
-       x="375.04227"
-       y="355.58215">x-axis: Node Evaluation by [h, FIFO]</tspan></text>
+       x="227.35394"
+       y="355.58215">x軸: <tspan
+   style="font-size:18px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+   id="tspan3006">評価ノード数</tspan> by [h, FIFO]</tspan></text>
   <rect
      style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
      id="rect3030-9-9"
@@ -180,13 +183,14 @@
      id="text3051-6"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       id="tspan3053-2"
-       x="61.826897"
-       y="96.232765">y-axis: Node</tspan><tspan
+       x="64.32299"
+       y="96.232765"
+       id="tspan3865">y軸: </tspan><tspan
        sodipodi:role="line"
        x="61.826897"
-       y="118.73277"
-       id="tspan3865">Evaluation</tspan><tspan
+       y="117.89195"
+       id="tspan3008"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'">評価ノード数</tspan><tspan
        sodipodi:role="line"
        x="61.826897"
        y="141.23276"

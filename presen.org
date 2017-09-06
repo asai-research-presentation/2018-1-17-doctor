@@ -225,7 +225,7 @@ Made by guicho2.71828 (Masataro Asai)
 ** アクション = 条件付き状態遷移
 
 #+begin_center
-#+BEGIN_XLARGE
+#+begin_xlarge
 アクション (move ?X ?Y)
 #+end_xlarge
 #+end_center
@@ -407,30 +407,51 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 
 
-* 探索非局在化による A* の高速化 (Asai, Fukunaga, AAAI2016)
+* 発表概要
 
-** Summary: /We improved A*'s performance only by changing the Tiebreaking Strategy !!/
+非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
+
+最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
+
+タイブレークと探索非局在化の一般化 (Asai, Fukunaga, ICAPS 2017)
+
+GBFS の 探索非局在化 (Asai, Fukunaga, ICAPS 2017)
+
+新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
+
+* 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)
+
+先に結果: /A*の性能をタイブレーキングを変えるだけで改善!!/
 
  #+begin_center
- Number of Solved Instances
+ 計1724問中, 1題あたり2GBメモリ制限,30分以内に解けた問題の数
  #+end_center
 
- |                         | <c>              | <c>      |
- |                         | Default          | Proposed |
- | Domain Set              | in Fast Downward |          |
- |-------------------------+------------------+----------|
- | IPC^1 Instances (1104)  | 558              | *573*    |
- | Zerocost Instances(680) | 256              | *294*    |
- | Sum (1724)              | 814              | *867*    |
- |-------------------------+------------------+----------|
+ |                         | <c>                           | <c>           |
+ |                         | Fast Downward                 | 提案手法      |
+ | 問題セット              | State-of-the-Art 探索システム |               |
+ |-------------------------+-------------------------------+---------------|
+ | IPC^1 Instances (1104)  | 558                           | *573*         |
+ | Zerocost Instances(680) | 256                           | *294*         |
+ |-------------------------+-------------------------------+---------------|
+ | 合計 (1724)             | 814                           | *867* ( + 53) |
+ |-------------------------+-------------------------------+---------------|
 
- IPC^1 : International Planning Competition
+ IPC^1 : International Planning Competition で使われる 高次元グラフ探索ベンチマーク
+
+ IPC=(20〜50問)×(35種類の問題集) Zerocost=(20〜50問)×(28種類の問題集)
+
+ それぞれの問題集は全く異なる性質の *最適化問題をモデル化*
+
+ *問題番号が進むと 指数的に難しくなる*
 
  #+begin_alignright
- Solved *53 more instances!*
+ #+begin_larger
+ *53問 多く解ける = 速い*
+ #+end_larger
  #+end_alignright
 
-** Main Topic : Optimal Graph Search
+** 今回の話題 : グラフの最短経路探索
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -442,11 +463,11 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+begin_larger
  #+begin_center
- *Shortest path*
+ *初期ノード* から
 
- from the *Initial Node*
+ *ゴールノード* への
 
- to the *Goal Node(s)*
+ *最短経路探索*
  #+end_center
  #+end_larger
 
@@ -454,83 +475,74 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_row-fluid
  #+end_container-fluid
 
- # * Dijkstra
- # 
- # [[png:dijkstra]]
-
-** Optimal Search with A* ...
-
- # Guaranteed to find an optimal solution when /heuristic function/ $h(s)$ is admissible
+** A* は 最短経路探索 の主要な手法
 
  [[png:astar]]
 
-** Optimal Search with A* ... w/o Tiebreaking Strategy.
-
- # Guaranteed to find an optimal solution when /heuristic function/ $h(s)$ is admissible
+** A* は 最短経路探索 の主要な手法 ただしタイブレーキング無視!
 
  [[png:astar-emph]]
 
-** Conventional Wisdom regarding Tiebreaking
+** タイブレーキングに関する「常識」
 
  #+begin_center
- How to select from multiple nodes with the same /f_{min}/?
+ *同じ /f_{min}/ なノードが複数あったときどうする?*
  #+end_center
 
- |                                  | Tiebreaking                                 |
- |----------------------------------+---------------------------------------------|
- | *Early work*                     |                                             |
- | /1968 Hart, Nilsson and Raphael/ | */h/-based tiebreaking* [ /h/ ] :           |
- |                                  | 　　 -- selects the least h value           |
- | /common around 1985/             | *LIFO tiebreaking* [LIFO] :                 |
- |                                  | 　　 -- selects the most recently generated |
- |----------------------------------+---------------------------------------------|
- | *Recent years...*                |                                             |
- | /2007 Hansen and Zhou/           | [ /h/ ] "well-known to achieve              |
- |                                  | 　　　　　　the best performance"           |
- | /2010 Holte/                     | [ /h/ ] "most often done"                   |
- |----------------------------------+---------------------------------------------|
-
- #+begin_alignright
- *Rule-of-Thumb is [ /h/ ] but it's like a folklore!*
- #+end_alignright
-
-** [ /h/ ] is underspecified
-
- *What happens if there are still /multiple/ nodes with the same /h/ ?*
-
- → There must be a *2nd Tiebreaking /X/* : denoted as [ /h/ , */X/* ]
-
- Example -- A* with *[ /h/ , /LIFO/ ]* : Selects the nodes with /f_{min}/. 
-
- + *IF* multiple nodes have /f_{min}/, selects the nodes with /h_{min}/  (1st tiebreaking).
- + *IF* multiple nodes have /h_{min}/, select the most recent node (2nd tiebreaking).
-   #+begin_alignright
-   #+begin_smaller
-   (i.e. popping a LIFO queue: always returns exactly 1 node)
-   #+end_smaller
-   #+end_alignright
-
- |-----------------------------------------------+---------------------------------|
- | Solver code on github by /2012 Burns et. al./ | [ /h/, LIFO (*not documented*)] |
- | (current) Fast Downward                       | [ /h/, FIFO (*not documented*)] |
- |-----------------------------------------------+---------------------------------|
+ |-------------------------------------+------------------------------------|
+ | /1968 Hart, Nilsson and Raphael/ → | */h/-based tiebreaking* [ /h/ ] :  |
+ | (*/最初のA*の論文/*)                | 　　 -- h値が小さなものを選択      |
+ |                                     |                                    |
+ | /1985ごろにはすでに有名/         → | *LIFO tiebreaking* [LIFO] :        |
+ |                                     | 　　 -- 最後に生成したノードを選択 |
+ |-------------------------------------+------------------------------------|
+ | *最近は...*                         |                                    |
+ | /2007 Hansen and Zhou/              | [ /h/ ] "が一番うまく行くと        |
+ |                                     | 　　　　　　一般的に知られている"  |
+ | /2010 Holte/                        | [ /h/ ] "がよく使われる"           |
+ |-------------------------------------+------------------------------------|
 
  #+begin_alignright
  #+begin_larger
- + Details (such as 2nd-tiebreaking /X/) are *considered unimportant?*
-
-   (compared to the improvement of the heuristics, search algorithm?)
+ *[ /h/ ] タイブレーキングが「常識」→ だが、本当に正しいのか？*
  #+end_larger
  #+end_alignright
 
+** そもそも [ /h/ ] だけではちゃんとタイブレークできない
 
-** TODO In Fact, Tiebreaking is Quite Important
+ /*f*/ も /*h*/ も同じノードが複数あったらどうするのか?
+
+ → *二段階のタイブレーク法 /X/ が必要*  : 配列表記して [ /h/ , */X/* ]
+
+ (例) *[* /*h*/ , */LIFO/ ]* を使うA*の動作とは?
+
+ + 常に /*f_{min}*/ なノードを選ぶ。
+ + *ただし* 複数ノードが /*f_{min}*/ なら, /*h_{min}*/ のノードを選ぶ (第一段階).
+ + *まだ* 複数のノードがあるなら, LIFOに従い最後に生成したノードを選ぶ (第二段階).
+   #+begin_alignright
+   #+begin_smaller
+   ( LIFO キューは常に1つのノードを返すのでコレ以上は必要ない )
+   #+end_smaller
+   #+end_alignright
+
+ |----------------------------------------------------------+-----------------------------------|
+ | 古典プランニングState-of-the-Art Fast Downward           | [ /h/, *FIFO* (*論文に明記なし*)] |
+ | 15/24パズルのState-of-the-Art ソルバ /2012 Burns et.al./ | [ /h/, *LIFO* (*論文に明記なし*)] |
+ |----------------------------------------------------------+-----------------------------------|
+
+ #+begin_alignright
+ #+begin_larger
+ + 推測: そんな細かいことは *書くほどのことでもない* という認識?
+
+   (なぜなら、下界関数の改善やA*自体の拡張など他に注目しがち)
+ #+end_larger
+ #+end_alignright
+
+** 実際は、 タイブレーク法は /超重要/
 
  #+begin_larger
  #+begin_center
- *Most of the runtime, search is controlled*
-
-  */solely by the tiebreaking/.*
+ *探索時間のほとんどは* */タイブレークのみによって制御される/.*
  #+end_center
  #+end_larger
 
@@ -541,43 +553,50 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_span6
  #+begin_span6
 
- ←In the standard benchmark sets,
+ ←標準ベンチマーク問題集では、
 
  #+begin_larger
  #+begin_center
- *Most nodes have f=f^**.
+ *探索空間中 ほとんどの*
 
- (i.e. *Final Plateau*, 　　
+ *ノードが f=f^** (*Final Plateau*).
 
- where the solutions exist)
+ #+begin_smaller
+ (*Plateau* = 同じf値を持つノード集合.
+ 小さい順に探索して最後だからFinal)
+ #+end_smaller
  #+end_center
 
  　
 
  #+begin_center
- *Tiebreaking controls the most of the search.*
+ *A*の挙動のほとんどは*
+
+ *実はタイブレークだけによって決まる。*
  #+end_center
  #+end_larger
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-** Testing if the 2nd Tiebreaking Really Matters
+** 第二段階のタイブレークは重要か？
 
- | <c>                           | <c>                               | <c>       |
- | Tiebreaking                   | Description                       | Solved    |
- | ［criterion_1, criterion_2 ］ | (applied in left-to-right)        | Instances |
- |-------------------------------+-----------------------------------+-----------|
- | ［ /h/,  *LIFO* ］            | same /f_{min}/ → select smallest h |           |
- |                               | same h → break ties in LIFO      |           |
- |-------------------------------+-----------------------------------+-----------|
- | ［ /h/,  *FIFO* ］            | *default setting of FD*           |           |
- |-------------------------------+-----------------------------------+-----------|
+ | <c>                           | <c>                                     | <c>       |
+ | Tiebreaking                   | 説明                                    | Solved    |
+ | ［criterion_1, criterion_2 ］ |                                         | Instances |
+ |-------------------------------+-----------------------------------------+-----------|
+ | ［ /h/,  *FIFO* ］            | *Fast Downwardの標準設定*               |           |
+ |-------------------------------+-----------------------------------------+-----------|
+ | ［ /h/,  *LIFO* ］            | 同じ /*f_{min}*/ → 最小の /*h*/ を選ぶ |           |
+ |                               | 同じ /*h_{min}*/ → *LIFO* で選ぶ       |           |
+ |-------------------------------+-----------------------------------------+-----------|
 
  #+begin_alignright
- on 1104 IPC (International Planning Competition) instances
+ 1104題の IPC (International Planning Competition) ベンチマーク問題集
 
- 30min, 2GB setting with the same heuristics (LMcut)
+ 30min, 2GB の資源制限 ヒューリスティック関数は Landmark-Cut (Helmert2008)
+
+  Fast Downward : State-of-the-Art 探索ソルバの名前
 
  　
 
@@ -585,33 +604,37 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_alignright
 
-** Testing if the 2nd Tiebreaking Really Matters
+** 第二段階のタイブレークは重要か？ → 重要だった!
 
- # Results (on 1104 IPC instances,  LMcut, 30min, 2GB)
-
- | <c>                           | <c>                               | <c>       |
- | Tiebreaking                   | Description                       | Solved    |
- | ［criterion_1, criterion_2 ］ | (applied in left-to-right)        | Instances |
- |-------------------------------+-----------------------------------+-----------|
- | ［ /h/, *LIFO* ］             | same /f_{min}/ → select smallest h | *565*     |
- |                               | same h → break ties in LIFO      |           |
- |-------------------------------+-----------------------------------+-----------|
- | ［ /h/, *FIFO* ］             | *default setting of FD*           | 558       |
- |-------------------------------+-----------------------------------+-----------|
+ | <c>                           | <c>                                     | <c>       |
+ | Tiebreaking                   | 説明                                    | Solved    |
+ | ［criterion_1, criterion_2 ］ |                                         | Instances |
+ |-------------------------------+-----------------------------------------+-----------|
+ | ［ /h/,  *FIFO* ］            | *Fast Downwardの標準設定*               | 558       |
+ |-------------------------------+-----------------------------------------+-----------|
+ | ［ /h/,  *LIFO* ］            | 同じ /*f_{min}*/ → 最小の /*h*/ を選ぶ | *565*     |
+ |                               | 同じ /*h_{min}*/ → *LIFO* で選ぶ       |           |
+ |-------------------------------+-----------------------------------------+-----------|
 
  #+begin_alignright
- on 1104 IPC (International Planning Competition) instances
+ 1104題の IPC (International Planning Competition) ベンチマーク問題集
 
- 30min, 2GB setting with the same heuristics (LMcut)
+ 30min, 2GB の資源制限 ヒューリスティック関数は Landmark-Cut (Helmert2008)
+
+  Fast Downward : State-of-the-Art 探索ソルバの名前
 
  #+begin_larger
- *［h, LIFO ］ outperforms ［h, FIFO ］*
+ *［h, LIFO ］ は ［h, FIFO ］ より速い*
  #+end_larger
 
- the 2nd tiebreaking makes difference
+ *第二タイブレークは重要!*
  #+end_alignright
 
-** TODO Comparing [h,FIFO] and [h,LIFO] per Domain (Instance Set)
+** いつどのように早い？ ドメイン (問題セット) ごとに比較
+
+ #+begin_center
+ ( 1104題 = (20〜50問)×(35種類の問題集))
+ #+end_center
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -621,47 +644,52 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+begin_span6
 
  #+begin_center
- The difference occurs only in
+ 違いが出たドメインは
 
  #+begin_larger
  *Openstacks* & *Cybersec*
  #+end_larger
 
- *LIFO is x10 faster than FIFO*
+ *LIFO は FIFO より 10 倍速い*
 
- (In other domains the performance is comparable.)
+ (他のドメインでは凡そ同じ)
 
+ 　
+
+ 　
+
+ # 補足:
+
+ # ( /*h*/ なし→どのドメインでもLIFOの圧勝)
  #+end_center
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-** What makes /Openstacks/ & /Cybersec/ Different?
+** /Openstacks/ & /Cybersec/ は何が特別なのか?
 
- Many *zero-cost actions*
+ 他と違い、多くの *ゼロコスト エッジ* が含まれる
 
  #+begin_smaller
- which (before proceeding, let me say...) enables
+ ゼロコストエッジがあることによって
  #+end_smaller
 
- the modelling of many *practical applications* w/ *key resource minimization*
+ *実問題に近い* 、特定の評価関数を最小化するモデルになっている
 
- + Consider a *transportation domain w/ fuel minimization.*
+ + *輸送・配達問題* を *燃料を最小化する* ようにモデル化
    #+begin_alignright
-   Assign 0 cost to all actions *except drive-truck*
-
-   which burns some fuel.
+   「運転」アクション以外は *ゼロコスト* (例: 荷物の受け渡しに燃料は必要ない)
    #+end_alignright
- + *Openstacks is an application domain* from Operations Research (Fink and Voss, 1999)
+ + *Openstacks は 工場で同時生産する製品数を最小化* (Fink and Voss, 1999)
    #+begin_alignright
-   minimize the # of stacks, 0-cost unless consuming stacks.
+   製品ごとに専有区画 *stack* を消費。 *stack* を使わない行為はゼロコスト
    #+end_alignright
- + *Cybersec is also an application domain.* (BAMS, Boddy et. al.)
+ + *Cybersec(urity) も実問題由来* (BAMS 検証システム, Boddy et. al. 2005)
    #+begin_alignright
-   The great talk by Joerg Hoffmann in the last ICAPS!
+   企業ネットワークを自動攻撃, データ奪取に必要なパスワード解析回数を最小化
    #+end_alignright
 
-** TODO Zero-cost actions makes /h/-Tiebreaking difficult
+** ゼロコストがあると /*h*/ によるタイブレークが働かない
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -671,22 +699,22 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+begin_span6
 
  #+begin_center
- ← A stricter subset of final plateau with *f=f^**, *h=0*
+ ← 前回の絵より狭い定義の *final plateau* : *f=f^**, *h=0*
 
- In *Openstacks* & *Cybersec*,
+ *Openstacks* と *Cybersec* では
 
- Almost all nodes have *h=0*.
+ ほぼ全てのノードが *h=0*.
 
  #+begin_larger
- *⇒ /h/-tiebreaking has*
+ *⇒ /h/-タイブレーキングは*
 
- *no effect*
+ *全く効果がない*
  #+end_larger
 
  #+begin_larger
- *⇒search is controlled /solely by the 2nd tiebreaking/*
+ *⇒探索は /第二タイブレーク法/*
 
- */LIFO or FIFO/*
+ */LIFO or FIFO だけが支配/*
  #+end_larger
  #+end_center
  #+end_span6
@@ -694,58 +722,56 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_container-fluid
 
  #+begin_alignright
- Thus, *to improve upon LIFO*, we should understand these search spaces.
+ *LIFOを上回る性能を達成するためには, このFinal Plateauの分析が必要。*
  #+end_alignright
 
  # , and the LIFO and FIFO plays the primary role. 
 
-** Understanding the Final Plateau
+** Final Plateau の分析
 
  [[png:final-plateau0]]
 
-** Understanding the Final Plateau
+** Final Plateau の分析
 
  [[png:final-plateau]]
 
-** Understanding the Final Plateau
-
- In positive cost domains,
+** Final Plateau の分析
 
  [[png:final-plateau2]]
 
-** But when almost all edges are 0-cost...
+** ほぼ全ての辺がゼロコストだと...
 
  [[png:final-plateau3]]
 
-** Depth-based Tiebreaking
+** Final Plateau の中の Depth (深さ)
 
  [[png:final-plateau4]]
 
-** Non-trivial Question: How to use the /Depth?/
+ 初期ノードからの深さとは異なる
 
- Assume h=0 (because 0≦h≦h^*=0)
+** Depthは解の最適性に影響しない
 
- Within Final Plateau f=f^*, *all solutions are cost optimal* regardless of depth
+ Final Plateau f=f^* では, *どのゴールもコスト最適* で、深さは関係ない
 
  #+begin_alignright
- because *all edge costs are 0.*
+ ← *どの辺もゼロコストだから.*
  #+end_alignright
 
  [[png:final-plateau4-2]]
 
  #+begin_alignright
  #+begin_larger
- We found that *DEPTH BIAS IS NOT A GOOD IDEA.*
+ 従って *探索する時に深さに偏りがあるのは良くない.*
  #+end_larger
  #+end_alignright
 
-*** Example: selecting the smallest depth?
+*** 例えば: 常に浅いところから探索するのは良くない
 
  # /FirstDepth/ tiebreaking strategy : ［ h, /fd/ ］
 
  [[png:final-plateau5]]
 
-*** Example: selecting the largest depth?
+*** 例えば: 常に深いところから探索するのも良くない
 
  # /LastDepth/ tiebreaking strategy :  ［ h, /ld/ ］
 
@@ -755,11 +781,11 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  [[png:final-plateau7]]
 
- #+begin_alignright
- Classic Exploration vs Exploitation problem
-
- Connections to Rapidly exploring Random Tree (RRT) ?
- #+end_alignright
+ # #+begin_alignright
+ # Classic Exploration vs Exploitation problem
+ # 
+ # Connections to Rapidly exploring Random Tree (RRT) ?
+ # #+end_alignright
 
  # * Random Depth Tiebreaking + random selection within depth
  # 
@@ -769,49 +795,48 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  # 
  # [[png:final-plateau7]]
 
-** Evaluation (domains)
+** 評価 (用いた問題集)
 
- + IPC^1 Instances (1104 instances)
- + *Zero-cost* domains (620 instances, 28 domains)
-   + Modified IPC^1  optimal track instances
-   + Assign 0 cost to all actions *except one*
-   + which consumes a *realistic key resource*. For example,
-     + =cut= consumes =wood= in Woodworking
-     + =drive-truck= consumes =fuel= in Driverslog (transportation domain)
-     + etc..
+ + IPC^1 問題集 (20〜50問)×(35種類)
+   + 元のドメインはアクションの数だけを数える→非現実的
+ + *Zero-cost* 問題集 (620 instances, 28 domains)
+   + IPC^1 を *資源消費最適化問題* 改変したもの。例:
+     + Woodworking ドメイン: 元問題:最短工程を探索→ 木材消費の最適化
+     + Driverslog (運送ドメイン): 最短工程 → 燃料消費の最適化
+   + IPCの問題集には歴史的経緯から全ての辺のコストが1のドメインが多い(非現実的)
+   + 提案したZero-cost 問題集のほうが *より現実的*
 
  #+begin_note
  1 -- IPC : International Planning Competition
  #+end_note
 
-** Evaluation (participants)
-
+** 評価 (用いた探索設定 (おさらい))                                :noexport:
 
  #+begin_container-fluid
  #+begin_row-fluid
  #+begin_span6
  A* with *[h, FIFO]*
 
- Selects the nodes with /f_{min}/
+ /*f_{min}*/ のノードを選ぶ を満たす
 
- *IF* multiple nodes have /f_{min}/
+ *もし* 複数ノードが /*f_{min}*/ なら
 
- Selects the nodes with /h_{min}/
+ /*h_{min}*/ を満たすノードを選ぶ
 
- *IF* multiple nodes have /h_{min}/
+ *もし* 複数ノードが /*h_{min}*/ なら
 
  Select the oldest node (i.e. FIFO)
  #+end_span6
  #+begin_span6
  A* with *[h, LIFO]*
 
- Selects the nodes with /f_{min}/
+ /*f_{min}*/ を満たすノードを選ぶ
 
- *IF* multiple nodes have /f_{min}/
+ *もし* 複数ノードが /*f_{min}*/ なら
 
- Selects the nodes with /h_{min}/
+ /*h_{min}*/ を満たすノードを選ぶ
 
- *IF* multiple nodes have /h_{min}/
+ *もし* 複数ノードが /*h_{min}*/ なら
 
  Select the newest node (i.e. LIFO)
  #+end_span6
@@ -826,13 +851,13 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+begin_span10
  A* with *[h, RD, RO]*,
 
- Selects the nodes with /f_{min}/
+ /*f_{min}*/ を満たすノードを選ぶ
 
- *IF* multiple nodes have /f_{min}/, selects the nodes with /h_{min}/
+ *もし* 複数ノードが /*f_{min}*/ なら, /*h_{min}*/ のノードを選ぶ
 
- *IF* multiple nodes have /h_{min}/, selects a random depth /d/
+ *もし* 複数ノードが /*h_{min}*/ なら, ランダムに深さ /d/ を選ぶ
 
- *IF* multiple nodes in /d/, Select a node randomly
+ *もし* 複数ノードが /d/ にいるなら, そのなかからランダムにノードを選ぶ
  #+end_span10
  #+begin_span1
 
@@ -841,12 +866,36 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_container-fluid
 
 
-** Evaluation (number of problems solved)
+** 評価 (制限時間内に解けた問題の数)
 
  #+begin_smaller
- LMcut, Merge-and-Shrink(M&S) : state-of-the-art heuristic functions in planning
+ LMcut, Merge-and-Shrink(M&S) : state-of-the-art ヒューリスティック関数
 
- ［h, RD, RO］ shows the average of 10 runs (↑ ＜increase over [h,FIFO]＞)
+ ［h, RD, RO］ は 10回の平均
+ #+end_smaller
+
+
+ | /                       | <            | >           | <>            |
+ |                         | <c>          | <c>         | <c>           |
+ |                         | ［h, FIFO］  | ［h, LIFO］ | ［h, RD, RO］ |
+ | Domain Set              | (FD Default) |             | (Proposed)    |
+ |-------------------------+--------------+-------------+---------------|
+ | IPC Instances (1104)    |              |             |               |
+ | Zerocost Instances(680) |              |             |               |
+ | Sum(1724)               |              |             |               |
+ |-------------------------+--------------+-------------+---------------|
+ # | M&S                     |              |             |               |
+ # | IPC Instances (1104)    |              |             |               |
+ # | Zerocost Instances(680) |              |             |               |
+ # | Sum(1724)               |              |             |               |
+
+** 評価 (制限時間内に解けた問題の数)
+
+ #+begin_smaller
+ LMcut : state-of-the-art ヒューリスティック関数
+ # LMcut, Merge-and-Shrink(M&S) : state-of-the-art ヒューリスティック関数
+
+ ［h, RD, RO］ は 10回の平均
  #+end_smaller
 
  | /                       | <            | >           | <>                |
@@ -854,48 +903,22 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  |                         | ［h, FIFO］  | ［h, LIFO］ | ［h, RD, RO］     |
  | Domain Set              | (FD Default) |             | (Proposed)        |
  |-------------------------+--------------+-------------+-------------------|
- | LMcut                   |              |             |                   |
- | IPC Instances (1104)    |              |             |                   |
- | Zerocost Instances(680) |              |             |                   |
- | Sum(1724)               |              |             |                   |
- |-------------------------+--------------+-------------+-------------------|
- | M&S                     |              |             |                   |
- | IPC Instances (1104)    |              |             |                   |
- | Zerocost Instances(680) |              |             |                   |
- | Sum(1724)               |              |             |                   |
- |-------------------------+--------------+-------------+-------------------|
-
-** Evaluation (number of problems solved)
-
- #+begin_smaller
- LMcut, Merge-and-Shrink(M&S) : state-of-the-art heuristic functions in planning
-
- ［h, RD, RO］ shows the average of 10 runs (↑ ＜increase over [h,FIFO]＞)
- #+end_smaller
-
- | /                       | <            | >           | <>                |
- |                         | <c>          | <c>         | <c>               |
- |                         | ［h, FIFO］  | ［h, LIFO］ | ［h, RD, RO］     |
- | Domain Set              | (FD Default) |             | (Proposed)        |
- |-------------------------+--------------+-------------+-------------------|
- | LMcut                   |              |             |                   |
  | IPC Instances (1104)    | 558          | 565         | *572.8* (↑ 14.8) |
  | Zerocost Instances(680) | 256          | 279         | *294.2* (↑ 38.2) |
  | Sum(1724)               | 814          | 844         | *867.0* (↑ 53.0) |
  |-------------------------+--------------+-------------+-------------------|
- | M&S                     |              |             |                   |
- | IPC Instances (1104)    | 479          | *488*       | 484.0 (↑ 5.0)    |
- | Zerocost Instances(680) | 276          | 290         | *310.2* (↑ 34.2) |
- | Sum(1724)               | 755          | 778         | *794.2* (↑ 39.2) |
- |-------------------------+--------------+-------------+-------------------|
+ # | M&S                     |              |             |                   |
+ # | IPC Instances (1104)    | 479          | *488*       | 484.0 (↑ 5.0)    |
+ # | Zerocost Instances(680) | 276          | 290         | *310.2* (↑ 34.2) |
+ # | Sum(1724)               | 755          | 778         | *794.2* (↑ 39.2) |
 
  #+begin_alignright
- *［h, RD, RO］ Outperformed Both [h,FIFO] and [h,LIFO] !*
+ *［h, RD, RO］ は [h,FIFO] と [h,LIFO] より圧倒的に良い!*
  #+end_alignright
 
-** Depth Distribution in Woodworking-cut p04
+** Woodworking問題での深さの分布
 
- "cut" action has positive cost (consumes wood), others have 0 cost
+
 
  #+begin_center
   
@@ -903,9 +926,9 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Depth Distribution in Woodworking-cut p04
+** Woodworking問題での深さの分布
 
- "cut" action has positive cost (consumes wood), others have 0 cost
+
 
  #+begin_center
   
@@ -913,9 +936,9 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Depth Distribution in Woodworking-cut p04
+** Woodworking問題での深さの分布
 
- "cut" action has positive cost (consumes wood), others have 0 cost
+
 
  #+begin_center
   
@@ -923,9 +946,9 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Depth Distribution in Woodworking-cut p04
+** Woodworking問題での深さの分布
 
- "cut" action has positive cost (consumes wood), others have 0 cost
+
 
  #+begin_center
   
@@ -933,15 +956,14 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Contributions
+** まとめ (論文の貢献内容)
 
- + *In-depth analysis of the tiebreaking strategies*
-   + The paper contains more analyses
-     + ([h,FIFO] vs [FIFO], [h,RD,RO] vs [h,RO] etc.)
- + *Randomized depth-based tiebreaking* in zero-cost domains
-   + *no heuristics can help* because the optimal cost is 0
- + *Understanding of the structure of the final plateau*
-   + *Depth Bias is harmful* -- exploration vs exploitation
+ + *そもそものタイブレーキングのきちんとした定量的評価*
+   + 論文にはさらに詳細な実験結果あり
+ + *乱択深さタイブレーキング(RandomDepth Tiebreaking)*
+   + *h-based Tiebreaking* では不十分
+ + *Final Plateauを詳細に分析*
+   + *深さに偏りがあるのは良くない*
 
 * A* のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 

@@ -38,18 +38,18 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-width="1440"
+     inkscape:window-height="818"
      id="namedview4"
      showgrid="false"
      inkscape:document-units="in"
      inkscape:zoom="1.1042099"
-     inkscape:cx="243"
-     inkscape:cy="234.10407"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:cx="254.17748"
+     inkscape:cy="229.33823"
+     inkscape:window-x="768"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2"
+     inkscape:current-layer="g4178"
      units="in"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -75,47 +75,43 @@
        id="rect3030-9-9"
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
-       sodipodi:linespacing="104%"
+       sodipodi:linespacing="108%"
        id="text3051-6"
-       y="103.29307"
-       x="108.05462"
-       style="font-size:41.00740814px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:103.99999619%;letter-spacing:-0.79451853px;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       y="134.43465"
+       x="112.20052"
+       style="font-size:35.88148117000000070px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:108.00000429000000679%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830507999999998;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047252000000000;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
-         id="tspan4089"
-         y="103.29307"
-         x="107.65736"
-         sodipodi:role="line">y-axis:</tspan><tspan
-         id="tspan4095"
-         y="145.94077"
-         x="107.65736"
-         sodipodi:role="line">number</tspan><tspan
-         id="tspan4093"
-         y="188.58847"
-         x="107.65736"
-         sodipodi:role="line"> of nodes</tspan><tspan
          id="tspan4087"
-         y="231.23618"
-         x="107.65736"
-         sodipodi:role="line">with f = f*</tspan><tspan
-         y="273.88388"
-         x="108.05462"
+         y="134.43465"
+         x="211.58522"
+         sodipodi:role="line">y軸:  f = f*</tspan><tspan
+         y="173.18665"
+         x="211.58522"
+         sodipodi:role="line"
+         id="tspan3008">を満たす</tspan><tspan
+         y="211.93864"
+         x="211.58522"
+         sodipodi:role="line"
+         id="tspan3010">ノードの数</tspan><tspan
+         y="250.69064"
+         x="211.58522"
          sodipodi:role="line"
          id="tspan3044" /></text>
     <text
        xml:space="preserve"
-       style="font-size:30.75555611px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="107.93037"
-       y="268.3779"
+       style="font-size:30.75555611px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047252;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="108.21293"
+       y="269.53842"
        id="text3048"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan3050"
-         x="107.93037"
-         y="268.3779">(candidates</tspan><tspan
+         x="108.21293"
+         y="269.53842"
+         id="tspan3052">(ゴールはこの</tspan><tspan
          sodipodi:role="line"
-         x="107.93037"
-         y="306.82233"
-         id="tspan3052">for solution)</tspan></text>
+         x="108.21293"
+         y="307.98288"
+         id="tspan3014">中にしかない)</tspan></text>
   </g>
   <g
      id="g4191"
@@ -130,24 +126,24 @@
        id="rect3030-9-9-2"
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
-       sodipodi:linespacing="105%"
+       sodipodi:linespacing="125%"
        id="text3051-6-0"
-       y="422.53607"
-       x="311.94058"
-       style="font-size:35.88148117px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:104.99999523%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       y="420.21497"
+       x="312.86804"
+       style="font-size:30.75555611000000056px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830507999999998;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047252000000000;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
-         id="tspan4095-4"
-         y="422.53607"
-         x="311.94058"
-         sodipodi:role="line">x-axis: Number</tspan><tspan
-         id="tspan4087-3"
-         y="464.68024"
-         x="311.94058"
-         sodipodi:role="line"> of nodes with f ≦ f*</tspan><tspan
-         y="502.35577"
-         x="311.94058"
+         y="420.21497"
+         x="480.21912"
          sodipodi:role="line"
-         id="tspan3054">(entire nodes in A*)</tspan></text>
+         id="tspan3045">x軸: f ≦ f* を満たす</tspan><tspan
+         y="458.65942"
+         x="480.21912"
+         sodipodi:role="line"
+         id="tspan3049">ノードの数</tspan><tspan
+         y="497.10385"
+         x="480.21912"
+         sodipodi:role="line"
+         id="tspan3054">(A*が探索する全ノード)</tspan></text>
   </g>
   <g
      id="g4178"
@@ -166,11 +162,11 @@
        id="text4131"
        y="65.677963"
        x="380.2966"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       style="font-size:35.88148152px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830507999999998;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047255000000004;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
          y="65.677963"
          x="380.2966"
          id="tspan4133"
-         sodipodi:role="line">color: domain</tspan></text>
+         sodipodi:role="line">色:問題セット</tspan></text>
   </g>
 </svg>

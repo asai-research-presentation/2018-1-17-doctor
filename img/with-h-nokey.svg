@@ -97,16 +97,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-height="688"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="1.0402414"
-     inkscape:cx="247"
-     inkscape:cy="248.49999"
+     inkscape:zoom="2.942247"
+     inkscape:cx="272.66257"
+     inkscape:cy="293.14382"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2"
+     inkscape:current-layer="g4191"
      inkscape:document-units="in"
      units="in"
      fit-margin-top="0"
@@ -128,38 +128,37 @@
        rx="0.29761782"
        y="54.930473"
        x="1.5129111"
-       height="218.58327"
-       width="212.01654"
+       height="199.51326"
+       width="234.40306"
        id="rect3030-9-9"
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
        sodipodi:linespacing="110%"
        id="text3051-6"
-       y="88.670853"
-       x="108.05462"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:110.00000238%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       y="98.428879"
+       x="112.93364"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:110.00000238%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
-         id="tspan4089"
-         y="88.670853"
-         x="108.05462"
-         sodipodi:role="line">y-axis:</tspan><tspan
-         id="tspan4095"
-         y="132.67085"
-         x="108.05462"
-         sodipodi:role="line">number</tspan><tspan
-         id="tspan4093"
-         y="176.67085"
-         x="108.05462"
-         sodipodi:role="line"> of nodes</tspan><tspan
-         id="tspan4087"
-         y="220.67085"
-         x="108.05462"
-         sodipodi:role="line">with f = f*</tspan><tspan
-         y="264.40137"
-         x="108.05462"
+         y="98.428879"
+         x="112.93364"
          sodipodi:role="line"
          id="tspan4825"
-         style="font-style:italic;-inkscape-font-specification:Nimbus Sans L Bold Italic">and h = 0</tspan></text>
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'">y軸: f = f*</tspan><tspan
+         y="142.42888"
+         x="112.93364"
+         sodipodi:role="line"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         id="tspan3053">かつh = 0</tspan><tspan
+         y="186.42888"
+         x="112.93364"
+         sodipodi:role="line"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         id="tspan3019">を満たす</tspan><tspan
+         y="230.42888"
+         x="112.93364"
+         sodipodi:role="line"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+         id="tspan3021">ノードの数</tspan></text>
   </g>
   <path
      sodipodi:type="arc"
@@ -210,9 +209,9 @@
        ry="0.35602647"
        rx="0.29761782"
        y="385.38458"
-       x="122.14209"
-       height="128.50099"
-       width="378.33011"
+       x="103.84919"
+       height="128.50098"
+       width="405.33395"
        id="rect3030-9-9-2"
        style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <text
@@ -220,20 +219,52 @@
        id="text3051-6-0"
        y="422.53607"
        x="311.94058"
-       style="font-size:35.88148117px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:104.99999523%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       style="font-size:35.88148152px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:110.00000238000001218%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830507999999998;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.04978006000000001;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
        xml:space="preserve"><tspan
-         id="tspan4095-4"
+         id="tspan4087-3"
          y="422.53607"
          x="311.94058"
-         sodipodi:role="line">x-axis: Number</tspan><tspan
-         id="tspan4087-3"
+         sodipodi:role="line">x軸:  f ≦ f* を満たす</tspan><tspan
          y="464.68024"
          x="311.94058"
-         sodipodi:role="line"> of nodes with f ≦ f*</tspan><tspan
+         sodipodi:role="line"
+         id="tspan3051">ノードの数</tspan><tspan
          y="502.35577"
          x="311.94058"
          sodipodi:role="line"
-         id="tspan3054">(entire nodes in A*)</tspan></text>
+         id="tspan3054">(A*の探索する全ノード)</tspan></text>
+    <g
+       transform="translate(43.714776,-39.243372)"
+       id="g3035"
+       style="fill:#ffff00;stroke:#ffff00">
+      <path
+         transform="matrix(1.2814815,0,0,1.2814815,5.0967672e-7,-4.2110375)"
+         inkscape:connector-curvature="0"
+         id="path3013"
+         d="m 262.04462,128.93088 6.24523,6.24523"
+         style="fill:#ffff00;stroke:#ffff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-3"
+         d="m 343.80848,161.0115 -8.00315,8.00315"
+         style="fill:#ffff00;stroke:#ffff00;stroke-width:1.2814815px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(52.478733,-47.596324)"
+       id="g3035-9"
+       style="fill:#ffff00;stroke:#ffff00">
+      <path
+         transform="matrix(1.2814815,0,0,1.2814815,5.0967672e-7,-4.2110375)"
+         inkscape:connector-curvature="0"
+         id="path3013-39"
+         d="m 262.04462,128.93088 6.24523,6.24523"
+         style="fill:#ffff00;stroke:#ffff00;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3013-3-3"
+         d="m 343.80848,161.0115 -8.00315,8.00315"
+         style="fill:#ffff00;stroke:#ffff00;stroke-width:1.2814815px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
   </g>
   <path
      style="fill:none;stroke:#000000;stroke-width:0.81983805px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"

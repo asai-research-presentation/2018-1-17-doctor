@@ -243,8 +243,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.84836515"
-     inkscape:cx="400.97055"
-     inkscape:cy="255.1955"
+     inkscape:cx="486.65424"
+     inkscape:cy="281.97674"
      inkscape:document-units="in"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -254,10 +254,10 @@
      fit-margin-bottom="0"
      inkscape:snap-center="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="713"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1440"
+     inkscape:window-height="818"
+     inkscape:window-x="768"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -1366,43 +1366,30 @@
          sodipodi:role="line"
          x="-18.320705"
          y="174.57961"
-         id="tspan8995">Our best proposed method: [h, RD, RO]</tspan><tspan
+         id="tspan8995">提案手法: [h, RD, RO]</tspan><tspan
          sodipodi:role="line"
          x="-18.320705"
-         y="212.97961"
-         id="tspan10471">  Select a depth      randomly (Random Depth)</tspan><tspan
+         y="217.76933"
+         id="tspan10471">  深さ      をランダムに選択 (Random Depth)</tspan><tspan
          sodipodi:role="line"
          x="-18.320705"
-         y="251.37961"
-         id="tspan9490">  Select a node in     randomly (Random Order)</tspan><tspan
+         y="260.95905"
+         id="tspan9490">  複数のノードがあればさらに乱択 (Random Order)</tspan><tspan
          sodipodi:role="line"
          x="-18.320705"
-         y="294.56934"
-         id="tspan10473">   → <tspan
-   style="fill:#980101"
-   id="tspan4456">Explore</tspan> the final plateau uniformly &amp; sparsely  </tspan></text>
+         y="304.14877"
+         id="tspan10473">   → Final Plateau を より均一に探索 !</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:56px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L Bold Italic"
-       x="233.51544"
-       y="222.09473"
+       x="76.153954"
+       y="225.63094"
        id="text9508"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan9510"
-         x="233.51544"
-         y="222.09473">d</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:56px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L Bold Italic"
-       x="257.47726"
-       y="259.63959"
-       id="text9508-7"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan9510-1"
-         x="257.47726"
-         y="259.63959">d</tspan></text>
+         x="76.153954"
+         y="225.63094">d</tspan></text>
     <path
        sodipodi:type="arc"
        style="opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.32000017;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -1411,7 +1398,7 @@
        sodipodi:cy="230.38475"
        sodipodi:rx="17.537941"
        sodipodi:ry="17.537941"
-       d="m 802.75938,230.38475 a 17.537941,17.537941 0 1 1 -35.07589,0 17.537941,17.537941 0 1 1 35.07589,0 z"
+       d="m 802.75938,230.38475 c 0,9.68594 -7.85201,17.53794 -17.53794,17.53794 -9.68594,0 -17.53795,-7.852 -17.53795,-17.53794 0,-9.68594 7.85201,-17.53794 17.53795,-17.53794 9.68593,0 17.53794,7.852 17.53794,17.53794 z"
        transform="translate(-331.45684,146.62933)" />
     <path
        sodipodi:type="arc"
@@ -1421,7 +1408,7 @@
        sodipodi:cy="230.38475"
        sodipodi:rx="17.537941"
        sodipodi:ry="17.537941"
-       d="m 802.75938,230.38475 a 17.537941,17.537941 0 1 1 -35.07589,0 17.537941,17.537941 0 1 1 35.07589,0 z"
+       d="m 802.75938,230.38475 c 0,9.68594 -7.85201,17.53794 -17.53794,17.53794 -9.68594,0 -17.53795,-7.852 -17.53795,-17.53794 0,-9.68594 7.85201,-17.53794 17.53795,-17.53794 9.68593,0 17.53794,7.852 17.53794,17.53794 z"
        transform="translate(-219.45018,390.04623)" />
   </g>
   <g

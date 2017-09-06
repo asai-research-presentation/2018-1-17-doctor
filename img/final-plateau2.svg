@@ -287,7 +287,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.1790966"
      inkscape:cx="387.58487"
-     inkscape:cy="206.78064"
+     inkscape:cy="203.38822"
      inkscape:document-units="in"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -298,7 +298,7 @@
      inkscape:snap-center="true"
      inkscape:snap-global="false"
      inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-height="768"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -391,17 +391,17 @@
        sodipodi:nodetypes="ccccccccc" />
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:76.31999969;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="-37.979874"
-       y="281.67892"
+       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="-30.272999"
+       y="285.07135"
        id="text5761"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5763"
-         x="-37.979874"
-         y="281.67892">the problem can be alleviated by <tspan
-   style="font-style:italic;-inkscape-font-specification:Nimbus Sans L Bold Italic"
-   id="tspan3190">h</tspan>-based tiebreaking</tspan></text>
+         x="-30.272999"
+         y="285.07135"><tspan
+   style="font-style:italic;fill:#ff0000;-inkscape-font-specification:'M+ 2c Bold Italic'"
+   id="tspan3056">常にコスト&gt;0 </tspan>なドメインに限ればh-タイブレークが効果的</tspan></text>
     <g
        id="g7041"
        clip-path="url(#clipPath7097)">
@@ -505,19 +505,19 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:31.11922836px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-       x="67.011078"
-       y="374.52075"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       x="346.54428"
+       y="588.00317"
        id="text8553"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="67.011078"
-         y="374.52075"
-         id="tspan8557">It provides a gradient</tspan><tspan
+         x="346.54428"
+         y="588.00317"
+         id="tspan3134">ゴールに向かって</tspan><tspan
          sodipodi:role="line"
-         x="67.011078"
-         y="413.4198"
-         id="tspan3134">      that guides the search.</tspan></text>
+         x="346.54428"
+         y="633.00317"
+         id="tspan3059">　　　勾配を生成できる</tspan></text>
     <image
        width="180"
        height="181.09312"

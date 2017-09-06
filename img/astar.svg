@@ -140,11 +140,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.7740223"
-     inkscape:cx="287.62382"
-     inkscape:cy="319.48031"
+     inkscape:zoom="1.2544232"
+     inkscape:cx="278.34291"
+     inkscape:cy="246.95141"
      inkscape:document-units="in"
-     inkscape:current-layer="g8497"
+     inkscape:current-layer="g8592-9"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -153,9 +153,9 @@
      inkscape:snap-center="true"
      inkscape:snap-global="false"
      inkscape:window-width="1024"
-     inkscape:window-height="713"
+     inkscape:window-height="688"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="25"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -17927,82 +17927,6 @@
        transform="matrix(0.64831724,0,0,0.64831724,87.719517,301.56923)"
        id="g9563" />
     <g
-       id="g8497">
-      <rect
-         ry="6.8492451"
-         rx="5.29532"
-         y="248.75943"
-         x="-3.2932091"
-         height="177.42776"
-         width="461.54785"
-         id="rect12256"
-         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.42778575;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text8924"
-         y="280.2222"
-         x="3.9334354"
-         style="font-size:31.11922836px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         xml:space="preserve"><tspan
-           y="280.2222"
-           x="3.9334354"
-           sodipodi:role="line"
-           id="tspan6929">A* Search:</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:113.99999857%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         x="380.74585"
-         y="321.04874"
-         id="text7383"
-         sodipodi:linespacing="114%"><tspan
-           sodipodi:role="line"
-           id="tspan7385"
-           x="380.74585"
-           y="321.04874">i.e. </tspan><tspan
-           sodipodi:role="line"
-           x="380.74585"
-           y="346.55298"
-           id="tspan11348">0≦h≦h*</tspan></text>
-      <text
-         sodipodi:linespacing="114%"
-         id="text8924-4"
-         y="307.52969"
-         x="16.538418"
-         style="font-size:31.11922836px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:113.99999857%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         xml:space="preserve"><tspan
-           y="307.52969"
-           x="16.538418"
-           sodipodi:role="line"
-           id="tspan7322">g: cost from start node</tspan><tspan
-           y="343.00562"
-           x="16.538418"
-           sodipodi:role="line"
-           id="tspan8777">h: admissible estimate</tspan><tspan
-           y="382.68924"
-           x="16.538418"
-           sodipodi:role="line"
-           id="tspan4830">f = g + h ≦ f* (optimal cost)</tspan><tspan
-           y="418.16516"
-           x="16.538418"
-           sodipodi:role="line"
-           id="tspan11346">OPEN: Prio. Queue</tspan><tspan
-           y="453.64108"
-           x="16.538418"
-           sodipodi:role="line"
-           id="tspan9505" /></text>
-      <text
-         xml:space="preserve"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:113.99999857%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         x="315.9599"
-         y="412.64667"
-         id="text11350"
-         sodipodi:linespacing="114%"><tspan
-           sodipodi:role="line"
-           id="tspan11352"
-           x="315.9599"
-           y="412.64667">(sorted by f)</tspan></text>
-    </g>
-    <g
        id="g10759">
       <path
          d="m 125.25892,142.21474 c 0,3.90524 -3.16583,7.07106 -7.07107,7.07106 -3.90524,0 -7.07107,-3.16582 -7.07107,-7.07106 0,-3.90525 3.16583,-7.07107 7.07107,-7.07107 3.90524,0 7.07107,3.16582 7.07107,7.07107 z"
@@ -18134,67 +18058,141 @@
       <text
          sodipodi:linespacing="125%"
          id="text8924-4-7"
-         y="-84.295052"
+         y="-90.464859"
          x="-827.17334"
          style="font-size:48px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
          xml:space="preserve"><tspan
-           y="-84.295052"
-           x="-827.17334"
-           sodipodi:role="line"
-           id="tspan7320-5">A* expands nodes with smallest f value</tspan><tspan
-           y="-24.295052"
+           y="-90.464859"
            x="-827.17334"
            sodipodi:role="line"
            id="tspan7361"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Nimbus Sans L Bold"
+   id="tspan5725">A*</tspan> は<tspan
+   style="font-weight:bold;-inkscape-font-specification:Nimbus Sans L Bold"
+   id="tspan5727">OPEN</tspan>中で最小の<tspan
+   style="font-weight:bold;-inkscape-font-specification:Nimbus Sans L Bold"
+   id="tspan5729">f </tspan><tspan
    style="fill:#339900"
    id="tspan7365">(f</tspan><tspan
-   style="font-size:65.00091553%;baseline-shift:sub;fill:#339900"
-   id="tspan7363">min</tspan><tspan
+   style="font-size:31.20043945px;baseline-shift:sub;fill:#339900"
+   id="tspan7363">　min</tspan><tspan
    style="fill:#339900"
-   id="tspan7375">)</tspan> in OPEN. <tspan
+   id="tspan7375">)</tspan> を展開</tspan><tspan
+           y="-21.8542"
+           x="-827.17334"
+           sodipodi:role="line"
+           id="tspan4869"><tspan
    style="fill:#d9bb7a"
    id="tspan7377">f</tspan>&lt;<tspan
    style="fill:#339900"
    id="tspan7379">f</tspan><tspan
-   style="font-size:65.00091553%;baseline-shift:sub;fill:#339900"
-   id="tspan7371">min</tspan>are in <tspan
+   style="font-size:31.20043945px;baseline-shift:sub;fill:#339900"
+   id="tspan7371">min</tspan>のノードは<tspan
    style="fill:#d9bb7a"
-   id="tspan7373"> CLOSE</tspan></tspan><tspan
-           y="35.704948"
+   id="tspan7373"> CLOSE </tspan><tspan
+   id="tspan5721"
+   style="font-size:49.35855103px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold">に含まれる</tspan></tspan><tspan
+           y="46.756458"
            x="-827.17334"
            sodipodi:role="line"
            id="tspan7322-7" /></text>
     </g>
     <g
-       id="g8592">
+       transform="translate(-4.6970367e-8,-2.982273e-6)"
+       style="display:inline"
+       id="g8497">
       <rect
          ry="6.8492451"
          rx="5.29532"
-         y="443.04797"
-         x="4.3288193"
-         height="89.193726"
-         width="449.73221"
-         id="rect12256-8"
+         y="248.75943"
+         x="-3.2932091"
+         height="177.42776"
+         width="461.54785"
+         id="rect12256"
          style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.42778575;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
       <text
          xml:space="preserve"
-         style="font-size:31.11922836px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.39980268;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         x="20.003826"
-         y="476.42099"
-         id="text6935"
-         sodipodi:linespacing="125%"><tspan
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:113.99999857%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+         x="349.65585"
+         y="346.55847"
+         id="text7383"
+         sodipodi:linespacing="114%"><tspan
            sodipodi:role="line"
-           id="tspan6937"
-           x="20.003826"
-           y="476.42099">To prove optimality, A*</tspan><tspan
+           x="349.65585"
+           y="346.55847"
+           id="tspan11348">≡ 0≦h≦h*</tspan></text>
+      <text
+         sodipodi:linespacing="145%"
+         id="text8924-4"
+         y="280.77481"
+         x="1.3497013"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:145%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404191999999991;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+         xml:space="preserve"><tspan
+           y="280.77481"
+           x="1.3497013"
            sodipodi:role="line"
-           x="20.003826"
-           y="519.93372"
-           id="tspan4850">expands all nodes with f ≦ f*</tspan><tspan
+           id="tspan7322">g: 初期ノードからのコスト</tspan><tspan
+           y="326.72427"
+           x="1.3497013"
            sodipodi:role="line"
-           x="20.003826"
-           y="563.44647"
-           id="tspan6939" /></text>
+           id="tspan8777">h: ゴールまでの推定コスト(許容的)</tspan><tspan
+           y="372.67374"
+           x="1.3497013"
+           sodipodi:role="line"
+           id="tspan4830">f = g + h ≦ f* (未知の最短コスト)</tspan><tspan
+           y="413.75113"
+           x="1.3497013"
+           sodipodi:role="line"
+           id="tspan11346">OPEN: Prio. Queue</tspan><tspan
+           y="454.82852"
+           x="1.3497013"
+           sodipodi:role="line"
+           id="tspan9505" /></text>
+      <text
+         xml:space="preserve"
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:113.99999857%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+         x="267.9881"
+         y="406.66074"
+         id="text11350"
+         sodipodi:linespacing="114%"><tspan
+           sodipodi:role="line"
+           id="tspan11352"
+           x="267.9881"
+           y="406.66074">(fの小さい順でソート)</tspan></text>
+    </g>
+    <g
+       transform="translate(-4.6970399e-8,-2.982273e-6)"
+       style="display:inline"
+       id="g8592">
+      <g
+         transform="translate(-3.5083005e-7,6.2988281e-6)"
+         style="display:inline"
+         id="g8592-9">
+        <rect
+           ry="6.8492451"
+           rx="5.29532"
+           y="443.04797"
+           x="4.3288193"
+           height="89.193726"
+           width="449.73221"
+           id="rect12256-8"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.42778575;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           xml:space="preserve"
+           style="font-size:31.11922836px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.39980268;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+           x="229.38245"
+           y="478.42099"
+           id="text6935"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan6937"
+             x="229.38243"
+             y="478.42099">A*は解の最適性を保証するため</tspan><tspan
+             sodipodi:role="line"
+             x="229.38245"
+             y="521.93372"
+             id="tspan4842"> f &lt; f* のノードを全て展開</tspan></text>
+      </g>
     </g>
   </g>
 </svg>
