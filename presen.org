@@ -1,4 +1,4 @@
-#+title: Exploration Among and Within Plateaus in Greedy Best-First Search
+#+title: Diversification Mechanisms for Best-First Search (最良優先探索のための探索非局在化手法)
 #+author: Masataro Asai
 #+include: "head.org"
 #+LINK: img file:img/%s
@@ -11,11 +11,13 @@
 #+begin_outline-text-1
 #+begin_center
 #+begin_larger
-_Masataro Asai_, Alex Fukunaga, The University of Tokyo
+Masataro Asai, The University of Tokyo 
+
+(Advisor: Alex Fukunaga)
 #+end_larger
 #+end_center
 
-20min
+25min + 15min Q/A
 
 #+begin_note
 #+begin_alignright
@@ -24,446 +26,1585 @@ Made by guicho2.71828 (Masataro Asai)
 #+end_note
 #+end_outline-text-1
 
-* Summary: Analyse *Diversification in Greedy Best First Search* and propose a new method
+* 要約: 最良優先探索アルゴリズム の */探索非局在化手法/* による高速化を研究
 
-+ Diversification = Exploration = unbiasing the search
++ 探索非局在化手法: 偏りを抑えて満遍なく探索する
+  + Exploration/Exploitation tradeoff の Exploration
 
-+ New method highlight: *First effective Fractal-based algorithm ever!*
+* 背景 -- AIプランニング
 
-* Search Diversification
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:astro/1]]
+ #+end_span6
+ #+begin_span6
+ [[png:rescue/1]]
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
 
-[[png:diversify/1]]
+** 誰?
 
-** Search Diversification
-[[png:diversify/2]]
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:astro/1]]
+ #+end_span6
+ #+begin_span6
+ [[png:rescue/1]]
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
 
-** Search Diversification
-[[png:diversify/3]]
+*** 誰?
 
-** Search Diversification
-[[png:diversify/4]]
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:astro/2]]
+ #+end_span6
+ #+begin_span6
+ [[png:rescue/1]]
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
 
-** Search Diversification
-[[png:diversify/5]]
+*** 誰?
 
-** Search Diversification
+  #+begin_container-fluid
+  #+begin_row-fluid
+  #+begin_span6
+  [[png:astro/final]]
+  #+end_span6
+  #+begin_span6
+  [[png:rescue/1]]
+  #+end_span6
+  #+end_row-fluid
+  #+end_container-fluid
 
-[[png:diversify/final]]
+*** 誰?
 
+  #+begin_container-fluid
+  #+begin_row-fluid
+  #+begin_span6
+  [[png:astro/final]]
+  #+end_span6
+  #+begin_span6
+  [[png:rescue/2]]
+  #+end_span6
+  #+end_row-fluid
+  #+end_container-fluid
+
+*** 誰?
+
+  #+begin_container-fluid
+  #+begin_row-fluid
+  #+begin_span6
+  [[png:astro/final]]
+  #+end_span6
+  #+begin_span6
+  [[png:rescue/3]]
+  #+end_span6
+  #+end_row-fluid
+  #+end_container-fluid
+
+*** 誰?
+
+  #+begin_container-fluid
+  #+begin_row-fluid
+  #+begin_span6
+  [[png:astro/final]]
+  #+end_span6
+  #+begin_span6
+  [[png:rescue/final]]
+  #+end_span6
+  #+end_row-fluid
+  #+end_container-fluid
+
+** 実際の大規模災害では非実用的 --- 操縦士が足りない!
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span2
+ [[png:rescue/rescue]]
+ [[png:rescue/rescue]]
+ [[png:rescue/rescue]]
+ [[png:rescue/silent]]
+ #+end_span2
+ #+begin_span10
+ [[jpg:static/tsunami]]
+ #+end_span10
+ #+end_row-fluid
+ #+end_container-fluid
+
+ #+begin_larger
+ #+begin_alignright
+ + そのままでは役に立たない!
+ #+end_alignright
+ #+end_larger
+
+*** 操縦士を増やせない -- Human Resource and Training
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span4
+  [[png:rescue/1]]
+ #+end_span4
+ #+begin_span8
+
+   + ✘ /時間/ がかかる :: 訓練に ＞100時間, *必要な時だけ増やす* のは不可能
+   + ✘ /￥￥￥￥/ がかかる :: 訓練官、訓練場所、訓練用具
+   + ✘ 技術は /維持が重要/ :: 定期的な再訓練、長期的コスト、さらなるマニー
+   + ✘ 平時は /無駄/ な技術 :: 普段は意味がない -- 無駄なマニー!
+ #+end_span8
+ #+end_row-fluid
+ #+end_container-fluid
+
+** 自律行動のための自動プランナ (≠ モータ制御)
+
+ [[png:planning/1]]
+
+** 自律行動のための自動プランナ (≠ モータ制御)
+
+ [[png:planning/2]]
+
+** 自律行動のための自動プランナ (≠ モータ制御)
+
+ [[png:planning/final]]
+
+** AIプランニングの */Killer App/*                                 :noexport:
+
+
+#+begin_container-fluid
+#+begin_row-fluid
+#+begin_span7
+#+begin_larger
++ 人が高価or不可能な作業 :: 原発, 宇宙空間, 火星, 深海
++ 正しさと最適性の理論保証が必要なミッションクリティカルシステム :: 
+     製造システム、運送 (時間=お金)
+
+     人工衛星 (燃料使いきれば運用終了)
+
+     間違った解は許されない
++ 思考過程を説明可能なシステム :: 
+     レスキュー・宇宙船 (人間の安全がかかっている)
+#+end_larger
+
+# [[sjpg:martian]]
+
+#+end_span7
+#+begin_span5
+
+[[sjpg:gravity-m]]
+
+#+end_span5
+#+end_row-fluid
+#+end_container-fluid
+
+
+
+
+** AIと自動プランニング の位置づけ -- /理論/ と /実応用/ の中間
+
+ 緑は /理論/ 、オレンジは /実応用/ 、 AI はその橋渡し (どれともかぶらない部分もある)
+
+ [[png:planning-related-field]]
+
+* 背景 -- 古典プランニング問題 (決定的,完全情報) -- Blocksworld
+
+#+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
+
+#+begin_larger
+非古典的なさまざまな拡張
 #+begin_alignright
-An art of How *NOT* to trust the heuristic function and still perform effectively?
+(並列アクション,POMDP,HTN... どのAIの教科書にものっている)
 #+end_alignright
-
-* Preliminaries
-
-+ Search algorithm sorting strategy [S_1, S_2 ..., *] ::
-     denotes the key for OPEN list in forward search (dictionary order)
-+ Default strategy ::
-     =*= in the sorting strategy; either FIFO, LIFO, Random
-
-     Every OPEN-list based search has some default tiebreaking
-+ Type-based bucket <T_1, T_2 ...> (Xie14) ::
-     Stores the nodes in a *bucket* according to key values e.g. $\langle g,h\rangle$
-
-     Select a random node in a random bucket when popping a node from OPEN
-+ Alternation Queue alt(Q1,Q2...) ::
-     Maintain multiple queues and alternates opening
-
-* Background
-
-There are a bunch of *search diversification* approaches
-
-+ Diverse BFS (Imai, AAAI11) (Much more complicated)
-+ Monte-Carlo Random Walk (MRW) --- Sometimes runs a random walk
-+ Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- Sometimes runs a random search
-+ Type-based GBFS --- *alt* ([h,*], <g,h>) --- Sometimes runs a depth-balanced search
-+ GBFS-LE (local expansion) --- Runs a randomized search when local minima is detected
-  + GBFS-LS (local search), GBFS-MRW
-
-#+begin_larger
-#+begin_center
-+ *We need a /cleaner, less ad-hoc/ way*
-
-  *to understand their behavior.*
-#+end_center
 #+end_larger
 
-* Traditional Understanding : Heuristic Error
-
-\[
-   \text{Error} = |h - h^*|
-\]
-
-$h$ : heuristic value, $h^*$ : perfect heuristic
-
-$h>h^*$ : Overestimation $h<h^*$ : Underestimation
+** アクション = 条件付き状態遷移
 
 #+begin_center
-#+begin_larger
-+ Is this view sufficient?
-#+end_larger
-#+end_center
-
-** Heuristic Error
-
-[[png:plateau/1]]
-
-#+begin_resume
-This is a plot of the number of the nodes against heuristic value an the perfect heuristic value,
-under a hypothetical heuristic function.
-#+end_resume
-
-** Heuristic Error
-
-[[png:plateau/2]]
-
-#+begin_resume
-As you can see, the nodes that are behind the peak of this plot is the nodes that are underestimated,
-and those that are in front of the peak is those which are overestimated.
-We assume inadmissible heuristics.
-#+end_resume
-
-** Heuristic Error is */2-dimensional/*
-
-[[png:plateau/3]]
-
-#+begin_resume
-however, if we look at the slice of this plot at the x-axis and the y-axis, you
-would notice that this view is too simplistic. The errors between the heuristic
-value and the perfect heuristic is actually distributed along two
-orthogonal axes.
-#+end_resume
-
-** Inter-plateau error
-
-[[png:plateau/4]]
-
-#+begin_resume
-We gave them the separate names: The first one, along heuristic axis, is called inter-plateau error.
-#+end_resume
-
-
-** Intra-plateau error
-
-[[png:plateau/5]]
-
-#+begin_resume
-And the error along the h* axis is called intra-plateau error.
-Since these errors are in the orthogonal axes, they should be treated separately.
-#+end_resume
-
-** Inter-plateau error & diversification
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span6
-[[png:plateau/4]]
-#+end_span6
-#+begin_span6
-+ *The smallest $h^*$ may have high $h$* (inter-plateau error)
-+ *selecting the minimum $h$ is not always good*
-+ *Diversifies the next $h$ to expand*
-+ DBFS, Type-GBFS, $\epsilon$-greedy
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
-
-#+begin_resume
-In particular, inte-plateau error should be treated by inter-plateau diversification.
-It is a method whose intuition is as follows:
-#+end_resume
-
-** Intra-plateau error & diversification
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span6
-[[png:plateau/6]]
-#+end_span6
-#+begin_span6
-+ *The smallest $h$  may have high $h^*$* (intra-plateau error)
-+ *Deterministic Tiebreaking e.g. FIFO/LIFO have a pathological cases*
-+ *Randomize the search within h-plateau* so that we (hopefully) *expand a low $h^*$ node*
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
-
-** Let's show!
-
-+ IPC11, IPC14 (duplicated domains are excluded), 5min, 4GB
-
-+ *Important: Use the same diversification method* for inter-vs-intra
-
-+ The cloest we can find: *Type-GBFS* (inter) vs *RandomDepth Tiebreaking* (intra)
-
-  + Intra-plateau diversification == randomized tie breaking
-
-  + Type GBFS --- *Randomize <g,h>*
-
-  + RandomDepth --- *Randomize <d> within plateau*
-
-    + d ≡ number of steps from the nearest ancestor w/ the same f,h
-
-  + *g, h, d are all depth-related metrics*
-
-** Intra-vs-Inter are orthogonal & complementary
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span6
-[[png:icaps17-results]]
-#+end_span6
-#+begin_span6
-+ hd (RandomDepth Tiebreaking) :: Randomize <d> in plateau
-+ hD (Type GBFS) :: Randomize <g,h>
-+ hdD :: */RandomDepth + Type GBFS/*
-
-Results:
-
-+ Different domains require different diversification
-+ *With both modes enabled, /effects combine/*
-+ _/Take-home message: Whenever you have a diversification method, use it for both modes!/_
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
-
-* What's next?
-
-#+begin_quote
-Type GBFS: *Randomize <g,h>*
-
-RandomDepth <d> : *d ≡ number of steps from the nearest ancestor w/ the same f,h*
-
-*g, h, d are all depth-related metrics*
-#+end_quote
-
-#+begin_xlarge
-Let's diversify the width!
+#+BEGIN_XLARGE
+アクション (move ?X ?Y)
 #+end_xlarge
+#+end_center
 
-* Pathological case for all diversification methods
+#+begin_center
+*?X*, *?Y* : 変数。 値 *BLOCK-A*, *BLOCK-B* などを適用して使う
 
-[[png:model/original]]
-
-** FIFO (Breadth-first)
-[[png:model/fifo1]]
-** FIFO (Breadth-first)
-[[png:model/fifo2]]
-** FIFO (Breadth-first)
-[[png:model/fifo3]]
-** LIFO (Depth-first)
-[[png:model/lifo1]]
-** LIFO (Depth-first)
-[[png:model/lifo2]]
-** LIFO (Depth-first)
-[[png:model/lifo3]]
-** Random
-[[png:model/ro1]]
-** Random
-[[png:model/ro2]]
-** Random-Depth
-[[png:model/rd1]]
-** Random-Depth
-[[png:model/rd2]]
-
-* Bond Invasion Percolation (1983)
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span6
-[[spng:ip]]
-#+end_span6
-#+begin_span6
-#+begin_larger
-+ A well-known *fractal structure*
-+ Distribution of fluid slowly invading a porous media
-+ e.g., water replacing the oil in a porous rock
-+ Application: oil reservoir mining
-#+end_larger
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
-
-** Physics people use the different term
+*条件* と *効果* で構成される
+#+end_center
 
 
 #+begin_container-fluid
 #+begin_row-fluid
-#+begin_span6
-[[sgif:site-bond]]
-#+end_span6
-#+begin_span6
-#+begin_larger
-Bond == Edge
+#+begin_span7
+#+begin_quote
+*条件* : 実行に必要な条件を表す命題
 
-Site == Node
-#+end_larger
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
+　(clear *?X*) : 積み木 *?X* の上が空
 
+　(clear *?Y*) : 積み木 *?Y* の上に空
 
-** Generation of BIP (blind search method)
+*効果* : 前後の状態の *差分* を表す命題
 
-Shown (Barabasi 96) to be the *same algorithm* as Prim's method for Minimum Spanning Tree (Prim '57)
+　(on *?X* *?Y*) を *追加* : *?Y* の上は *?X*
 
-#+begin_src sh
-push(init, OPEN, 0)
+　(clear *?Y*) を *削除*
+#+end_quote
+#+end_span7
+#+begin_span5
+#+begin_src lisp
+(:action move
+ :parameters (?X ?Y)
+ :preconditions
+   (and (clear ?X)   ; (1)
+        (clear ?Y))  ; (2)
 
-while (s = pop(OPEN)); do
-   mark(s)                           # mark as visited
-   for (edge,t) in expand(s); do     # an edge & successor t (unmarked ones only)
-
-      # Each edge has a value
-      if value(edge) is unset ; then
-         value(edge) = random()      # assign a random value
-      fi
-
-      push(t, OPEN, value(edge))     # insert
-   done
-done
+ :effect
+   (and (on ?X ?Y)   ; (3)
+        (not         ; (4)
+         (clear ?Y))))
 #+end_src
-
+#+begin_alignright
 #+begin_larger
-#+begin_center
-+ *IMPORTANT:* The random value is *fixed/memoised* on the edge (*never reassigned*)
-#+end_center
+モデリング言語 *PDDL* で記述
 #+end_larger
-
-** The */embankment effect/* of fixed random edge value
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span5
-[[png:percolation/embankment]]
-#+end_span5
-#+begin_span7
-#+begin_larger
-+ */Embankment/ : A region surrounded by high-valued edges preventing the invasion*
-
-+ */Fixation/ of random values maintains the fractal structure*
-
-+ */BIP != Random heuristics/ (reassigns a new value = break the embankment)*
-#+end_larger
-#+end_span7
-#+end_row-fluid
-#+end_container-fluid
-
-** BIP avoids the pathological behavior
-
-[[png:model/bip1]]
-
-** BIP avoids the pathological behavior
-
-[[png:model/bip1-1]]
-
-** BIP avoids the pathological behavior
-
-[[png:model/bip2]]
-
-** BIP avoids the pathological behavior
-
-[[png:model/bip2-1]]
-
-* Evaluation
-
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span6
-[[png:icaps17-results2]]
-#+end_span6
-#+begin_span6
-+ *hb* : *intra-plateau* (by [h, BIP, *])
-+ *hB* : *inter-plateau* (by *alt* ([BIP], [h,*]))
-+ *hbB* : *both* (by *alt* ([BIP], [h,BIP,*]) )
-+ *hdD* : *RandomDepth + Type GBFS*
-+ _/Inter/intra orthogonality/_ was observed again
-+ vs hdD (depth-based diversifications): competitive results
-  + Improvements in *different domains*
-  + hdD diversifies wrto *depth*, hbB diversifies wrto *width*
-#+end_span6
-#+end_row-fluid
-#+end_container-fluid
-
-** Blind search characteristics: reduces the search width
-
-Matches our description on pathological cases
-
-　
-
-[[png:percolation/width-reduction]]
-
-** VS. State-of-the-Art
-
-
-#+begin_container-fluid
-#+begin_row-fluid
-#+begin_span7
-[[png:icaps17-results3]]
-#+end_span7
-#+begin_span5
-+ db^2 DB : Alternates D,B for inter-plateau ; d,b for intra-plateau
-+ Because *depth (d,D)* and *width (b,B)* has the different effects
-+ Effects mostly combine and improved LAMA
+#+end_alignright
 #+end_span5
 #+end_row-fluid
 #+end_container-fluid
 
-* Extra Discussion: BWFS and GBFS-W in (Lipovetzky AAAI17)
+** *PDDL* : Planning Domain Description Language                   :noexport:
 
-Results obtained from (Lipovetzky AAAI17)
+International Planning Competition で使われている入力形式
 
 #+begin_container-fluid
 #+begin_row-fluid
-#+begin_span6
-#+begin_smaller
-| / |       | <         |           | >         | <        |          | >        |
-|   |       | <c>       | <c>       | <c>       | <c>      | <c>      | <c>      |
-|   |       | GBFS      | GBFS-W    | BFWS      | GBFS     | GBFS-W   | BFWS     |
-|   |       | (h^{add}) | (h^{add}) | (h^{add}) | (h^{ff}) | (h^{ff}) | (h^{ff}) |
-|---+-------+-----------+-----------+-----------+----------+----------+----------|
-|   | barm  | 0         | 0         | */16/*    | 0        | 0        | */10/*   |
-|   | caved | 5         | *6*       | *6*       | 6        | 6        | 5        |
-|   | child | 0         | 0         | 0         | 0        | 0        | 0        |
-|   | cityc | 0         | *6*       | *6*       | 0        | *4*      | *5*      |
-|   | floor | 2         | 2         | 2         | 2        | 2        | 2        |
-|   | GED   | 0         | *10*      | *16*      | 16       | 13       | */18/*   |
-|   | hikin | 8         | 7         | 8         | 2        | *7*      | *9*      |
-|   | maint | 16        | 16        | 16        | 11       | _/16/_   | 11       |
-|   | opens | 0         | 0         | 0         | 5        | 0        | 5        |
-|   | park  | 0         | 0         | 0         | 0        | 0        | 0        |
-|   | tetri | 1         | _/9/_     | 3         | 1        | _/9/_    | 1        |
-|   | thoug | 13        | 9         | */20/*    | 12       | 11       | */18/*   |
-|   | trans | 2         | *5*       | *6*       | 0        | 0        | 0        |
-|   | visit | 0         | _/8/_     | 1         | 0        | *20*     | *20*     |
-#+end_smaller
-#+end_span6
-#+begin_span6
+#+begin_span2
 
-+ _/GBFS-W is intra-plateau/_
-+ */BFWS is inter-plateau [w,h]/*
-+ Improvements in different domains
-  + Effects are (mostly) orthogonal
-+ *Effects are expected to combine with both enabled.*
-+ */Benefit of understanding the diversification !!/*
-#+end_span6
+#+end_span2
+#+begin_span8
+#+begin_src lisp
+(:action move
+ :parameters (?X ?Y)
+ :preconditions
+   (and (clear ?X)   ; (1)
+        (clear ?Y))  ; (2)
+
+ :effect
+   (and (on ?X ?Y)   ; (3)
+        (not         ; (4)
+         (clear ?Y))))
+#+end_src
+#+end_span8
+#+begin_span2
+
+#+end_span2
 #+end_row-fluid
 #+end_container-fluid
 
-Difference between BIP and IW : *IW assumes propositional states*, BIP does not
+** プランニング = グラフ探索
 
-* Conclusion
+*ノード* : 状態 = 命題の集合 ⇒ =(on A B)=, =(clear A)= など
 
-#+begin_larger
-+ *Two modes of diversification* --- previous methods are inter-only / mixture of two, no cleanly separated evaluation
-  + */Take-home message/: Whenever you have a diversification method, use it for both modes*
-+ *Fractal-based diversification for reducing the search width*
-  + */Take-home message/: Fractals have some potential!*
-#+end_larger
+*辺*     : アクション ⇒ =(move A B)= 等
 
-#+begin_center
-#+begin_larger
-+ Thank you for listening!
-#+end_larger
-#+end_center
+[[png:graph]]
+
+# #+begin_container-fluid
+# #+begin_row-fluid
+# #+begin_span6
+# # + ヒューリスティック探索 A*
+# # + State-of-the-Art *1
+# #+end_span6
+# #+begin_span6
+# # #+attr_html: :width 50%
+# #+end_span6
+# #+end_row-fluid
+# #+end_container-fluid
+
+#+begin_note
+*1 [Helmert, 2006] [Richter, 2010]
+#+end_note
+  
+** Q. いま */はやり/* のDeep Learningとの違いは?                   :noexport:
+
+ A. レイヤが違う
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ *機械学習・Neural Networks* 
+ 
+ for *認識・反射*
+ + 入力 は *Subsymbolic* (連続値)
+   
+   画像、音声、非構造化テキスト: 
+ + *感覚的知能*:
+   
+   　 */反応/, /直後/ の行動の決定*
+   #+begin_smaller
+   *パブロフの犬* : 餌を認知→よだれ
+
+   *自動運転* : 赤信号,人 → 止まる.
+
+   *翻訳* : 文章 → 文章
+
+   *囲碁局面の評価関数* : 局面 → 勝率
+   #+end_smaller
+   #+begin_larger
+   ☺ 効率よく 1-to-1 mapping
+   
+   ☹ 単純作業
+   #+end_larger
+ #+end_span6
+ #+begin_span6
+ *推論・探索*
+
+ for *プランニング・ゲーム・定理証明*
+ + 入出力は *Symbolic*
+   
+   論理 オブジェクト ルール
+ + *論理・推論による知能:*
+
+   　 */未来に渡る/ 戦略の決定*
+   
+   　 (戦略 = 行動の *列や木*)
+   #+begin_smaller
+   *レスキューロボ* : ゴール = 被災者生存
+
+   *証明器* : ゴール = QED
+
+   *コンパイラ* : 命令列の生成
+   
+   *囲碁,将棋* : ゴール = 勝利
+   #+end_smaller
+   #+begin_larger
+   ☺ 順序制約+複雑な作業
+   #+end_larger
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
++ AlphaGo = Subsymbolic (DLNNによる評価関数) + Symbolic (MCTSによる探索)
+
+** 既存の有名システム                                              :noexport:
+
+AlphaGo = Subsymbolic (NNによる評価関数) + Symbolic (MCTSによる探索)
++ ただし *ドメイン依存* -- 囲碁に特化, "マス目"や"石"といった概念をハードコード
++ *膨大な棋譜が必要* --- 運用データがない環境(e.g.火星)には適用不能
++ */人って模範解答がないと行動できませんか?/* *真の自律機械は前例無しでも行動可能*
+
+DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
+
+様々な Atari Game につかえる汎用フレームワーク (Invader, Packman…) だが
++ RLのActing: 学習したpolicyに従ってgreedyに行動
++ Atariゲームは *脊髄反射で生き残ることが可能* → *複雑な論理思考はいらない!*
+  
+# 実際 *Sokoban など論理思考ゲームでは性能が悪い* ↔ 倉庫番ソルバ
+
+
+
+* 探索非局在化による A* の高速化 (Asai, Fukunaga, AAAI2016)
+
+** Summary: /We improved A*'s performance only by changing the Tiebreaking Strategy !!/
+
+ #+begin_center
+ Number of Solved Instances
+ #+end_center
+
+ |                         | <c>              | <c>      |
+ |                         | Default          | Proposed |
+ | Domain Set              | in Fast Downward |          |
+ |-------------------------+------------------+----------|
+ | IPC^1 Instances (1104)  | 558              | *573*    |
+ | Zerocost Instances(680) | 256              | *294*    |
+ | Sum (1724)              | 814              | *867*    |
+ |-------------------------+------------------+----------|
+
+ IPC^1 : International Planning Competition
+
+ #+begin_alignright
+ Solved *53 more instances!*
+ #+end_alignright
+
+** Main Topic : Optimal Graph Search
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span7
+
+ [[png:graphsearch]]
+ #+end_span7
+ #+begin_span5
+
+ #+begin_larger
+ #+begin_center
+ *Shortest path*
+
+ from the *Initial Node*
+
+ to the *Goal Node(s)*
+ #+end_center
+ #+end_larger
+
+ #+end_span5
+ #+end_row-fluid
+ #+end_container-fluid
+
+ # * Dijkstra
+ # 
+ # [[png:dijkstra]]
+
+** Optimal Search with A* ...
+
+ # Guaranteed to find an optimal solution when /heuristic function/ $h(s)$ is admissible
+
+ [[png:astar]]
+
+** Optimal Search with A* ... w/o Tiebreaking Strategy.
+
+ # Guaranteed to find an optimal solution when /heuristic function/ $h(s)$ is admissible
+
+ [[png:astar-emph]]
+
+** Conventional Wisdom regarding Tiebreaking
+
+ #+begin_center
+ How to select from multiple nodes with the same /f_{min}/?
+ #+end_center
+
+ |                                  | Tiebreaking                                 |
+ |----------------------------------+---------------------------------------------|
+ | *Early work*                     |                                             |
+ | /1968 Hart, Nilsson and Raphael/ | */h/-based tiebreaking* [ /h/ ] :           |
+ |                                  | 　　 -- selects the least h value           |
+ | /common around 1985/             | *LIFO tiebreaking* [LIFO] :                 |
+ |                                  | 　　 -- selects the most recently generated |
+ |----------------------------------+---------------------------------------------|
+ | *Recent years...*                |                                             |
+ | /2007 Hansen and Zhou/           | [ /h/ ] "well-known to achieve              |
+ |                                  | 　　　　　　the best performance"           |
+ | /2010 Holte/                     | [ /h/ ] "most often done"                   |
+ |----------------------------------+---------------------------------------------|
+
+ #+begin_alignright
+ *Rule-of-Thumb is [ /h/ ] but it's like a folklore!*
+ #+end_alignright
+
+** [ /h/ ] is underspecified
+
+ *What happens if there are still /multiple/ nodes with the same /h/ ?*
+
+ → There must be a *2nd Tiebreaking /X/* : denoted as [ /h/ , */X/* ]
+
+ Example -- A* with *[ /h/ , /LIFO/ ]* : Selects the nodes with /f_{min}/. 
+
+ + *IF* multiple nodes have /f_{min}/, selects the nodes with /h_{min}/  (1st tiebreaking).
+ + *IF* multiple nodes have /h_{min}/, select the most recent node (2nd tiebreaking).
+   #+begin_alignright
+   #+begin_smaller
+   (i.e. popping a LIFO queue: always returns exactly 1 node)
+   #+end_smaller
+   #+end_alignright
+
+ |-----------------------------------------------+---------------------------------|
+ | Solver code on github by /2012 Burns et. al./ | [ /h/, LIFO (*not documented*)] |
+ | (current) Fast Downward                       | [ /h/, FIFO (*not documented*)] |
+ |-----------------------------------------------+---------------------------------|
+
+ #+begin_alignright
+ #+begin_larger
+ + Details (such as 2nd-tiebreaking /X/) are *considered unimportant?*
+
+   (compared to the improvement of the heuristics, search algorithm?)
+ #+end_larger
+ #+end_alignright
+
+
+** TODO In Fact, Tiebreaking is Quite Important
+
+ #+begin_larger
+ #+begin_center
+ *Most of the runtime, search is controlled*
+
+  */solely by the tiebreaking/.*
+ #+end_center
+ #+end_larger
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:without-h-nokey]]
+ #+end_span6
+ #+begin_span6
+
+ ←In the standard benchmark sets,
+
+ #+begin_larger
+ #+begin_center
+ *Most nodes have f=f^**.
+
+ (i.e. *Final Plateau*, 　　
+
+ where the solutions exist)
+ #+end_center
+
+ 　
+
+ #+begin_center
+ *Tiebreaking controls the most of the search.*
+ #+end_center
+ #+end_larger
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+** Testing if the 2nd Tiebreaking Really Matters
+
+ | <c>                           | <c>                               | <c>       |
+ | Tiebreaking                   | Description                       | Solved    |
+ | ［criterion_1, criterion_2 ］ | (applied in left-to-right)        | Instances |
+ |-------------------------------+-----------------------------------+-----------|
+ | ［ /h/,  *LIFO* ］            | same /f_{min}/ → select smallest h |           |
+ |                               | same h → break ties in LIFO      |           |
+ |-------------------------------+-----------------------------------+-----------|
+ | ［ /h/,  *FIFO* ］            | *default setting of FD*           |           |
+ |-------------------------------+-----------------------------------+-----------|
+
+ #+begin_alignright
+ on 1104 IPC (International Planning Competition) instances
+
+ 30min, 2GB setting with the same heuristics (LMcut)
+
+ 　
+
+ 　
+
+ #+end_alignright
+
+** Testing if the 2nd Tiebreaking Really Matters
+
+ # Results (on 1104 IPC instances,  LMcut, 30min, 2GB)
+
+ | <c>                           | <c>                               | <c>       |
+ | Tiebreaking                   | Description                       | Solved    |
+ | ［criterion_1, criterion_2 ］ | (applied in left-to-right)        | Instances |
+ |-------------------------------+-----------------------------------+-----------|
+ | ［ /h/, *LIFO* ］             | same /f_{min}/ → select smallest h | *565*     |
+ |                               | same h → break ties in LIFO      |           |
+ |-------------------------------+-----------------------------------+-----------|
+ | ［ /h/, *FIFO* ］             | *default setting of FD*           | 558       |
+ |-------------------------------+-----------------------------------+-----------|
+
+ #+begin_alignright
+ on 1104 IPC (International Planning Competition) instances
+
+ 30min, 2GB setting with the same heuristics (LMcut)
+
+ #+begin_larger
+ *［h, LIFO ］ outperforms ［h, FIFO ］*
+ #+end_larger
+
+ the 2nd tiebreaking makes difference
+ #+end_alignright
+
+** TODO Comparing [h,FIFO] and [h,LIFO] per Domain (Instance Set)
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:lifo-vs-fifo]]
+ #+end_span6
+ #+begin_span6
+
+ #+begin_center
+ The difference occurs only in
+
+ #+begin_larger
+ *Openstacks* & *Cybersec*
+ #+end_larger
+
+ *LIFO is x10 faster than FIFO*
+
+ (In other domains the performance is comparable.)
+
+ #+end_center
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+** What makes /Openstacks/ & /Cybersec/ Different?
+
+ Many *zero-cost actions*
+
+ #+begin_smaller
+ which (before proceeding, let me say...) enables
+ #+end_smaller
+
+ the modelling of many *practical applications* w/ *key resource minimization*
+
+ + Consider a *transportation domain w/ fuel minimization.*
+   #+begin_alignright
+   Assign 0 cost to all actions *except drive-truck*
+
+   which burns some fuel.
+   #+end_alignright
+ + *Openstacks is an application domain* from Operations Research (Fink and Voss, 1999)
+   #+begin_alignright
+   minimize the # of stacks, 0-cost unless consuming stacks.
+   #+end_alignright
+ + *Cybersec is also an application domain.* (BAMS, Boddy et. al.)
+   #+begin_alignright
+   The great talk by Joerg Hoffmann in the last ICAPS!
+   #+end_alignright
+
+** TODO Zero-cost actions makes /h/-Tiebreaking difficult
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:with-h-nokey]]
+ #+end_span6
+ #+begin_span6
+
+ #+begin_center
+ ← A stricter subset of final plateau with *f=f^**, *h=0*
+
+ In *Openstacks* & *Cybersec*,
+
+ Almost all nodes have *h=0*.
+
+ #+begin_larger
+ *⇒ /h/-tiebreaking has*
+
+ *no effect*
+ #+end_larger
+
+ #+begin_larger
+ *⇒search is controlled /solely by the 2nd tiebreaking/*
+
+ */LIFO or FIFO/*
+ #+end_larger
+ #+end_center
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+ #+begin_alignright
+ Thus, *to improve upon LIFO*, we should understand these search spaces.
+ #+end_alignright
+
+ # , and the LIFO and FIFO plays the primary role. 
+
+** Understanding the Final Plateau
+
+ [[png:final-plateau0]]
+
+** Understanding the Final Plateau
+
+ [[png:final-plateau]]
+
+** Understanding the Final Plateau
+
+ In positive cost domains,
+
+ [[png:final-plateau2]]
+
+** But when almost all edges are 0-cost...
+
+ [[png:final-plateau3]]
+
+** Depth-based Tiebreaking
+
+ [[png:final-plateau4]]
+
+** Non-trivial Question: How to use the /Depth?/
+
+ Assume h=0 (because 0≦h≦h^*=0)
+
+ Within Final Plateau f=f^*, *all solutions are cost optimal* regardless of depth
+
+ #+begin_alignright
+ because *all edge costs are 0.*
+ #+end_alignright
+
+ [[png:final-plateau4-2]]
+
+ #+begin_alignright
+ #+begin_larger
+ We found that *DEPTH BIAS IS NOT A GOOD IDEA.*
+ #+end_larger
+ #+end_alignright
+
+*** Example: selecting the smallest depth?
+
+ # /FirstDepth/ tiebreaking strategy : ［ h, /fd/ ］
+
+ [[png:final-plateau5]]
+
+*** Example: selecting the largest depth?
+
+ # /LastDepth/ tiebreaking strategy :  ［ h, /ld/ ］
+
+ [[png:final-plateau6]]
+
+** Random Depth Tiebreaking
+
+ [[png:final-plateau7]]
+
+ #+begin_alignright
+ Classic Exploration vs Exploitation problem
+
+ Connections to Rapidly exploring Random Tree (RRT) ?
+ #+end_alignright
+
+ # * Random Depth Tiebreaking + random selection within depth
+ # 
+ # third tiebreaking: not FIFO, not LIFO, but RandomOrder : RO
+ # 
+ # ［ h, /rd/, RO ］
+ # 
+ # [[png:final-plateau7]]
+
+** Evaluation (domains)
+
+ + IPC^1 Instances (1104 instances)
+ + *Zero-cost* domains (620 instances, 28 domains)
+   + Modified IPC^1  optimal track instances
+   + Assign 0 cost to all actions *except one*
+   + which consumes a *realistic key resource*. For example,
+     + =cut= consumes =wood= in Woodworking
+     + =drive-truck= consumes =fuel= in Driverslog (transportation domain)
+     + etc..
+
+ #+begin_note
+ 1 -- IPC : International Planning Competition
+ #+end_note
+
+** Evaluation (participants)
+
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ A* with *[h, FIFO]*
+
+ Selects the nodes with /f_{min}/
+
+ *IF* multiple nodes have /f_{min}/
+
+ Selects the nodes with /h_{min}/
+
+ *IF* multiple nodes have /h_{min}/
+
+ Select the oldest node (i.e. FIFO)
+ #+end_span6
+ #+begin_span6
+ A* with *[h, LIFO]*
+
+ Selects the nodes with /f_{min}/
+
+ *IF* multiple nodes have /f_{min}/
+
+ Selects the nodes with /h_{min}/
+
+ *IF* multiple nodes have /h_{min}/
+
+ Select the newest node (i.e. LIFO)
+ #+end_span6
+ #+end_row-fluid
+
+ -----------
+
+ #+begin_row-fluid
+ #+begin_span1
+
+ #+end_span1
+ #+begin_span10
+ A* with *[h, RD, RO]*,
+
+ Selects the nodes with /f_{min}/
+
+ *IF* multiple nodes have /f_{min}/, selects the nodes with /h_{min}/
+
+ *IF* multiple nodes have /h_{min}/, selects a random depth /d/
+
+ *IF* multiple nodes in /d/, Select a node randomly
+ #+end_span10
+ #+begin_span1
+
+ #+end_span1
+ #+end_row-fluid
+ #+end_container-fluid
+
+
+** Evaluation (number of problems solved)
+
+ #+begin_smaller
+ LMcut, Merge-and-Shrink(M&S) : state-of-the-art heuristic functions in planning
+
+ ［h, RD, RO］ shows the average of 10 runs (↑ ＜increase over [h,FIFO]＞)
+ #+end_smaller
+
+ | /                       | <            | >           | <>                |
+ |                         | <c>          | <c>         | <c>               |
+ |                         | ［h, FIFO］  | ［h, LIFO］ | ［h, RD, RO］     |
+ | Domain Set              | (FD Default) |             | (Proposed)        |
+ |-------------------------+--------------+-------------+-------------------|
+ | LMcut                   |              |             |                   |
+ | IPC Instances (1104)    |              |             |                   |
+ | Zerocost Instances(680) |              |             |                   |
+ | Sum(1724)               |              |             |                   |
+ |-------------------------+--------------+-------------+-------------------|
+ | M&S                     |              |             |                   |
+ | IPC Instances (1104)    |              |             |                   |
+ | Zerocost Instances(680) |              |             |                   |
+ | Sum(1724)               |              |             |                   |
+ |-------------------------+--------------+-------------+-------------------|
+
+** Evaluation (number of problems solved)
+
+ #+begin_smaller
+ LMcut, Merge-and-Shrink(M&S) : state-of-the-art heuristic functions in planning
+
+ ［h, RD, RO］ shows the average of 10 runs (↑ ＜increase over [h,FIFO]＞)
+ #+end_smaller
+
+ | /                       | <            | >           | <>                |
+ |                         | <c>          | <c>         | <c>               |
+ |                         | ［h, FIFO］  | ［h, LIFO］ | ［h, RD, RO］     |
+ | Domain Set              | (FD Default) |             | (Proposed)        |
+ |-------------------------+--------------+-------------+-------------------|
+ | LMcut                   |              |             |                   |
+ | IPC Instances (1104)    | 558          | 565         | *572.8* (↑ 14.8) |
+ | Zerocost Instances(680) | 256          | 279         | *294.2* (↑ 38.2) |
+ | Sum(1724)               | 814          | 844         | *867.0* (↑ 53.0) |
+ |-------------------------+--------------+-------------+-------------------|
+ | M&S                     |              |             |                   |
+ | IPC Instances (1104)    | 479          | *488*       | 484.0 (↑ 5.0)    |
+ | Zerocost Instances(680) | 276          | 290         | *310.2* (↑ 34.2) |
+ | Sum(1724)               | 755          | 778         | *794.2* (↑ 39.2) |
+ |-------------------------+--------------+-------------+-------------------|
+
+ #+begin_alignright
+ *［h, RD, RO］ Outperformed Both [h,FIFO] and [h,LIFO] !*
+ #+end_alignright
+
+** Depth Distribution in Woodworking-cut p04
+
+ "cut" action has positive cost (consumes wood), others have 0 cost
+
+ #+begin_center
+  
+ [[png:depth-distribution0]]
+
+ #+end_center
+
+** Depth Distribution in Woodworking-cut p04
+
+ "cut" action has positive cost (consumes wood), others have 0 cost
+
+ #+begin_center
+  
+ [[png:depth-distribution1]]
+
+ #+end_center
+
+** Depth Distribution in Woodworking-cut p04
+
+ "cut" action has positive cost (consumes wood), others have 0 cost
+
+ #+begin_center
+  
+ [[png:depth-distribution2]]
+
+ #+end_center
+
+** Depth Distribution in Woodworking-cut p04
+
+ "cut" action has positive cost (consumes wood), others have 0 cost
+
+ #+begin_center
+  
+ [[png:depth-distribution3]]
+
+ #+end_center
+
+** Contributions
+
+ + *In-depth analysis of the tiebreaking strategies*
+   + The paper contains more analyses
+     + ([h,FIFO] vs [FIFO], [h,RD,RO] vs [h,RO] etc.)
+ + *Randomized depth-based tiebreaking* in zero-cost domains
+   + *no heuristics can help* because the optimal cost is 0
+ + *Understanding of the structure of the final plateau*
+   + *Depth Bias is harmful* -- exploration vs exploitation
+
+* A* のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
+
+** A* behavior revisited
+
+ [[png:astar/astar1]]
+
+*** A* behavior revisited
+
+  [[png:astar/astar2]]
+
+*** A* behavior revisited
+
+  [[png:astar/astar3]]
+
+*** A* behavior revisited
+
+  [[png:astar/astar4]]
+
+ + *The order of expansion within each plateau does not affect the optimality of the solution*
+
+ + Within each plateau, the path to optimal solutions can be arbitrary longer
+
+ #+begin_alignright
+ #+begin_larger
+ + We are runnning a *satisficing search* on each plateau
+ #+end_larger
+ #+end_alignright
+
+** Reinterpret A∗ as */iterations of satisficing search on plateaus/*:
+
+ + A* $[ f, h, \text{fifo} ]$  : Performing *GBFS [h, fifo] on each plateau(f)*
+ + A* $[ f, \text{fifo} ]$  : Performing a *blind breadth-first search [fifo] on each plateau(f)* and therefore slower
+
+ #+begin_src bash
+ while true
+     satisficing_search( plateau(f))
+     if plateau (f) is SAT; then
+        return solution
+     else
+        Increase f
+ #+end_src
+
+*** A* as satisficing search
+
+  #+begin_src bash
+  while true
+      satisficing_search( plateau(f))
+      if plateau (f) is SAT; then
+         return solution
+      else
+         Increase f
+  #+end_src
+
+ [[png:sat/sat-astar1]]
+
+*** A* as satisficing search
+
+  #+begin_src bash
+  while true
+      satisficing_search( plateau(f))
+      if plateau (f) is SAT; then
+         return solution
+      else
+         Increase f
+  #+end_src
+
+ [[png:sat/sat-astar2]]
+
+*** A* as satisficing search
+
+  #+begin_src bash
+  while true
+      satisficing_search( plateau(f))
+      if plateau (f) is SAT; then
+         return solution
+      else
+         Increase f
+  #+end_src
+
+ [[png:sat/sat-astar3]]
+
+*** A* as satisficing search
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span7
+  #+begin_src bash
+  while true
+      satisficing_search( plateau(f))
+      if plateau (f) is SAT; then
+         return solution
+      else
+         Increase f
+  #+end_src
+ #+end_span7
+ #+begin_span5
+ Implication: 
+ #+begin_larger
+ + *Any complete satisficing technique* can be embedded in optimal planning
+ #+end_larger
+ #+end_span5
+ #+end_row-fluid
+ #+begin_row-fluid
+ #+begin_span7
+ [[png:sat/sat-astar4]]
+ #+end_span7
+ #+begin_span5
+ #+begin_larger
+ + Results are optimal as long as *f* is admissible
+ #+end_larger
+ #+end_span5
+ #+end_row-fluid
+ #+end_container-fluid
+
+** Using some satisficing techniques for optimal planning
+
+ + Standard A* :: $[f, h,$  * $]\;$ where * is one of LIFO, FIFO, Random
+
+ + Tiebreak with unit-cost heuristics $\hat{h}\;$ : treats every edge costs as 1 (Previously used for LAMA) ::
+      $[f, \hat{h}, * ]$, $[f, h, \hat{h}, * ]$ -- large overhead for $\hat{h}^{\text{LMcut}}, \hat{h}^{\text{M&S}}$
+
+      Purpose: to see pure improvements by 
+
+ + Tiebreak with unit-cost inadmissible heuristics $\hat{h}^{FF}$ ::
+      $[f, \hat{h}^{FF}, *]$ , $[f, h, \hat{h}^{FF}, * ]$ -- cheaper, non-path-optimal heuristics
+
+ + Combined with random depth tiebreaking [Asai, AAAI16] ::
+      $[f, \hat{h}^{FF}, \langle d \rangle$ , * $]$
+
+** Evaluation (domains)
+
+ + IPC^1 Instances (1104 instances)
+ + *Zero-cost* domains (620 instances, 28 domains)
+   + Modified IPC^1  optimal track instances
+   + Assign 0 cost to all actions *except one*
+   + which consumes a *realistic key resource*. For example,
+     + =cut= consumes =wood= in Woodworking
+     + =drive-truck= consumes =fuel= in Driverslog (transportation domain)
+     + etc..
+
+ #+begin_note
+ 1 -- IPC : International Planning Competition
+ #+end_note
+
+** Evaluation ($h=\text{LMcut}$, Zerocost domains)
+
+ 5min, 4GB
+
+ |                                        | ＊=FIFO | ＊=LIFO | ＊=Random |
+ |----------------------------------------+---------+---------+-----------|
+ | $[f,h,*]$                              |     256 |     279 |     261.9 |
+ | $[f,h,\langle d \rangle,*]$            |     284 |     264 |     288.1 |
+ | $[f,\hat{h},*]$                        |     295 |     303 |     301.0 |
+ | $[f,h,\hat{h},*]$                      |     305 |     309 |     305.9 |
+ | $[f,\hat{h}^{FF},*]$                   |     337 |     340 |       341 |
+ | $[f,\hat{h}^{FF},\langle d \rangle,*]$ |   *340* |   *342* |   *344.3* |
+ |                                        |   (+80) |   (+60) |     (+80) |
+
+** Evaluation ($h=\text{M&S}$, Zerocost domains)
+
+ 5min, 4GB
+
+ |                                        | ＊=FIFO | ＊=LIFO | ＊=Random |
+ |----------------------------------------+---------+---------+-----------|
+ | $[f,h,*]$                              |     280 |     301 |     287.7 |
+ | $[f,h,\langle d \rangle,*]$            |     302 |     288 |     308.1 |
+ | $[f,\hat{h},*]$                        |     308 |     305 |     307.3 |
+ | $[f,h,\hat{h},*]$                      |     307 |     306 |     307.8 |
+ | $[f,\hat{h}^{FF},*]$                   |     336 |     331 |   _337.9_ |
+ | $[f,\hat{h}^{FF},\langle d \rangle,*]$ |   *337* |   *333* |   _337.6_ |
+ |                                        |   (+50) |   (+30) |     (+50) |
+
+** Simple Dynamic Configuration for Overall Performance
+
+ $[f=g+h, \hat{h}^{FF}]$ --- Computing 2 different heuristics
+
+ + Only beneficial when the plateau is huge (especially the domain contains zerocost)
+
+ + Let's disable it when this is not the case
+
+ IPC+Zerocost results
+
+ |---+------------------------------------------------------+---------+---------|
+ |   | *Single heuristics*                                  |   LMcut |     M&S |
+ |---+------------------------------------------------------+---------+---------|
+ | / | $[f,h,\text{fifo}]$                                  |     814 |     771 |
+ |   | A $[f,h,\text{lifo}]$                                |     844 |     797 |
+ | / | $[f,h,\text{Random}]$                                |   820.8 |   777.1 |
+ | / | $[f,h,\langle d \rangle,\text{fifo}]$                |     855 |     789 |
+ |   | B $[f,h,\langle d \rangle,\text{lifo}]$              |     839 |     775 |
+ | / | $[f,h,\langle d \rangle,\text{Random}]$              |   859.5 |   793.7 |
+ | / | [0.3em] Distance-to-Go                               |         |         |
+ | / | $[f,\hh,\text{fifo}]$                                |     829 |     785 |
+ | / | $[f,\hh,\text{lifo}]$                                |     837 |     780 |
+ | / | $[f,\hh,\text{Random}]$                              |    835. |   777.7 |
+ | / | $[f,h,\hh,\text{fifo}]$                              |     841 |     783 |
+ | / | $[f,h,\hh,\text{lifo}]$                              |     844 |     781 |
+ | / | $[f,h,\hh,\text{Random}]$                            |   840.6 |   778.7 |
+ |---+------------------------------------------------------+---------+---------|
+ |   | *Multi heuristics*                                   |   LMcut |     M&S |
+ |---+------------------------------------------------------+---------+---------|
+ | / | $[f,\hat{h}^{FF},\text{fifo}]$                       |     901 |     794 |
+ | / | $[f,\hat{h}^{FF},\text{lifo}]$                       |     902 |     788 |
+ | / | $[f,\hat{h}^{FF},\text{Random}]$                     |   904.7 |   794.9 |
+ | / | $[f,\hat{h}^{FF},\langle d \rangle,\text{fifo}]$     |     903 |     794 |
+ | / | $[f,\hat{h}^{FF},\langle d \rangle,\text{lifo}]$     |     902 |     790 |
+ |   | C $[f,\hat{h}^{FF},\langle d \rangle,\text{Random}]$ |   906.2 |   794.4 |
+ |---+------------------------------------------------------+---------+---------|
+ |   | Dynamic Configuration                                |   LMcut |     M&S |
+ |---+------------------------------------------------------+---------+---------|
+ |   | If zerocost actions exist: C ; Else B                | *911.9* |         |
+ |   | If zerocost actions exist: C ; Else A                |         | *832.3* |
+ |---+------------------------------------------------------+---------+---------|
+
+** Completeness of A* on Infinite Graph
+
+ Dechter and Pearl (1985): [[spng:pearl-cost]]
+
+ + Results do not apply to zerocost domains
+ + Turned out, conditions for completeness depends on the tiebreaking
+
+ (P1) If any plateau(f) for f < f^∗ is infinite, then A^∗ does not terminate.
+
+ (P2) Assume plateau(f) is finite \forall f < f^∗:
+
+ + Completeness depends on tiebreaking on plateau(f^*)
+
+*** Completeness of A* on Infinite Graph
+
+  (P2) Assume plateau(f) is finite \forall f < f^∗:
+
+  Completeness depends on tiebreaking on plateau(f^*)
+
+  More specifically, *the completeness of satisficing search algorithm used for tiebreaking*
+  
+    |                      |                                                                   |
+    | FIFO [f, fifo]       | Complete with a finite outdegree below the minimum solution depth |
+    |                      | → because *Breadth-first search [fifo] requires it*              |
+    | LIFO [f, lifo]       | Complete when plateau(f^*) is also finite                         |
+    |                      | → because *Depth-First Search [lifo] requires it*                |
+    | Random Order [f, ro] | Probabilistically Complete                                        |
+    |                      | → because *[ro] is Prob. Complete [Valenzano AAAI16]*            |
+
+  + *We can also carry the completeness proof over to optimal search!*
+
+** Conclusion & Future Work
+
+ + A* as a sequence of satisficing search on each plateau
+ + Demonstrated the use of inadmissible heuristics for optimal search
+ + Leveraged the completeness proof for satisficing search for optimal search
+ + Many potential extensions
+   + Use *plateau-limited macro actions* (cf. Marvin, but different purpose)
+   + *Plateau-limited monte-carlo random walk* (cf. Arvand)
+
+ #  + Direct analogue for model-based planners (SAT/IP/CSP-based planners)
+
+* GBFS の タイブレーク (Asai, Fukunaga, ICAPS 2017)
+
+ + New method highlight: *First effective Fractal-based algorithm ever!*
+
+** Search Diversification
+
+ [[png:diversify/1]]
+
+*** Search Diversification
+ [[png:diversify/2]]
+
+*** Search Diversification
+ [[png:diversify/3]]
+
+*** Search Diversification
+ [[png:diversify/4]]
+
+*** Search Diversification
+ [[png:diversify/5]]
+
+*** Search Diversification
+
+ [[png:diversify/final]]
+
+ #+begin_alignright
+ An art of How *NOT* to trust the heuristic function and still perform effectively?
+ #+end_alignright
+
+** Preliminaries
+
+ + Search algorithm sorting strategy [S_1, S_2 ..., *] ::
+      denotes the key for OPEN list in forward search (dictionary order)
+ + Default strategy ::
+      =*= in the sorting strategy; either FIFO, LIFO, Random
+
+      Every OPEN-list based search has some default tiebreaking
+ + Type-based bucket <T_1, T_2 ...> (Xie14) ::
+      Stores the nodes in a *bucket* according to key values e.g. $\langle g,h\rangle$
+
+      Select a random node in a random bucket when popping a node from OPEN
+ + Alternation Queue alt(Q1,Q2...) ::
+      Maintain multiple queues and alternates opening
+
+** Background
+
+ There are a bunch of *search diversification* approaches
+
+ + Diverse BFS (Imai, AAAI11) (Much more complicated)
+ + Monte-Carlo Random Walk (MRW) --- Sometimes runs a random walk
+ + Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- Sometimes runs a random search
+ + Type-based GBFS --- *alt* ([h,*], <g,h>) --- Sometimes runs a depth-balanced search
+ + GBFS-LE (local expansion) --- Runs a randomized search when local minima is detected
+   + GBFS-LS (local search), GBFS-MRW
+
+ #+begin_larger
+ #+begin_center
+ + *We need a /cleaner, less ad-hoc/ way*
+
+   *to understand their behavior.*
+ #+end_center
+ #+end_larger
+
+** Traditional Understanding : Heuristic Error
+
+ \[
+    \text{Error} = |h - h^*|
+ \]
+
+ $h$ : heuristic value, $h^*$ : perfect heuristic
+
+ $h>h^*$ : Overestimation $h<h^*$ : Underestimation
+
+ #+begin_center
+ #+begin_larger
+ + Is this view sufficient?
+ #+end_larger
+ #+end_center
+
+*** Heuristic Error
+
+ [[png:plateau/1]]
+
+*** Heuristic Error
+
+ [[png:plateau/2]]
+
+*** Heuristic Error is */2-dimensional/*
+
+ [[png:plateau/3]]
+
+*** Inter-plateau error
+
+ [[png:plateau/4]]
+
+
+*** Intra-plateau error
+
+ [[png:plateau/5]]
+
+*** Inter-plateau error & diversification
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:plateau/4]]
+ #+end_span6
+ #+begin_span6
+ + *The smallest $h^*$ may have high $h$* (inter-plateau error)
+ + *selecting the minimum $h$ is not always good*
+ + *Diversifies the next $h$ to expand*
+ + DBFS, Type-GBFS, $\epsilon$-greedy
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+*** Intra-plateau error & diversification
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:plateau/6]]
+ #+end_span6
+ #+begin_span6
+ + *The smallest $h$  may have high $h^*$* (intra-plateau error)
+ + *Deterministic Tiebreaking e.g. FIFO/LIFO have a pathological cases*
+ + *Randomize the search within h-plateau* so that we (hopefully) *expand a low $h^*$ node*
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+*** Let's show!
+
+ + IPC11, IPC14 (duplicated domains are excluded), 5min, 4GB
+
+ + *Important: Use the same diversification method* for inter-vs-intra
+
+ + The cloest we can find: *Type-GBFS* (inter) vs *RandomDepth Tiebreaking* (intra)
+
+   + Intra-plateau diversification == randomized tie breaking
+
+   + Type GBFS --- *Randomize <g,h>*
+
+   + RandomDepth --- *Randomize <d> within plateau*
+
+     + d ≡ number of steps from the nearest ancestor w/ the same f,h
+
+   + *g, h, d are all depth-related metrics*
+
+*** Intra-vs-Inter are orthogonal & complementary
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:icaps17-results]]
+ #+end_span6
+ #+begin_span6
+ + hd (RandomDepth Tiebreaking) :: Randomize <d> in plateau
+ + hD (Type GBFS) :: Randomize <g,h>
+ + hdD :: */RandomDepth + Type GBFS/*
+
+ Results:
+
+ + Different domains require different diversification
+ + *With both modes enabled, /effects combine/*
+ + _/Take-home message: Whenever you have a diversification method, use it for both modes!/_
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+** What's next?
+
+ #+begin_quote
+ Type GBFS: *Randomize <g,h>*
+
+ RandomDepth <d> : *d ≡ number of steps from the nearest ancestor w/ the same f,h*
+
+ *g, h, d are all depth-related metrics*
+ #+end_quote
+
+ #+begin_xlarge
+ Let's diversify the width!
+ #+end_xlarge
+
+** Pathological case for all diversification methods
+
+ [[png:model/original]]
+
+*** FIFO (Breadth-first)
+ [[png:model/fifo1]]
+*** FIFO (Breadth-first)
+ [[png:model/fifo2]]
+*** FIFO (Breadth-first)
+ [[png:model/fifo3]]
+*** LIFO (Depth-first)
+ [[png:model/lifo1]]
+*** LIFO (Depth-first)
+ [[png:model/lifo2]]
+*** LIFO (Depth-first)
+ [[png:model/lifo3]]
+*** Random
+ [[png:model/ro1]]
+*** Random
+ [[png:model/ro2]]
+*** Random-Depth
+ [[png:model/rd1]]
+*** Random-Depth
+ [[png:model/rd2]]
+
+** Bond Invasion Percolation (1983)
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[spng:ip]]
+ #+end_span6
+ #+begin_span6
+ #+begin_larger
+ + A well-known *fractal structure*
+ + Distribution of fluid slowly invading a porous media
+ + e.g., water replacing the oil in a porous rock
+ + Application: oil reservoir mining
+ #+end_larger
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+*** Physics people use the different term
+
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[sgif:site-bond]]
+ #+end_span6
+ #+begin_span6
+ #+begin_larger
+ Bond == Edge
+
+ Site == Node
+ #+end_larger
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+
+*** Generation of BIP (blind search method)
+
+ Shown (Barabasi 96) to be the *same algorithm* as Prim's method for Minimum Spanning Tree (Prim '57)
+
+ #+begin_src sh
+ push(init, OPEN, 0)
+
+ while (s = pop(OPEN)); do
+    mark(s)                           # mark as visited
+    for (edge,t) in expand(s); do     # an edge & successor t (unmarked ones only)
+
+       # Each edge has a value
+       if value(edge) is unset ; then
+          value(edge) = random()      # assign a random value
+       fi
+
+       push(t, OPEN, value(edge))     # insert
+    done
+ done
+ #+end_src
+
+ #+begin_larger
+ #+begin_center
+ + *IMPORTANT:* The random value is *fixed/memoised* on the edge (*never reassigned*)
+ #+end_center
+ #+end_larger
+
+*** The */embankment effect/* of fixed random edge value
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span5
+ [[png:percolation/embankment]]
+ #+end_span5
+ #+begin_span7
+ #+begin_larger
+ + */Embankment/ : A region surrounded by high-valued edges preventing the invasion*
+
+ + */Fixation/ of random values maintains the fractal structure*
+
+ + */BIP != Random heuristics/ (reassigns a new value = break the embankment)*
+ #+end_larger
+ #+end_span7
+ #+end_row-fluid
+ #+end_container-fluid
+
+*** BIP avoids the pathological behavior
+
+ [[png:model/bip1]]
+
+*** BIP avoids the pathological behavior
+
+ [[png:model/bip1-1]]
+
+*** BIP avoids the pathological behavior
+
+ [[png:model/bip2]]
+
+*** BIP avoids the pathological behavior
+
+ [[png:model/bip2-1]]
+
+** Evaluation
+
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ [[png:icaps17-results2]]
+ #+end_span6
+ #+begin_span6
+ + *hb* : *intra-plateau* (by [h, BIP, *])
+ + *hB* : *inter-plateau* (by *alt* ([BIP], [h,*]))
+ + *hbB* : *both* (by *alt* ([BIP], [h,BIP,*]) )
+ + *hdD* : *RandomDepth + Type GBFS*
+ + _/Inter/intra orthogonality/_ was observed again
+ + vs hdD (depth-based diversifications): competitive results
+   + Improvements in *different domains*
+   + hdD diversifies wrto *depth*, hbB diversifies wrto *width*
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+*** Blind search characteristics: reduces the search width
+
+ Matches our description on pathological cases
+
+ 　
+
+ [[png:percolation/width-reduction]]
+
+*** VS. State-of-the-Art
+
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span7
+ [[png:icaps17-results3]]
+ #+end_span7
+ #+begin_span5
+ + db^2 DB : Alternates D,B for inter-plateau ; d,b for intra-plateau
+ + Because *depth (d,D)* and *width (b,B)* has the different effects
+ + Effects mostly combine and improved LAMA
+ #+end_span5
+ #+end_row-fluid
+ #+end_container-fluid
+
+** Extra Discussion: BWFS and GBFS-W in (Lipovetzky AAAI17)
+
+ Results obtained from (Lipovetzky AAAI17)
+
+ #+begin_container-fluid
+ #+begin_row-fluid
+ #+begin_span6
+ #+begin_smaller
+ | / |       | <         |           | >         | <        |          | >        |
+ |   |       | <c>       | <c>       | <c>       | <c>      | <c>      | <c>      |
+ |   |       | GBFS      | GBFS-W    | BFWS      | GBFS     | GBFS-W   | BFWS     |
+ |   |       | (h^{add}) | (h^{add}) | (h^{add}) | (h^{ff}) | (h^{ff}) | (h^{ff}) |
+ |---+-------+-----------+-----------+-----------+----------+----------+----------|
+ |   | barm  | 0         | 0         | */16/*    | 0        | 0        | */10/*   |
+ |   | caved | 5         | *6*       | *6*       | 6        | 6        | 5        |
+ |   | child | 0         | 0         | 0         | 0        | 0        | 0        |
+ |   | cityc | 0         | *6*       | *6*       | 0        | *4*      | *5*      |
+ |   | floor | 2         | 2         | 2         | 2        | 2        | 2        |
+ |   | GED   | 0         | *10*      | *16*      | 16       | 13       | */18/*   |
+ |   | hikin | 8         | 7         | 8         | 2        | *7*      | *9*      |
+ |   | maint | 16        | 16        | 16        | 11       | _/16/_   | 11       |
+ |   | opens | 0         | 0         | 0         | 5        | 0        | 5        |
+ |   | park  | 0         | 0         | 0         | 0        | 0        | 0        |
+ |   | tetri | 1         | _/9/_     | 3         | 1        | _/9/_    | 1        |
+ |   | thoug | 13        | 9         | */20/*    | 12       | 11       | */18/*   |
+ |   | trans | 2         | *5*       | *6*       | 0        | 0        | 0        |
+ |   | visit | 0         | _/8/_     | 1         | 0        | *20*     | *20*     |
+ #+end_smaller
+ #+end_span6
+ #+begin_span6
+
+ + _/GBFS-W is intra-plateau/_
+ + */BFWS is inter-plateau [w,h]/*
+ + Improvements in different domains
+   + Effects are (mostly) orthogonal
+ + *Effects are expected to combine with both enabled.*
+ + */Benefit of understanding the diversification !!/*
+ #+end_span6
+ #+end_row-fluid
+ #+end_container-fluid
+
+ Difference between BIP and IW : *IW assumes propositional states*, BIP does not
+
+** Conclusion
+
+ #+begin_larger
+ + *Two modes of diversification* --- previous methods are inter-only / mixture of two, no cleanly separated evaluation
+   + */Take-home message/: Whenever you have a diversification method, use it for both modes*
+ + *Fractal-based diversification for reducing the search width*
+   + */Take-home message/: Fractals have some potential!*
+ #+end_larger
+
+ #+begin_center
+ #+begin_larger
+ + Thank you for listening!
+ #+end_larger
+ #+end_center

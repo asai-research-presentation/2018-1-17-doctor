@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* lighten($text,4); */
 a {
-  color: #234; }
+  color: #223344; }
   a:hover {
     color: #273b4e; }
   a:visited {
@@ -13,10 +13,10 @@ i {
   font-style: 'Italic'; }
 
 body {
-  color: #1C2024;
+  color: #1c2024;
   font-family: Helvetica, Arial,'Lucida Grande', Meiryo, メイリオ, sans-serif;
-  background-color: #fff;
-  text-shadow: 0px 1px 1px lightgray; }
+  background-color: white;
+  text-shadow: 0px 1px 1px lightgrey; }
 
 pre, code {
   font-family: 'Ubuntu Mono',monospace;
@@ -28,7 +28,7 @@ code {
   border-radius: 2px; }
 
 h1, h2, h3, h4, b {
-  text-shadow: 1px 1px 1px lightgray; }
+  text-shadow: 1px 1px 1px lightgrey; }
 
 .note {
   animation-name: emerge;
@@ -88,5 +88,3 @@ img:hover {
 
 #input {
   color: #123; }
-
-/*# sourceMappingURL=default.css.map */
