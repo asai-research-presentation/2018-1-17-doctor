@@ -31,7 +31,7 @@ Made by guicho2.71828 (Masataro Asai)
 + 探索非局在化手法: 偏りを抑えて満遍なく探索する
   + Exploration/Exploitation tradeoff の Exploration
 
-* 背景 -- AIプランニング
+* 背景 -- AIプランニング                                               :3min:
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -208,7 +208,7 @@ Made by guicho2.71828 (Masataro Asai)
 
  [[png:planning-related-field]]
 
-* 背景 -- 古典プランニング問題 (決定的,完全情報) -- Blocksworld
+* 背景 -- 古典プランニング問題 (決定的,完全情報) -- Blocksworld        :3min:
 
 #+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
 
@@ -412,7 +412,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
 
-* 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)
+* 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)    :6min:
 
 先に結果: /A*の性能をタイブレーキングを変えるだけで改善!!/
 
@@ -957,7 +957,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  + *Final Plateauを詳細に分析*
    + *深さに偏りがあるのは良くない*
 
-* A* のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
+* A* のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)                :4min:
 
 #+begin_larger
 #+begin_center
@@ -1215,7 +1215,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 以降 *充足解探索のみ考えることとする*
 
-* 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
+* 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017) :4min:
 
 GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保存する。
 
@@ -1383,7 +1383,7 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
  #+end_row-fluid
  #+end_container-fluid
 
-* 新たな非局在化手法の開発 (Asai, Fukunaga, ICAPS 2017)
+* 新たな非局在化手法の開発 (Asai, Fukunaga, ICAPS 2017)                :4min:
 
 *非局在化手法は知識なし探索手法* なので、
 
@@ -1483,6 +1483,8 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
     done
  done
  #+end_src
+
+探索時には、ノードに向かう辺のランダム値の最小値が小さい順にノードを展開する
 
  #+begin_larger
  #+begin_center
