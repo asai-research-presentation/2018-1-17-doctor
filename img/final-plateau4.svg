@@ -13,7 +13,7 @@
    height="515.37213"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="final-plateau4.svg"
    inkscape:export-filename="/home/guicho/Dropbox/FukunagaLabShare/qiita-graphsearch-adventcalender/dijkstra-taco.png"
    inkscape:export-xdpi="45"
@@ -336,9 +336,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1894318"
-     inkscape:cx="288.07572"
-     inkscape:cy="279.66848"
+     inkscape:zoom="0.84105529"
+     inkscape:cx="528.15905"
+     inkscape:cy="258.26747"
      inkscape:document-units="in"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -372,19 +372,30 @@
      inkscape:label="Layer#1"
      style="display:inline"
      transform="translate(41.868474,-153.97554)">
-    <path
+    <ellipse
+       ry="144.5106"
+       rx="324.59262"
+       cy="482.57651"
+       cx="389.25208"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#d9bb7a;stroke:none;stroke-width:4.44336653;marker:none;enable-background:accumulate"
+       id="path6605-2-8" />
+    <ellipse
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#0197fd;stroke-width:136.63868713;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+       id="path6605-2-8-3"
+       cx="347.31308"
+       cy="482.11142"
+       rx="320.00732"
+       ry="119.78264" />
+    <circle
        transform="matrix(1.7930131,0,0,1.7930131,-39.930442,225.19393)"
-       sodipodi:type="arc"
-       style="color:#000000;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.20229483;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.20229483;marker:none;enable-background:accumulate"
        id="path2985-54-8"
-       sodipodi:cx="118.18785"
-       sodipodi:cy="142.21474"
-       sodipodi:rx="7.0710678"
-       sodipodi:ry="7.0710678"
-       d="m 125.25892,142.21474 c 0,3.90524 -3.16583,7.07106 -7.07107,7.07106 -3.90524,0 -7.07107,-3.16582 -7.07107,-7.07106 0,-3.90525 3.16583,-7.07107 7.07107,-7.07107 3.90524,0 7.07107,3.16582 7.07107,7.07107 z" />
+       cx="118.18785"
+       cy="142.21474"
+       r="7.0710678" />
     <text
        xml:space="preserve"
-       style="font-size:18.15288353px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.81528819;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman, Italic'"
+       style="color:#000000;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.15288353px;line-height:125%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.81528819;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
        x="310.19476"
        y="398.79453"
        id="text16302"
@@ -394,39 +405,9 @@
          x="310.19476"
          y="398.79453"
          style="stroke-width:1.81528819" /></text>
-    <path
-       sodipodi:type="arc"
-       style="color:#000000;fill:none;stroke:#0197fd;stroke-width:2.20229483;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="path6605-2"
-       sodipodi:cx="507.8663"
-       sodipodi:cy="193.60768"
-       sodipodi:rx="62.869865"
-       sodipodi:ry="62.869865"
-       d="m 570.73617,193.60768 c 0,34.72207 -28.1478,62.86987 -62.86987,62.86987 -34.72207,0 -62.86986,-28.1478 -62.86986,-62.86987 0,-34.72207 28.14779,-62.86986 62.86986,-62.86986 34.72207,0 62.86987,28.14779 62.86987,62.86986 z"
-       transform="matrix(2.9731518,0,0,1.369196,-1222.7165,216.38071)" />
-    <path
-       sodipodi:type="arc"
-       style="color:#000000;fill:#d9bb7a;stroke:none;stroke-width:4.44336653;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="path6605-2-8"
-       sodipodi:cx="507.8663"
-       sodipodi:cy="193.60768"
-       sodipodi:rx="90.143982"
-       sodipodi:ry="90.143982"
-       d="m 598.01028,193.60768 c 0,49.78515 -40.35883,90.14398 -90.14398,90.14398 -49.78514,0 -90.14398,-40.35883 -90.14398,-90.14398 0,-49.78515 40.35884,-90.14398 90.14398,-90.14398 49.78515,0 90.14398,40.35883 90.14398,90.14398 z"
-       transform="matrix(3.4949123,0,0,1.6094772,-1376.2289,170.97123)" />
-    <path
-       sodipodi:type="arc"
-       style="color:#000000;fill:none;stroke:#0197fd;stroke-width:84.76673126;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="path6605-2-8-3"
-       sodipodi:cx="507.8663"
-       sodipodi:cy="193.60768"
-       sodipodi:rx="121.45871"
-       sodipodi:ry="121.45871"
-       d="m 629.32501,193.60768 c 0,67.07979 -54.37891,121.45871 -121.45871,121.45871 -67.07979,0 -121.45871,-54.37892 -121.45871,-121.45871 0,-67.07979 54.37892,-121.458708 121.45871,-121.458708 67.0798,0 121.45871,54.378918 121.45871,121.458708 z"
-       transform="matrix(2.6305225,0,0,0.98100222,-990.23734,292.18185)" />
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:-0.31px;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.50590551;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:-0.31px;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;opacity:0.89830508;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.50590551;marker:none;enable-background:accumulate"
        x="-36.114529"
        y="192.08517"
        id="text5761"
@@ -440,7 +421,7 @@
            style="text-align:start;letter-spacing:-0.31px;text-anchor:start;fill:#0197fd;stroke:none">Depth =</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:24px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);enable-background:accumulate"
        x="21.755154"
        y="259.27457"
        id="text8877-5"
@@ -449,11 +430,11 @@
          x="21.755154"
          y="259.27457"
          id="tspan4667">異なる (f,h) → depth(子)= 0 (<tspan
-   style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ccff99;stroke:#002b3d;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+   style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:24px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ccff99;stroke:#002b3d"
    id="tspan15244">Plateau entrance</tspan>)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:24px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);enable-background:accumulate"
        x="46.889046"
        y="288.94446"
        id="text8877-5-2"
@@ -464,7 +445,7 @@
          id="tspan10408">同じ (f,h) → depth(子)= depth(親)+1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999995999999995;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:24px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);enable-background:accumulate"
        x="-3.1752787"
        y="227.36906"
        id="text4100"
@@ -475,7 +456,7 @@
          y="227.36906">親ノードと子ノードが</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830508;color:#000000;fill:#98fc66;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.16999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:32px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;opacity:0.89830508;fill:#98fc66;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.16999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#Arrow1Send);enable-background:accumulate"
        x="349.97928"
        y="187.80977"
        id="text3102"
@@ -571,7 +552,7 @@
        clip-path="url(#clipPath7967-9-9-8)">
       <path
          transform="matrix(1.7201528,0,0,1.7201528,467.4795,302.67451)"
-         d="m 410.98962,87.572243 c 0,163.364307 -132.43293,295.797237 -295.79724,295.797237 -163.364303,0 -295.79724,-132.43293 -295.79724,-295.797237 0,-163.364306 132.432937,-295.797243 295.79724,-295.797243 163.36431,0 295.79724,132.432937 295.79724,295.797243 z"
+         d="M 410.98962,87.572243 A 295.79724,295.79724 0 0 1 115.19238,383.36948 295.79724,295.79724 0 0 1 -180.60486,87.572243 295.79724,295.79724 0 0 1 115.19238,-208.225 295.79724,295.79724 0 0 1 410.98962,87.572243 Z"
          sodipodi:ry="295.79724"
          sodipodi:rx="295.79724"
          sodipodi:cy="87.572243"
