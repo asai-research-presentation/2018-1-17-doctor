@@ -469,11 +469,11 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_row-fluid
  #+end_container-fluid
 
-** A* は 最小コスト経路探索 の主要な手法
+** 最小コスト経路探索 の主要な手法 が A*
 
  [[png:astar]]
 
-** A* は 最小コスト経路探索 の主要な手法 ただしタイブレーキング無視!
+** 最小コスト経路探索 の主要な手法 が A* ただしタイブレーキング無視!
 
  [[png:astar-emph]]
 
@@ -864,9 +864,9 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
   [[png:astar/astar4]]
 
- + 解の最適性: 経路の *コストの和* が最小 → *長さ* はいくらでも長くて良い
+ + 解の最適性: 経路の *コストの和* が最小 → *経路の長さ* はいくら長くても良い
 
- + A*の f によるplateau: 同じコストを持つノード集合 → 特にplateau内では、 いくらでも長くて良い
+ + A*の f によるplateau: 同じコストを持つノード集合 → *特にplateau内では* いくらでも長くて良い
 
  + *plateau内の探索順序がなんであれ最適解を発見*
 
@@ -892,9 +892,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
    GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保存する。
 
-   ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
-
-   充足解探索手法。
+   ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない) する *充足解探索手法*
 
 
 *** A* as 充足解探索
@@ -1005,14 +1003,14 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
     */充足解探索の理論的結果を援用可能!/*
 #+end_center
-** まとめと今後の展望
+** まとめ
 
  + A* を *充足解探索の繰り返し* と再定義
- + 最適プランニングに充足解探索を埋め込み、有用性を確認
+ + 最適プランニングに充足解探索を埋め込み、有用性を確認 (結果は省略)
  + 充足解探索の理論的結果を、最適探索の理論的性質を調べるのに援用
- + 様々な既存の充足解探索手法が存在するため、多くの応用が考えられる
-   + plateau内に制限した *マクロアクション* (cf. Marvin)
-   + plateau内に制限した *モンテカルロ探索* (cf. Arvand)
+ # + 様々な既存の充足解探索手法が存在するため、多くの応用が考えられる
+ #   + plateau内に制限した *マクロアクション* (cf. Marvin)
+ #   + plateau内に制限した *モンテカルロ探索* (cf. Arvand)
 
  #  + Direct analogue for model-based planners (SAT/IP/CSP-based planners)
 
@@ -1024,11 +1022,17 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 * 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017) :4min:
 
-GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保存する。
++ GBFS  (貪欲最良優先探索) ::
+     A* と同じくノードをOPENリストに保存する。
+     ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
 
-ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
+     充足解探索手法。 多くの場合 最適性を保証しない *非許容的* 下界関数 と共に用いられる
 
-充足解探索手法。 --- 多くの場合、 最適性を保証しない *非許容的* 下界関数 と共に用いられる
++ *探索非局在化手法* とは ::
+
+     *非許容的 h* → *時折デタラメな値を返す* 
+
+     → GBFSのように貪欲に信頼せず、 *一定確率で無視して最悪ケースを回避, 探索を効率化*
 
 ** GBFSにおける探索非局在化                                        :noexport:
 
@@ -1081,11 +1085,13 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
    + GBFS-LS (local search), GBFS-MRW
 
  #+begin_larger
+ + が、アドホック手法が多い
+
  #+begin_center
  + *これらをもっと /単純に、アドホックでなく、解析しやすくする/ 手法が必要*
  #+end_center
  #+end_larger
-
+ 
 ** 既存の非局在化手法の背景にある考え : Heuristic Error
 
  \[
@@ -1155,6 +1161,12 @@ $h$ は充足解探索ではデタラメな場合がありうる
  #+end_row-fluid
  #+end_container-fluid
 
+#+begin_larger
+#+begin_alignright
++ 主張: *plateau内外のerrorは この仮説通りに直行している*
+#+end_alignright
+#+end_larger
+
 ** 評価
 
 + IPC11, IPC14, 5min, 4GB
@@ -1203,9 +1215,9 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 *** FIFO (幅優先)
  [[png:model/fifo1]]
-*** FIFO (幅優先)
+*** FIFO (幅優先)                                                  :noexport:
  [[png:model/fifo2]]
-*** FIFO (幅優先)
+*** FIFO (幅優先)                                                  :noexport:
  [[png:model/fifo3]]
 *** LIFO (深さ優先)
  [[png:model/lifo1]]

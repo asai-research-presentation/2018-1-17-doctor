@@ -254,10 +254,10 @@
      fit-margin-bottom="0"
      inkscape:snap-center="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="818"
-     inkscape:window-x="768"
-     inkscape:window-y="25"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -433,31 +433,6 @@
          id="tspan9572"
          x="222.05423"
          y="473.19931">all search starts from depth 0</tspan></text>
-    <g
-       style="display:inline"
-       transform="matrix(0.64831724,0,0,0.64831724,669.1504,381.63075)"
-       id="g12258-0-3-6">
-      <rect
-         ry="10.564651"
-         rx="8.1677914"
-         y="-44.302505"
-         x="-830.909"
-         height="64.983803"
-         width="132.66228"
-         id="rect12256-8-6-4"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.20229483;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text8924-4-9-5"
-         y="5.1959977"
-         x="-813.19708"
-         style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;enable-background:accumulate"
-         xml:space="preserve"><tspan
-           y="5.1959977"
-           x="-813.19708"
-           sodipodi:role="line"
-           id="tspan16300-1-6-1">f = f*</tspan></text>
-    </g>
     <g
        style="display:inline"
        transform="matrix(0.64831724,0,0,0.64831724,816.26711,516.54127)"
@@ -831,6 +806,26 @@
        cx="785.22144"
        cy="230.38475"
        r="17.537941" />
+    <rect
+       ry="6.8492451"
+       rx="5.29532"
+       y="352.90866"
+       x="130.40324"
+       height="42.130119"
+       width="159.45624"
+       id="rect12256-8-6-4"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.42778575;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8924-4-9-5"
+       y="384.99939"
+       x="141.88618"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:31.11922836px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;enable-background:accumulate"
+       xml:space="preserve"><tspan
+         y="384.99939"
+         x="141.88618"
+         sodipodi:role="line"
+         id="tspan16300-1-6-1">f = f*, h=0</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"

@@ -12,7 +12,7 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    width="405"
    height="390.17343"
    sodipodi:docname="without-h-nokey.svg">
@@ -38,16 +38,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="818"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
      id="namedview4"
      showgrid="false"
      inkscape:document-units="in"
      inkscape:zoom="1.1042099"
-     inkscape:cx="254.17748"
+     inkscape:cx="253.27186"
      inkscape:cy="229.33823"
-     inkscape:window-x="768"
-     inkscape:window-y="25"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      inkscape:window-maximized="1"
      inkscape:current-layer="g4178"
      units="in"
@@ -107,7 +107,7 @@
          sodipodi:role="line"
          x="108.21293"
          y="269.53842"
-         id="tspan3052">(ゴールはこの</tspan><tspan
+         id="tspan3052">(最適解はこの</tspan><tspan
          sodipodi:role="line"
          x="108.21293"
          y="307.98288"
@@ -151,22 +151,26 @@
     <rect
        ry="0.35602647"
        rx="0.29761782"
-       y="27.863394"
+       y="2.2337632"
        x="235.62308"
-       height="47.774166"
-       width="280.35983"
+       height="70.985001"
+       width="281.52039"
        id="rect3030-9-9-2-3"
-       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99921262;marker:none;enable-background:accumulate" />
     <text
        sodipodi:linespacing="125%"
        id="text4131"
-       y="65.677963"
+       y="29.796499"
        x="380.2966"
-       style="font-size:35.88148152px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-indent:0;text-align:center;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:middle;baseline-shift:baseline;opacity:0.89830507999999998;color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047255000000004;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold'"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:28.83333397px;line-height:125%;font-family:'M+ 2c';-inkscape-font-specification:'M+ 2c Ultra-Bold';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;opacity:0.89830508;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.28047252;marker:none;enable-background:accumulate"
        xml:space="preserve"><tspan
-         y="65.677963"
+         y="29.796499"
          x="380.2966"
          id="tspan4133"
-         sodipodi:role="line">色:問題セット</tspan></text>
+         sodipodi:role="line">色:問題セット</tspan><tspan
+         y="65.838165"
+         x="380.2966"
+         sodipodi:role="line"
+         id="tspan3353">点:問題インスタンス</tspan></text>
   </g>
 </svg>

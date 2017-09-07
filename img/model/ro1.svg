@@ -179,8 +179,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.9899495"
-     inkscape:cx="308.54527"
-     inkscape:cy="195.32727"
+     inkscape:cx="242.38028"
+     inkscape:cy="235.73337"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -336,12 +336,6 @@
        d="m 515.74866,84.631288 31.64336,1.091145"
        id="path3636-7"
        inkscape:connector-curvature="0" />
-    <path
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.16036725;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2.16036718, 4.32073436;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 194.57773,-158.6598 -0.45198,-19.2984"
-       id="path3636-62"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.16036725;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect4170-2"
@@ -692,16 +686,22 @@
        id="text3440"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         id="tspan3442"
          x="53.291164"
-         y="-152.49246">extremely</tspan><tspan
+         y="-152.49246"
+         id="tspan3450">L2 を展開する</tspan><tspan
          sodipodi:role="line"
-         x="56.323391"
+         x="53.291164"
          y="-124.36746"
-         id="tspan3444">hard to </tspan><tspan
+         id="tspan6426">確率はとても</tspan><tspan
          sodipodi:role="line"
          x="53.291164"
          y="-96.242462"
-         id="tspan3450">expand L2</tspan></text>
+         id="tspan6428">低い</tspan></text>
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:6.76000023;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6.76000023, 6.76000023;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 194.57773,-140.41614 -0.45198,-43.54206"
+       id="path3636-62"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>

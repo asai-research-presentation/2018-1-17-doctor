@@ -254,10 +254,10 @@
      fit-margin-bottom="0"
      inkscape:snap-center="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="818"
-     inkscape:window-x="768"
-     inkscape:window-y="25"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      inkscape:window-maximized="1"
      units="in" />
   <metadata
@@ -417,31 +417,6 @@
        sodipodi:ry="17.537941"
        d="m 802.75938,230.38475 a 17.537941,17.537941 0 0 1 -17.53794,17.53794 17.537941,17.537941 0 0 1 -17.53795,-17.53794 17.537941,17.537941 0 0 1 17.53795,-17.53794 17.537941,17.537941 0 0 1 17.53794,17.53794 z"
        transform="matrix(0.61553334,0,0,0.61553334,-22.897177,287.35775)" />
-    <g
-       style="display:inline"
-       transform="matrix(0.64831724,0,0,0.64831724,669.1504,381.63073)"
-       id="g12258-0-3">
-      <rect
-         ry="10.564651"
-         rx="8.1677914"
-         y="-44.302505"
-         x="-830.909"
-         height="64.983803"
-         width="132.66228"
-         id="rect12256-8-6"
-         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.20229483;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text8924-4-9"
-         y="5.1959977"
-         x="-813.19708"
-         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold"
-         xml:space="preserve"><tspan
-           y="5.1959977"
-           x="-813.19708"
-           sodipodi:role="line"
-           id="tspan16300-1-6">f = f*</tspan></text>
-    </g>
     <path
        sodipodi:type="arc"
        style="opacity:0.89830508;color:#000000;fill:#ff8080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.32000017;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -1342,7 +1317,7 @@
        y="142.44336" />
     <text
        xml:space="preserve"
-       style="font-size:32px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:120.00000477%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ff5555;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Sans L;-inkscape-font-specification:Nimbus Sans L Bold Italic"
+       style="color:#000000;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32px;line-height:120.00000477%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold Italic';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#ff5555;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;marker-end:url(#Arrow1Send);enable-background:accumulate"
        x="-18.320705"
        y="174.57961"
        id="text8991"
@@ -1350,7 +1325,7 @@
          sodipodi:role="line"
          x="-18.320705"
          y="174.57961"
-         id="tspan8995">提案手法: [h, RD, RO]</tspan><tspan
+         id="tspan8995">提案手法: [h, RD, RO] (乱択深さタイブレーク)</tspan><tspan
          sodipodi:role="line"
          x="-18.320705"
          y="217.76933"
@@ -1394,6 +1369,26 @@
        sodipodi:ry="17.537941"
        d="m 802.75938,230.38475 a 17.537941,17.537941 0 0 1 -17.53794,17.53794 17.537941,17.537941 0 0 1 -17.53795,-17.53794 17.537941,17.537941 0 0 1 17.53795,-17.53794 17.537941,17.537941 0 0 1 17.53794,17.53794 z"
        transform="translate(-219.45018,390.04623)" />
+    <rect
+       ry="6.8492451"
+       rx="5.29532"
+       y="352.90869"
+       x="60.457764"
+       height="42.130119"
+       width="159.45624"
+       id="rect12256-8-6-4"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.42778575;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8924-4-9-5"
+       y="384.99942"
+       x="71.940697"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:31.11922836px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#0197fd;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:5.24404192;marker:none;enable-background:accumulate"
+       xml:space="preserve"><tspan
+         y="384.99942"
+         x="71.940697"
+         sodipodi:role="line"
+         id="tspan16300-1-6-1">f = f*, h=0</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
