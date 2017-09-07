@@ -133,7 +133,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.3904709"
-     inkscape:cx="228.67056"
+     inkscape:cx="227.2322"
      inkscape:cy="195.25762"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -155,7 +155,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3658,9 +3658,9 @@
            id="tspan20197"
            y="842.25043"
            x="63.134537"
-           sodipodi:role="line"><tspan
+           sodipodi:role="line">plateau<tspan
    style="fill:#ff0000"
-   id="tspan20249">Inter</tspan>-plateau</tspan></text>
+   id="tspan4056">外</tspan></tspan></text>
     </g>
   </g>
 </svg>

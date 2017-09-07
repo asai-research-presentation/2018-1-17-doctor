@@ -165,7 +165,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.3904709"
-     inkscape:cx="228.67056"
+     inkscape:cx="227.95138"
      inkscape:cy="195.25762"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -187,7 +187,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3671,7 +3671,7 @@
        inkscape:connector-curvature="0" />
     <g
        id="g20265"
-       transform="matrix(1.0212818,-0.1306847,0.1306847,1.0212818,-38.040804,-467.71806)">
+       transform="matrix(1.0212818,-0.1306847,0.1306847,1.0212818,-38.040806,-467.71806)">
       <rect
          y="838.66968"
          x="228.87856"
@@ -3689,9 +3689,9 @@
            id="tspan20245"
            y="851.98114"
            x="281.03372"
-           sodipodi:role="line"><tspan
-   id="tspan20247"
-   style="fill:#ff0000">Intra</tspan>-plateau</tspan></text>
+           sodipodi:role="line">plateau<tspan
+   style="fill:#ff0000"
+   id="tspan4058">内</tspan></tspan></text>
     </g>
   </g>
 </svg>

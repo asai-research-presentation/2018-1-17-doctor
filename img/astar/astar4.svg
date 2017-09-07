@@ -15,7 +15,7 @@
    id="svg3735"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="sat-astar4.svg">
+   sodipodi:docname="astar4.svg">
   <defs
      id="defs3737">
     <marker
@@ -166,9 +166,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-175.4185"
-     inkscape:cy="210.67313"
+     inkscape:zoom="3.9147568"
+     inkscape:cx="134.93301"
+     inkscape:cy="69.352967"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -176,10 +176,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1440"
-     inkscape:window-height="817"
-     inkscape:window-x="768"
-     inkscape:window-y="25"
+     inkscape:window-width="1366"
+     inkscape:window-height="703"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata3740">
@@ -189,7 +189,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -210,13 +210,13 @@
     <text
        xml:space="preserve"
        style="color:#000000;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold Italic';text-indent:0;text-align:end;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:end;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;enable-background:accumulate"
-       x="736.29797"
+       x="794.29797"
        y="622.1134"
        id="text3579-9-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3581-2-2"
-         x="736.29797"
+         x="794.29797"
          y="622.1134">f=3 : solution found</tspan></text>
     <ellipse
        ry="46.302139"

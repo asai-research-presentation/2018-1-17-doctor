@@ -8,6 +8,8 @@
 #+LINK: sjpg file:img/static/%s.jpg
 #+LINK: sgif file:img/static/%s.gif
 
+# Plateau か プラトー, intra/inter 再確認, 飛ばすならBIP(solution), motivation を語れ
+
 #+begin_outline-text-1
 #+begin_center
 #+begin_larger
@@ -403,7 +405,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 最良優先探索アルゴリズム の */探索非局在化手法/* による高速化を研究
 
-+ 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
++ タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
 
 + 最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 
@@ -411,7 +413,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 + 新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
 
-* 非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)    :6min:
+* タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)            :6min:
 
 先に結果: /A*の性能をタイブレーキングを変えるだけで改善!!/
 
@@ -481,18 +483,18 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  *同じ /f_{min}/ なノードが複数あったときどうする?*
  #+end_center
 
- |-------------------------------------+------------------------------------|
- | /1968 Hart, Nilsson and Raphael/ → | */h/-based tiebreaking* [ /h/ ] :  |
- | (*/最初のA*の論文/*)                | 　　 -- h値が小さなものを選択      |
- |                                     |                                    |
- | /1985ごろにはすでに有名/         → | *LIFO tiebreaking* [LIFO] :        |
- |                                     | 　　 -- 最後に生成したノードを選択 |
- |-------------------------------------+------------------------------------|
- | *最近は...*                         |                                    |
- | /2007 Hansen and Zhou/              | [ /h/ ] "が一番うまく行くと        |
- |                                     | 　　　　　　一般的に知られている"  |
- | /2010 Holte/                        | [ /h/ ] "がよく使われる"           |
- |-------------------------------------+------------------------------------|
+ |----------------------------------------+------------------------------------|
+ | /1968 Hart, Nilsson and Raphael/ →    | */h/-based tiebreaking* [ /h/ ] :  |
+ | (*/最初のA*の論文/*)                   | 　　 -- h値が小さなものを選択      |
+ |                                        |                                    |
+ | /教科書(Pearl, 1985)に掲載/         → | *LIFO tiebreaking* [LIFO] :        |
+ |                                        | 　　 -- 最後に生成したノードを選択 |
+ |----------------------------------------+------------------------------------|
+ | *最近は...*                            |                                    |
+ | /2007 Hansen and Zhou/                 | [ /h/ ] "が一番うまく行くと        |
+ |                                        | 　　　　　　一般的に知られている"  |
+ | /2010 Holte/                           | [ /h/ ] "がよく使われる"           |
+ |----------------------------------------+------------------------------------|
 
  #+begin_alignright
  #+begin_larger
@@ -517,10 +519,10 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
    #+end_smaller
    #+end_alignright
 
- |----------------------------------------------------------+-----------------------------------|
- | 古典プランニングState-of-the-Art Fast Downward           | [ /h/, *FIFO* (*論文に明記なし*)] |
- | 15/24パズルのState-of-the-Art ソルバ /2012 Burns et.al./ | [ /h/, *LIFO* (*論文に明記なし*)] |
- |----------------------------------------------------------+-----------------------------------|
+ |------------------------------------------------------------------------+-----------------------------------|
+ | 古典プランニングState-of-the-Art Fast Downward /(Richter et.al, 2010)/ | [ /h/, *FIFO* (*論文に明記なし*)] |
+ | 15/24パズルのState-of-the-Art ソルバ /(2012 Burns et.al.)/             | [ /h/, *LIFO* (*論文に明記なし*)] |
+ |------------------------------------------------------------------------+-----------------------------------|
 
  #+begin_alignright
  #+begin_larger
@@ -531,6 +533,8 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_alignright
 
 ** 実際は、 タイブレーク法は /超重要/
+
+ 標準ベンチマーク問題集では、
 
  #+begin_larger
  #+begin_center
@@ -544,8 +548,6 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  [[png:without-h-nokey]]
  #+end_span6
  #+begin_span6
-
- ←標準ベンチマーク問題集では、
 
  #+begin_larger
  #+begin_center
@@ -787,7 +789,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  # 
  # [[png:final-plateau7]]
 
-** Woodworking問題での深さの分布
+** Woodworking問題での深さの分布                                   :noexport:
 
 
 
@@ -797,7 +799,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Woodworking問題での深さの分布
+** Woodworking問題での深さの分布                                   :noexport:
 
 
 
@@ -807,7 +809,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Woodworking問題での深さの分布
+** Woodworking問題での深さの分布                                   :noexport:
 
 
 
@@ -817,7 +819,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** Woodworking問題での深さの分布
+** Woodworking問題での深さの分布                                   :noexport:
 
 
 
@@ -827,7 +829,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  #+end_center
 
-** まとめ (論文の貢献内容)
+** まとめ (章の貢献内容)
 
  + *そもそものタイブレーキングのきちんとした定量的評価*
    + 論文にはさらに詳細な実験結果あり
@@ -862,20 +864,17 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  + 解の最適性: 経路の *コストの和* が最小 → *長さ* はいくらでも長くて良い
 
- + A*の f によるプラトー: 同じコストを持つノード集合 → 特にプラトー内では、 いくらでも長くて良い
+ + A*の f によるplateau: 同じコストを持つノード集合 → 特にplateau内では、 いくらでも長くて良い
 
- + *プラトー内の探索順序がなんであれ最適解を発見*
+ + *plateau内の探索順序がなんであれ最適解を発見*
 
  #+begin_alignright
  #+begin_larger
- + 実は A* は *プラトー内では(経路の長さを気にしない)充足解探索をしている* (充足解探索: 最短でなくて良い経路探索)
+ + 実は A* は *plateau内では(経路の長さを気にしない)充足解探索をしている* (充足解探索: 最短でなくて良い経路探索)
  #+end_larger
  #+end_alignright
 
 ** A* を *充足解探索の繰り返し* と再定義
-
- + A* $[ f, h, \text{fifo} ]$  : *GBFS [h, fifo] を それぞれの plateau(f) で実行*
- + A* $[ f, \text{fifo} ]$  : *知識なし幅優先探索 [fifo] を それぞれの plateau(f) で実行* , 故に遅い
 
  #+begin_src bash
  while true
@@ -885,6 +884,16 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
      else
         Increase f
  #+end_src
+
+ + A* $[ f, \text{fifo} ]$  : *知識なし幅優先探索 [fifo] を それぞれの plateau(f) で実行* , 故に遅い
+ + A* $[ f, h, \text{fifo} ]$  : *GBFS [h, fifo] を それぞれの plateau(f) で実行*
+
+   GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保存する。
+
+   ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
+
+   充足解探索手法。
+
 
 *** A* as 充足解探索
 
@@ -965,45 +974,49 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  + 既存のA*の完全性はゼロコスト問題では成り立たない
  + *理論的結果*: ゼロコスト問題でのA*の完全性はタイブレーキングに依存する
 
- (P1) f < f^* なる plateau(f) のサイズに上界がない時, A^∗ は終了しない
+ (P1) $f < f^*$ なる plateau(f) のサイズに上界がない時, A∗ は終了しない
 
- (P2) \forall f < f^∗ でplateau(f) が有限である際
+ (P2) $\forall f < f^∗$ でplateau(f) が有限である際
 
- + 完全性は plateau(f^*) でのタイブレークに依存
+ + 完全性は plateau(f*) でのタイブレークに依存
 
 *** 無限グラフ上での A* の完全性
 
-  (P2) \forall f < f^∗ でplateau(f) が有限である際
+  (P2) $\forall f < f^∗$ でplateau(f) が有限である際
 
-  完全性は plateau(f^*) でのタイブレークに依存
+  完全性は plateau(f*) でのタイブレークに依存
 
-  正しくは, *タイブレークのために用いられる充足解探索アルゴリズムの無限グラフでの完全性に依存*
+  正しくは, *タイブレークのために用いられる充足解探索アルゴリズムの完全性に依存*
   
     |                      | 条件                                                          |
     |----------------------+---------------------------------------------------------------|
     | FIFO [f, fifo]       | 最短経路解の深さ以下で分岐度が有限                            |
     |                      | → なぜなら *幅優先探索[fifo]がそれを必要とするため*          |
-    | LIFO [f, lifo]       | plateau(f^*) が有限                                           |
+    | LIFO [f, lifo]       | plateau(f*) が有限                                            |
     |                      | → なぜなら *深さ優先探索[fifo]がそれを必要とするため*        |
     | Random Order [f, ro] | 常に確率的完全                                                |
     |                      | → なぜなら *[ro] が無限グラフで確率的完全[Valenzano AAAI16]* |
 
-  + *A*が充足解探索の繰り返しである と再定義することで、 充足解探索の理論的結果を援用可能!*
 
+#+begin_center
+  + *A*が充足解探索の繰り返しである と再定義することで、*
+
+    */充足解探索の理論的結果を援用可能!/*
+#+end_center
 ** まとめと今後の展望
 
  + A* を *充足解探索の繰り返し* と再定義
  + 最適プランニングに充足解探索を埋め込み、有用性を確認
  + 充足解探索の理論的結果を、最適探索の理論的性質を調べるのに援用
  + 様々な既存の充足解探索手法が存在するため、多くの応用が考えられる
-   + プラトー内に制限した *マクロアクション* (cf. Marvin)
-   + プラトー内に制限した *モンテカルロ探索* (cf. Arvand)
+   + plateau内に制限した *マクロアクション* (cf. Marvin)
+   + plateau内に制限した *モンテカルロ探索* (cf. Arvand)
 
  #  + Direct analogue for model-based planners (SAT/IP/CSP-based planners)
 
-* 次のステップ
+最適解探索を充足解探索の繰り返しに変換できた
 
-最適解探索を充足解探索の繰り返しに変換できたため、 *もう最適解探索について悩む必要はない*
+ → *充足解探索性能を上げれば最適解探索の性能も上がる*
 
 以降 *充足解探索のみ考えることとする*
 
@@ -1015,7 +1028,7 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
 
 充足解探索手法。 --- 多くの場合、 最適性を保証しない *非許容的* 下界関数 と共に用いられる
 
-** GBFSにおける探索非局在化
+** GBFSにおける探索非局在化                                        :noexport:
 
  [[png:diversify/1]]
 
@@ -1039,7 +1052,7 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
  探索非局在化手法 : いかにして (ときに信頼できない) 下界関数 $h$ を *無視* するか?
  #+end_alignright
 
-** Preliminaries
+** Preliminaries                                                   :noexport:
 
  + 探索アルゴリズムの ソート戦略 [S_1, S_2 ..., *] ::
       OPEN list をソートする際の key (辞書順ソート)
@@ -1058,10 +1071,10 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
 
 探索非局在化手法は *たくさん* ある
 
- + Diverse BFS (Imai, AAAI11)
- + Monte-Carlo Random Walk (MRW) --- 一定の確率でランダムウォーク
+ + Diverse BFS (Imai, AAAI11) --- 複雑な指標を使って探索を非局在化
+ + Monte-Carlo Random Walk (MRW) --- 一定確率でランダムウォーク+様々な追加
  + Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- 時々ノードを乱択
- + Type-based GBFS --- *alt* ([h,*], <g,h>) --- 時々 h をランダムに選ぶ
+ + Type-based GBFS --- *alt* ([h,*], <g,h>) --- g, h の組を乱択、その中からさらに乱択
  + GBFS-LE (local expansion) --- h が向上しなくなった場合にランダムウォークを開始
    + GBFS-LS (local search), GBFS-MRW
 
@@ -1081,6 +1094,8 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
 
  $h>h^*$ : Overestimation $h<h^*$ : Underestimation 
 
+$h$ は充足解探索ではデタラメな場合がありうる
+
  #+begin_center
  #+begin_larger
  + この理解で十分か?
@@ -1099,20 +1114,20 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
 
  [[png:plateau/3]]
 
-*** プラトー内 error
+*** plateau外 error
 
  [[png:plateau/4]]
 
-*** プラトー間 error
+*** plateau内 error
 
  [[png:plateau/5]]
 
-*** プラトー外 error & 非局在化
+*** plateau外 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
  #+begin_span6
- [[png:plateau/4]]
+ [[png:plateau/4s]]
  #+end_span6
  #+begin_span6
  + *最小の $h^*$ を持つノードが 高い $h$ を持ちうる*
@@ -1123,17 +1138,17 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
  #+end_row-fluid
  #+end_container-fluid
 
-*** プラトー内 error & 非局在化
+*** plateau内 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
  #+begin_span6
- [[png:plateau/6]]
+ [[png:plateau/6s]]
  #+end_span6
  #+begin_span6
- + *最小の $h$ を持つノードの中にも 大きな $h^*$ を持つノードが混じっている*
+ + *どの $h$ の中にも 大きな $h^*$ を持つノードが混じっている*
  + *決定的なタイブレーク (FIFO/LIFO) はたまたま 大きな $h^*$ ばかり選択する可能性がある*
- + *プラトー内で探索を非局在化する* 事で *小さな $h^*$ を引く可能性を高める*
+ + *plateau内で探索を非局在化する* 事で *小さな $h^*$ を引く可能性を高める*
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
@@ -1142,39 +1157,43 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
 
 + IPC11, IPC14, 5min, 4GB
 
-+ *目的: 同じ非局在化手法を プラトー内とプラトー外で用いることで、プラトー内/外 error が独立であることを示す*
++ *目的: 同じ非局在化手法を plateau内とplateau外で用いることで、plateau内/外 error が独立であることを示す*
 
-+ *Type-GBFS* (プラトー外) と *RandomDepth Tiebreaking* (プラトー内)
++ *Type-GBFS* (plateau外) と *RandomDepth Tiebreaking* (plateau内) (かなり似た手法, ただしplateau内/外)
 
   + Type GBFS --- *Randomize <g,h>*
 
-  + RandomDepth --- *プラトー内で Randomize <d>*
+  + RandomDepth --- *plateau内で Randomize <d>*
 
     + d ≡ 同じf,hを持つ最も近い先祖までのステップ数
 
-  + *g, h, d は全て深さに関連した指標*
+  # + *g, h, d は全て深さに関連した指標*
 
-結果は省略
++ 結果は発表では省略
 
-* 新たな非局在化手法の開発 (Asai, Fukunaga, ICAPS 2017)                :4min:
+# *非局在化手法は知識なし探索手法* なので、
 
-*非局在化手法は知識なし探索手法* なので、
+# もう 最良優先探索 (A*, GBFS) のことすら考えなくて良い
 
-もう 最良優先探索 (A*, GBFS) のことすら考えなくて良い
+GBFS改善のためにはもうアドホックな変更の必要はない
 
 *新たな非局在化手法を考えれば十分に性能向上が狙える!*
 
+* 新たな非局在化手法の開発                :4min:
+
 #+begin_quote
-Type GBFS: *Randomize <g,h>*
+Type GBFS: *Randomize <g,h>* g: コスト, h: ゴールまでのコスト見積もり
 
-RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステップ数*
+RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステップ数
 
-*g, h, d は全て深さに関連した指標*
+どちらも *探索深さに関連した指標* を非局在化
 #+end_quote
 
-#+begin_xlarge
-探索の幅方向に非局在化する手法を開発
-#+end_xlarge
+#+begin_larger
+#+begin_center
+*探索の幅方向に非局在化する手法を開発*
+#+end_center
+#+end_larger
 
 ** 既存の非局在化手法では失敗する例
 
@@ -1214,12 +1233,13 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  + 液体が多孔質の物体に染みこむ際の動作を模倣
  + e.g., 水が石油を含む岩石に浸透
  + 実応用: 石油資源開発
+ + これを用いて探索幅の問題を解決
  #+end_larger
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** 物理学者は別の用語を使う
+*** 物理学者は別の用語を使う                                       :noexport:
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1236,7 +1256,7 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_row-fluid
  #+end_container-fluid
 
-*** BIP の生成 (知識なし)
+*** BIP の生成 (知識なし)                                          :noexport:
 
  Prim's method for Minimum Spanning Tree (Prim '57) と同一であると示されている (Barabasi 96)
 
@@ -1265,7 +1285,7 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_center
  #+end_larger
 
-*** 固定されたランダム値のもたらす */遮蔽効果/*
+*** 固定されたランダム値のもたらす */遮蔽効果/*                    :noexport:
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1284,24 +1304,24 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_row-fluid
  #+end_container-fluid
 
-*** BIP は最悪ケースを免れる
+*** BIP は最悪ケースを免れる                                       :noexport:
 
  [[png:model/bip1]]
 
-*** BIP は最悪ケースを免れる
+*** BIP は最悪ケースを免れる                                       :noexport:
 
  [[png:model/bip1-1]]
 
-*** BIP は最悪ケースを免れる
+*** BIP は最悪ケースを免れる                                       :noexport:
 
  [[png:model/bip2]]
 
-*** BIP は最悪ケースを免れる
+*** BIP は最悪ケースを免れる                                       :noexport:
 
  [[png:model/bip2-1]]
 
 
-*** 知識なし探索での ノード展開の特性: 探索幅を減らす
+*** 知識なし探索での ノード展開の特性: 探索幅を減らす              :noexport:
 
 深さ毎のノード展開数を計測
 
@@ -1323,10 +1343,31 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 → *非局在化手法は知識なし(乱択化)探索手法* なので、もう *最良優先探索 (A^＊ , GBFS) のことすら考えなくて良い*
 
-新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
+新たな非局在化手法
 
-→ *新たな知識なし探索手法で性能向上を達成した*
+→ *新たな知識なし探索手法で性能向上* 予定
+
+#+begin_center
+主題と目標: */古典プランニングで有効な 非局在化手法の開発・分析/*
+#+end_center
+
 * 付録 (実験結果)
+
+** MTCSの分析をなぜしない?
+
+MTCS はプランニングではうまく行っていない。その理由を調べるのは議論の範囲外
+
+THTS (Schulte and Keller, 2014) --- プランニング向けのMCTS. 性能向上はわずか
+
+例: 解けた問題数
+
+ GBFS328→THTS344 (4%向上), 私の提案手法は GBFS192→237.7 (20%向上) (ベースラインは違う)
+
+ランダムウォーク自体は成功例がある。が、かなりad-hocな手法
+
+Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+etc. コンペで活躍, そこそこ効果的。
+
+
 
 ** A*
 
@@ -1505,7 +1546,7 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
   $[f=g+h, \hat{h}^{FF}]$ --- $h$ と \hat{h}^{FF} の2つの下界関数を評価
 
-  + これが役に立つのはプラトーが巨大な場合のみ (特にゼロコスト問題)
+  + これが役に立つのはplateauが巨大な場合のみ (特にゼロコスト問題)
 
   + ゼロコストでない場合には通常の方式にきりかえれば無駄な評価を避けられる
 
@@ -1546,7 +1587,7 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 ** GBFS 1
 
-*** プラトー内/外 error は 独立
+*** plateau内/外 error は 独立
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1554,15 +1595,15 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  [[png:icaps17-results]]
  #+end_span6
  #+begin_span6
- + hd (RandomDepth) :: プラトー内で Randomize <d>
+ + hd (RandomDepth) :: plateau内で Randomize <d>
  + hD (Type GBFS) :: Randomize <g,h>
  + hdD :: */RandomDepth + Type GBFS/*
 
  結果:
 
- + ドメインごとに プラトー内 と プラトー外 非局在化 の影響の有無が 綺麗に別れる
+ + ドメインごとに plateau内 と plateau外 非局在化 の影響の有無が 綺麗に別れる
  + *同時に使うことで /効果が綺麗に重なる/*
- + _/プラトー内外は独立だから、非局在化手法は、内外に同時に使うべし!/_
+ + _/plateau内外は独立だから、非局在化手法は、内外に同時に使うべし!/_
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
@@ -1579,11 +1620,11 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
   [[png:icaps17-results2]]
   #+end_span6
   #+begin_span6
-  + *hb* : *プラトー内BIP* ([h, BIP, *])
-  + *hB* : *プラトー外BIP* (*alt* ([BIP], [h,*]))
+  + *hb* : *plateau内BIP* ([h, BIP, *])
+  + *hB* : *plateau外BIP* (*alt* ([BIP], [h,*]))
   + *hbB* : *同時使用* (*alt* ([BIP], [h,BIP,*]) )
   + *hdD* : *RandomDepth + Type GBFS*
-  + _/プラトー内外errorの直交性/_ を再び観測
+  + _/plateau内外errorの直交性/_ を再び観測
   + vs hdD (深さベースの非局在化): 同じぐらい効果的
     + 性能向上は *異なるドメイン* で発生
     + hdD は *深さ*, hbB は *幅* 非局在化するから
@@ -1599,7 +1640,7 @@ RandomDepth <d> : *d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  [[png:icaps17-results3]]
  #+end_span7
  #+begin_span5
- + db^2 DB : プラトー外に D,B を切り替え ; プラトー内に d,b を切り替え
+ + db^2 DB : plateau外に D,B を切り替え ; plateau内に d,b を切り替え
  + *深さ (d,D)* と *幅 (b,B)* で別の効果があるから
  + 効果がうまく重なりあって state of the art (LAMA) の性能を向上
  #+end_span5
