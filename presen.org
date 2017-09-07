@@ -411,7 +411,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 + 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
 
-+ 新たな非局在化手法 (Asai, Fukunaga, ICAPS 2017)
++ 新たな非局在化手法
 
 * タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)            :6min:
 
@@ -445,7 +445,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_larger
  #+end_alignright
 
-** 今回の話題 : グラフの最短経路探索
+** 今回の話題 : グラフの最小コスト経路探索
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -461,7 +461,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  *ゴールノード* への
 
- *最短経路探索*
+ *最小コスト経路探索*
  #+end_center
  #+end_larger
 
@@ -469,11 +469,11 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_row-fluid
  #+end_container-fluid
 
-** A* は 最短経路探索 の主要な手法
+** A* は 最小コスト経路探索 の主要な手法
 
  [[png:astar]]
 
-** A* は 最短経路探索 の主要な手法 ただしタイブレーキング無視!
+** A* は 最小コスト経路探索 の主要な手法 ただしタイブレーキング無視!
 
  [[png:astar-emph]]
 
@@ -519,10 +519,12 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
    #+end_smaller
    #+end_alignright
 
- |------------------------------------------------------------------------+-----------------------------------|
- | 古典プランニングState-of-the-Art Fast Downward /(Richter et.al, 2010)/ | [ /h/, *FIFO* (*論文に明記なし*)] |
- | 15/24パズルのState-of-the-Art ソルバ /(2012 Burns et.al.)/             | [ /h/, *LIFO* (*論文に明記なし*)] |
- |------------------------------------------------------------------------+-----------------------------------|
+ |------------------------------------------------+-----------------------------------|
+ | 古典プランニングState-of-the-Art Fast Downward | [ /h/, *FIFO* (*論文に明記なし*)] |
+ | /(Richter et.al, 2010)/                        |                                   |
+ | 15/24パズルのState-of-the-Art ソルバ           | [ /h/, *LIFO* (*論文に明記なし*)] |
+ | /(2012 Burns et.al.)/                          |                                   |
+ |------------------------------------------------+-----------------------------------|
 
  #+begin_alignright
  #+begin_larger
@@ -1090,7 +1092,7 @@ GBFS  (貪欲最良優先探索): A* と同じくノードをOPENリストに保
     \text{Error} = |h - h^*|
  \]
 
- $h$ : 下界値, $h^*$ : パーフェクトヒューリスティクス (解までの真の最短経路コスト)
+ $h$ : 下界値, $h^*$ : パーフェクトヒューリスティクス (解までの真の最小経路コスト)
 
  $h>h^*$ : Overestimation $h<h^*$ : Underestimation 
 
