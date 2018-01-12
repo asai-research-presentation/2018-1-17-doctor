@@ -405,13 +405,13 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 最良優先探索アルゴリズム の */探索非局在化手法/* による高速化を研究
 
-+ タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
++ タイブレークによる A* の高速化 (AAAI2016) (JSAI 学生奨励賞)
 
-+ 最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
++ 最適解探索のタイブレークの一般化 (JAIR 2017)
 
-+ 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
++ 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (ICAPS 2017)
 
-+ 新たな非局在化手法
++ 新たな非局在化手法 (ICAPS 2017)
 
 * タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016)            :6min:
 
@@ -791,9 +791,33 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  # 
  # [[png:final-plateau7]]
 
+** Iterative Depth: RandomDepth の決定的バージョン
+
+# max_depth = 0
+# while true:
+#     for depth in range(max_depth, 0, -1):
+#         nodes = expand(depth)
+#         max_depth = max(max_depth, 1+depth)
+#         for node in nodes:
+#             insert(node, 1+depth)
+
+#+begin_src python
+class DepthBuckets:
+    def __init__(self):
+        self.buckets = 0
+        self.depth = 0
+    def insert(self, elem):
+        ensure_length(self.buckets, elem.parent.depth+1)
+        self.buckets[elem.parent.depth+1].append(elem)
+    def expand(self):
+        node = self.buckets[self.depth].pop()
+        self.depth = self.depth - 1
+        if (self.depth == 0):
+            self.depth = len(self.buckets)
+        return node
+#+end_src
+
 ** Woodworking問題での深さの分布                                   :noexport:
-
-
 
  #+begin_center
   
@@ -803,8 +827,6 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 ** Woodworking問題での深さの分布                                   :noexport:
 
-
-
  #+begin_center
   
  [[png:depth-distribution1]]
@@ -813,8 +835,6 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 ** Woodworking問題での深さの分布                                   :noexport:
 
-
-
  #+begin_center
   
  [[png:depth-distribution2]]
@@ -822,8 +842,6 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_center
 
 ** Woodworking問題での深さの分布                                   :noexport:
-
-
 
  #+begin_center
   
@@ -844,7 +862,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 #+begin_larger
 #+begin_center
-なぜ RandomDepth は成功したのか?
+なぜ RandomDepth/IterativeDepth は成功したのか?
 #+end_center
 #+end_larger
 
@@ -875,7 +893,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  + 実は A* は *plateau内では(経路の長さを気にしない)充足解探索をしている* (充足解探索: 最短でなくて良い経路探索)
  #+end_larger
  #+end_alignright
-
+ 
 ** A* を *充足解探索の繰り返し* と再定義
 
  #+begin_src bash
@@ -967,18 +985,19 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_row-fluid
  #+end_container-fluid
 
-** 無限グラフ上での A* の完全性
+** 知見の応用: 無限グラフ上での A* の完全性
+
+既存のA*の完全性はゼロコスト問題では成り立たない
 
  Dechter and Pearl (1985): [[spng:pearl-cost]]
 
- + 既存のA*の完全性はゼロコスト問題では成り立たない
- + *理論的結果*: ゼロコスト問題でのA*の完全性はタイブレーキングに依存する
++ *理論的結果*: ゼロコスト問題でのA*の完全性はタイブレーキングに依存する
 
- (P1) $f < f^*$ なる plateau(f) のサイズに上界がない時, A∗ は終了しない
+  (P1) $f < f^*$ なる plateau(f) のサイズに上界がない時, A∗ は終了しない
 
- (P2) $\forall f < f^∗$ でplateau(f) が有限である際
+  (P2) $\forall f < f^∗$ でplateau(f) が有限である際
 
- + 完全性は plateau(f*) でのタイブレークに依存
+  + 完全性は plateau(f*) でのタイブレークに依存
 
 *** 無限グラフ上での A* の完全性
 
@@ -1001,7 +1020,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 #+begin_center
   + *A*が充足解探索の繰り返しである と再定義することで、*
 
-    */充足解探索の理論的結果を援用可能!/*
+    */充足解探索の理論的結果を最適解探索に援用可能!/*
 #+end_center
 ** まとめ
 
@@ -1032,7 +1051,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
      *非許容的 h* → *時折デタラメな値を返す* 
 
-     → GBFSのように貪欲に信頼せず、 *一定確率で無視して最悪ケースを回避, 探索を効率化*
+     GBFSはhを貪欲に信頼 → *一定確率で無視して最悪ケースを回避, 探索を効率化*
 
 ** GBFSにおける探索非局在化                                        :noexport:
 
@@ -1215,9 +1234,9 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 *** FIFO (幅優先)
  [[png:model/fifo1]]
-*** FIFO (幅優先)                                                  :noexport:
+*** FIFO (幅優先)
  [[png:model/fifo2]]
-*** FIFO (幅優先)                                                  :noexport:
+*** FIFO (幅優先)
  [[png:model/fifo3]]
 *** LIFO (深さ優先)
  [[png:model/lifo1]]
@@ -1253,7 +1272,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_row-fluid
  #+end_container-fluid
 
-*** 物理学者は別の用語を使う                                       :noexport:
+*** 物理学者は別の用語を使う
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1270,7 +1289,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_row-fluid
  #+end_container-fluid
 
-*** BIP の生成 (知識なし)                                          :noexport:
+*** BIP の生成 (知識なし)
 
  Prim's method for Minimum Spanning Tree (Prim '57) と同一であると示されている (Barabasi 96)
 
@@ -1299,7 +1318,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_center
  #+end_larger
 
-*** 固定されたランダム値のもたらす */遮蔽効果/*                    :noexport:
+*** 固定されたランダム値のもたらす */遮蔽効果/*
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1318,24 +1337,24 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+end_row-fluid
  #+end_container-fluid
 
-*** BIP は最悪ケースを免れる                                       :noexport:
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip1]]
 
-*** BIP は最悪ケースを免れる                                       :noexport:
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip1-1]]
 
-*** BIP は最悪ケースを免れる                                       :noexport:
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip2]]
 
-*** BIP は最悪ケースを免れる                                       :noexport:
+*** BIP は最悪ケースを免れる
 
  [[png:model/bip2-1]]
 
 
-*** 知識なし探索での ノード展開の特性: 探索幅を減らす              :noexport:
+*** 知識なし探索での ノード展開の特性: 探索幅を減らす
 
 深さ毎のノード展開数を計測
 
@@ -1351,15 +1370,15 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
 
-→ 最適解探索を充足解探索の繰り返しに変換できたため、 *もう最適解探索について悩む必要はない*
+→ 最適解探索を充足解探索の繰り返しに変換: *最適解探索を分析・改善するシンプルな枠組み*
 
 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
 
-→ *非局在化手法は知識なし(乱択化)探索手法* なので、もう *最良優先探索 (A^＊ , GBFS) のことすら考えなくて良い*
+→ *非局在化手法は知識なし(乱択化)探索手法*  *最良優先探索(A^＊,GBFS)を分析・改善するシンプルな枠組み*
 
-新たな非局在化手法
+フラクタル・全域木を用いた新たな非局在化手法
 
-→ *新たな知識なし探索手法で性能向上* 予定
+→ *新たな知識なし探索手法で性能向上* → *新たな枠組みの有効性を実証*
 
 #+begin_center
 主題と目標: */古典プランニングで有効な 非局在化手法の開発・分析/*

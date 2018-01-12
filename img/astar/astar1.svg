@@ -14,7 +14,7 @@
    viewBox="0 0 269.86601 138.70593"
    id="svg3735"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.1 r15371"
    sodipodi:docname="astar1.svg">
   <defs
      id="defs3737">
@@ -40,9 +40,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="369.28571"
-     inkscape:cy="365.42264"
+     inkscape:zoom="3.2377178"
+     inkscape:cx="143.92854"
+     inkscape:cy="74.130928"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -51,7 +51,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1366"
-     inkscape:window-height="703"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="20"
      inkscape:window-maximized="1" />
@@ -96,30 +96,31 @@
        id="path2985-54-8" />
     <text
        xml:space="preserve"
-       style="color:#000000;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold Italic';text-indent:0;text-align:end;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:end;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;enable-background:accumulate"
+       style="color:#000000;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold Italic';text-indent:0;text-align:end;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:end;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.16999996;marker:none;enable-background:accumulate"
        x="165.8795"
        y="776.86292"
-       id="text3579"
-       sodipodi:linespacing="125%"><tspan
+       id="text3579"><tspan
          sodipodi:role="line"
          id="tspan3581"
          x="172.53575"
-         y="776.86292">f=0 : </tspan></text>
+         y="776.86292"
+         style="font-size:24px;line-height:1.25">f=0 : </tspan></text>
     <text
        xml:space="preserve"
-       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.94874358;marker:none;marker-end:url(#Arrow1Mend);enable-background:accumulate"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.94874358;marker:none;marker-end:url(#Arrow1Mend);enable-background:accumulate"
        x="33.716518"
        y="809.85718"
-       id="text5529-5-4"
-       sodipodi:linespacing="125%"><tspan
+       id="text5529-5-4"><tspan
          sodipodi:role="line"
          id="tspan5531-3-7"
          x="33.716518"
-         y="809.85718">Initial</tspan><tspan
+         y="809.85718"
+         style="font-size:12px;line-height:1.25">Initial</tspan><tspan
          sodipodi:role="line"
          x="33.716518"
          y="824.85718"
-         id="tspan5550-6-2">Node</tspan></text>
+         id="tspan5550-6-2"
+         style="font-size:12px;line-height:1.25">Node</tspan></text>
     <circle
        r="6.4387131"
        cy="829.94177"
@@ -128,19 +129,20 @@
        id="path5769-6-3" />
     <text
        xml:space="preserve"
-       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.94874358;marker:none;marker-end:url(#Arrow1Mend);enable-background:accumulate"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L Bold';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.94874358;marker:none;marker-end:url(#Arrow1Mend);enable-background:accumulate"
        x="207.77211"
        y="805.53925"
-       id="text5529-5-4-3"
-       sodipodi:linespacing="125%"><tspan
+       id="text5529-5-4-3"><tspan
          sodipodi:role="line"
          id="tspan5531-3-7-7"
          x="207.77211"
-         y="805.53925">Goal</tspan><tspan
+         y="805.53925"
+         style="font-size:12px;line-height:1.25">Goal</tspan><tspan
          sodipodi:role="line"
          x="207.77211"
          y="820.53925"
-         id="tspan5550-6-2-8">Node</tspan></text>
+         id="tspan5550-6-2-8"
+         style="font-size:12px;line-height:1.25">Node</tspan></text>
     <path
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.99000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-55)"
        d="m 71.767888,838.63243 7.849613,-3.64446 2.803433,11.77442 13.456479,-9.53167"
