@@ -849,7 +849,7 @@ Parametric Complexity Theory では, プランニング問題が
 #+begin_src python
 class DepthBuckets:
     def __init__(self):
-        self.buckets = 0
+        self.buckets = []
         self.depth = 0
     def insert(self, elem):
         ensure_length(self.buckets, elem.parent.depth+1)
