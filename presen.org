@@ -23,9 +23,14 @@ Masataro Asai, The University of Tokyo
 
 #+begin_note
 #+begin_alignright
-Made by guicho2.71828 (Masataro Asai)
+
 #+end_alignright
 #+end_note
+
+#+begin_resume
+こんにちは、浅井政太郎と申します、本日は博士過程の研究結果として論文を提出した、
+最良優先探索のための探索日局在化手法について発表します。
+#+end_resume
 #+end_outline-text-1
 
 * 背景 -- AIプランニング                                      :3min:noexport:
@@ -852,8 +857,8 @@ class DepthBuckets:
     def expand(self):
         node = self.buckets[self.depth].pop()
         self.depth = self.depth - 1
-        if (self.depth == 0):
-            self.depth = len(self.buckets)
+        if (self.depth < 0): # 深さ0に到達したら
+            self.depth = len(self.buckets) # 最大深さにリセット
         return node
 #+end_src
 
@@ -1257,7 +1262,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  [[png:model/fifo1]]
 *** FIFO (幅優先)
  [[png:model/fifo2]]
-*** FIFO (幅優先)
+*** FIFO (幅優先)                                                  :noexport:
  [[png:model/fifo3]]
 *** LIFO (深さ優先)
  [[png:model/lifo1]]
@@ -1284,16 +1289,22 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  #+begin_span6
  #+begin_larger
  + よく知られた *ランダムフラクタル*
- + 液体が多孔質の物体に染みこむ際の動作を模倣
- + e.g., 水が石油を含む岩石に浸透
- + 実応用: 石油資源開発
+ + 液体が多孔質の物体に染みこむ際の動作のモデル
+   
+   e.g., 水が石油を含む岩石に浸透
+
+   bond = 辺 のこと
  + これを用いて探索幅の問題を解決
  #+end_larger
  #+end_span6
  #+end_row-fluid
  #+end_container-fluid
 
-*** 物理学者は別の用語を使う
+#+begin_note
+実応用: 石油資源開発
+#+end_note
+
+*** 物理学者は別の用語を使う                                       :noexport:
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1312,13 +1323,16 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 *** BIP の生成 (知識なし)
 
- Prim's method for Minimum Spanning Tree (Prim '57) と同一 (Barabasi 96)
+ 重みがランダムなグラフ上の最小全域木(Prim法, Prim '57) と同一 (Barabasi 96)
+
+ 最小全域木: グラフの全てのノードを含む木のうち辺の重みが最小のもの
 
  #+begin_src sh
  push(init, OPEN, 0)
 
- while (s = pop(OPEN)); do
-    mark(s)                           # mark as visited
+ while (s = pop_min(OPEN)); do
+    if s is visited:
+      continue
     for (edge,t) in expand(s); do     # an edge & successor t (unmarked ones only)
 
        # Each edge has a value
