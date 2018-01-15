@@ -1425,27 +1425,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 
 * 付録 (実験結果)
 
-** MTCSの分析をなぜしない?
-
-MTCS はプランニングではうまく行っていない。その理由を調べるのは議論の範囲外
-
-THTS (Schulte and Keller, 2014) --- プランニング向けのMCTS. 性能向上はわずか
-
-例: 解けた問題数
-
- GBFS328→THTS-WA* 344 (4%向上), 私の提案手法は GBFS192→237.7 (20%向上) (ベースラインは違う)
-
- ↑しかもこのGBFSは THTS上でのGBFSのエミュレーション
-
- (著者はTHTS+A*,THTS+UCTのような様々なバージョンを提案, しかも THTS+UCT は THTS+WA* に負けてる)
-
-ランダムウォーク自体は成功例がある。が、かなりad-hocな手法
-
-Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+etc. コンペで活躍, そこそこ効果的。
-
-
-
-** A*
+** A* RandomDepth タイブレーク 評価
 
 *** 評価 (用いた問題集)
 
@@ -1567,12 +1547,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
   *［h, RD, RO］ は [h,FIFO] と [h,LIFO] より圧倒的に良い!*
   #+end_alignright
 
-
-
-** A* 2
-
-
-*** 最適プランニングに充足解探索を埋め込んで実験
+** A*に他の充足解探索を埋め込んで実験: 性能向上
 
   + 通常のA* :: $[f, h,$  * $]\;$ , ただし * は LIFO, FIFO, Random のいずれか
 
@@ -1620,7 +1595,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
 
 *** 下界関数を二個評価する場合を減らすために動的に切り替え
 
-  $[f=g+h, \hat{h}^{FF}]$ --- $h$ と \hat{h}^{FF} の2つの下界関数を評価
+  $[f=g+h, \hat{h}^{FF}]$ --- $h$ と $\hat{h}^{FF}$ の2つの下界関数を評価
 
   + これが役に立つのはplateauが巨大な場合のみ (特にゼロコスト問題)
 
@@ -1660,10 +1635,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
   |   | If ゼロコストがある場合: C ; Else A                  |         | *832.3* |
   |---+------------------------------------------------------+---------+---------|
 
-
-** GBFS 1
-
-*** plateau内/外 error は 独立
+** GBFS plateau内/外 error は 独立: 実験
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1684,11 +1656,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
  #+end_row-fluid
  #+end_container-fluid
 
-
-** GBFS 2
-
-*** Evaluation
-
+** GBFS+BIP 評価
 
   #+begin_container-fluid
   #+begin_row-fluid
@@ -1723,3 +1691,20 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
  #+end_row-fluid
  #+end_container-fluid
 
+** MTCSの分析をなぜしない?
+
+MTCS はプランニングではうまく行っていない。その理由を調べるのは議論の範囲外
+
+THTS (Schulte and Keller, 2014) --- プランニング向けのMCTS. 性能向上はわずか
+
+例: 解けた問題数
+
+ GBFS328→THTS-WA* 344 (4%向上), 私の提案手法は GBFS192→237.7 (20%向上) (ベースラインは違う)
+
+ ↑しかもこのGBFSは THTS上でのGBFSのエミュレーション
+
+ (著者はTHTS+A*,THTS+UCTのような様々なバージョンを提案, しかも THTS+UCT は THTS+WA* に負けている)
+
+ランダムウォーク自体は成功例がある。が、かなりad-hocな手法
+
+Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+etc.
