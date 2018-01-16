@@ -33,6 +33,12 @@ Masataro Asai, The University of Tokyo
 #+end_resume
 #+end_outline-text-1
 
+* 背景: グラフ探索
+
+大規模なグラフでの最短経路探索は重要な問題である。
+
++ MSA GED スケジューリング プランニング
+
 * 背景 -- AIプランニング                                      :3min:noexport:
 
  #+begin_container-fluid
@@ -211,7 +217,7 @@ Masataro Asai, The University of Tokyo
  [[png:planning-related-field]]
 
 * 背景 -- 古典プランニング問題 (決定的,完全情報) -- Blocksworld        :3min:
-
+  
 #+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
 
 #+begin_larger
@@ -410,47 +416,19 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 最良優先探索アルゴリズム の */探索非局在化手法/* による高速化を研究
 
-+ (3章) A* のタイブレークと探索空間の分析 (AAAI2016)
++ (3章) A* のタイブレークと探索空間の分析
 
-+ (4章) タイブレークによる A* の高速化 (AAAI2016)
++ (4章) タイブレークによる A* の高速化
 
-+ (5章) 最適解探索のタイブレークの一般化 (JAIR 2017)
++ (5章) 最適解探索のタイブレークの一般化
 
-+ (6章) 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (ICAPS 2017)
++ (6章) 充足解探索の タイブレーク手法 と 探索非局在化手法 の統合
 
-+ (7章) BIPによる新たな非局在化手法 (ICAPS 2017)
++ (7章) BIPによる新たな非局在化手法
 
 * (3章) A*のタイブレークの分析
 
-先に結果: /A*の性能をタイブレーキングを変えるだけで改善!!/
-
- #+begin_center
- 計1724問中, 1題あたり2GBメモリ制限,30分以内に解けた問題の数
- #+end_center
-
- |                         | <c>                           | <c>           |
- |                         | Fast Downward                 | 提案手法      |
- | 問題セット              | State-of-the-Art 探索システム |               |
- |-------------------------+-------------------------------+---------------|
- | IPC^1 Instances (1104)  | 558                           | *573*         |
- | Zerocost Instances(680) | 256                           | *294*         |
- |-------------------------+-------------------------------+---------------|
- | 合計 (1724)             | 814                           | *867* ( + 53) |
- |-------------------------+-------------------------------+---------------|
-
- IPC^1 : International Planning Competition で使われる 高次元グラフ探索ベンチマーク
-
- IPC=(20〜50問)×(35種類の問題集) Zerocost=(20〜50問)×(28種類の問題集)
-
- それぞれの問題集は全く異なる性質の *最適化問題をモデル化*
-
- *問題番号が進むと 指数的に難しくなる*
-
- #+begin_alignright
- #+begin_larger
- *53問 多く解ける = 速い*
- #+end_larger
- #+end_alignright
+このスライドはタイブレークの定義のあと
 
 ** 今回の話題 : グラフの最小コスト経路探索
 
@@ -480,7 +458,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
  [[png:astar]]
 
-** 最小コスト経路探索 の主要な手法 が A* ただしタイブレーキング無視!
+** A*におけるタイブレーキング:
 
  [[png:astar-emph]]
 
@@ -490,18 +468,20 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  *同じ /f_{min}/ なノードが複数あったときどうする?*
  #+end_center
 
- |----------------------------------------+------------------------------------|
- | /1968 Hart, Nilsson and Raphael/ →    | */h/-based tiebreaking* [ /h/ ] :  |
- | (*/最初のA*の論文/*)                   | 　　 -- h値が小さなものを選択      |
- |                                        |                                    |
- | /教科書(Pearl, 1985)に掲載/         → | *LIFO tiebreaking* [LIFO] :        |
- |                                        | 　　 -- 最後に生成したノードを選択 |
- |----------------------------------------+------------------------------------|
- | *最近は...*                            |                                    |
- | /2007 Hansen and Zhou/                 | [ /h/ ] "が一番うまく行くと        |
- |                                        | 　　　　　　一般的に知られている"  |
- | /2010 Holte/                           | [ /h/ ] "がよく使われる"           |
- |----------------------------------------+------------------------------------|
+ |----------------------------------------+------------------------------------------------|
+ | /1968 Hart, Nilsson and Raphael/ →    | */h/-based tiebreaking* [ /h/ ] :              |
+ | (*/最初のA*の論文/*)                   | 　　 -- h値が小さなものを選択                  |
+ |                                        |                                                |
+ | /教科書(Pearl, 1984)に掲載/         → | *Break ties arbitrarily* :                     |
+ |                                        | 　　 -- 「どの手法でも性能にあまり影響しない」 |
+ | /Korf, 1985/         →                | *LIFO tiebreaking* [LIFO] :                    |
+ |                                        | 　　 -- 最後に生成したノードを選択             |
+ |----------------------------------------+------------------------------------------------|
+ | *最近は...*                            |                                                |
+ | /2007 Hansen and Zhou/                 | [ /h/ ] "が一番うまく行くと                    |
+ |                                        | 　　　　　　一般的に知られている"              |
+ | /2010 Holte/                           | [ /h/ ] "がよく使われる"                       |
+ |----------------------------------------+------------------------------------------------|
 
  #+begin_alignright
  #+begin_larger
@@ -541,7 +521,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
  #+end_larger
  #+end_alignright
 
-** 実際は、 タイブレーク法は /重要/
+** 実際は、 タイブレーク法は /重要/                                     :ゆっくり:
 
  標準ベンチマーク問題集では、
 
@@ -671,6 +651,10 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 ** /Openstacks/ & /Cybersec/ は何が特別なのか?
 
+「他と違い」←どう違うのか解説 パズル
+
+トラックのドアを開くのと運転するのが同等に扱われる → 不自然
+
  他と違い、多くの *ゼロコスト エッジ* が含まれる
 
  #+begin_smaller
@@ -696,7 +680,6 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 Parametric Complexity Theory では, プランニング問題が
 ゼロコストを含む場合は$W2$-complete, 正コストのみの場合 Para-NP-hard (Aghighi 2015)
 #+end_note
-
 
 ** ゼロコストがあると /*h*/ によるタイブレークが働かない
 
@@ -838,6 +821,12 @@ Parametric Complexity Theory では, プランニング問題が
 
 ** Iterative Depth: RandomDepth の決定的バージョン
 
+[[spng:iterative-depth]]
+
+決定的アルゴリズムであるため分析が容易
+
+** Iterative Depth: RandomDepth の決定的バージョン
+
 # max_depth = 0
 # while true:
 #     for depth in range(max_depth, 0, -1):
@@ -864,6 +853,8 @@ class DepthBuckets:
 
 決定的アルゴリズムであるため分析が容易
 
+
+
 ** Forest / No-exhaust assumption による理論的結果
 
 理論的結果:
@@ -871,10 +862,47 @@ class DepthBuckets:
 + 仮定1: Plateau上のグラフが固定分岐数の森である (forest assumption)
 + 仮定2: 探索中にどの深さのbucketも空にならない (no-exhaust assumption)
 + このとき、最大深さが$D$ ならば、深さ$d$ のbucket の展開回数は $D-d$ に従う
+  + $D-d$: 深さに対して線形
+  + FIFO/LIFOは深さによる展開回数が指数的に異なる可能性あり
+
+[[spng:depth-fifo-lifo-exponential]]
+
+** 理論的結果と実験的結果の一致
 
 実験的結果に一致 (上の仮定はある程度妥当):
 
 [[spng:depth-theory-practice]]
+
+** 結果: /A*の性能をタイブレーキングを変えるだけで改善!!/
+
+ #+begin_center
+ 計1724問中, 1題あたり2GBメモリ制限,30分以内に解けた問題の数
+ #+end_center
+
+ |                         | <c>                           | <c>           |
+ |                         | Fast Downward                 | 提案手法      |
+ | 問題セット              | State-of-the-Art 探索システム |               |
+ |-------------------------+-------------------------------+---------------|
+ | IPC^1 Instances (1104)  | 558                           | *573*         |
+ | Zerocost Instances(680) | 256                           | *294*         |
+ |-------------------------+-------------------------------+---------------|
+ | 合計 (1724)             | 814                           | *867* ( + 53) |
+ |-------------------------+-------------------------------+---------------|
+
+ IPC^1 : International Planning Competition で使われる 高次元グラフ探索ベンチマーク
+
+ IPC=(20〜50問)×(35種類の問題集) Zerocost=(20〜50問)×(28種類の問題集)
+
+ それぞれの問題集は全く異なる性質の *最適化問題をモデル化*
+
+ *問題番号が進むと 指数的に難しくなる*
+
+ #+begin_alignright
+ #+begin_larger
+ *53問 多く解ける = 速い*
+ #+end_larger
+ #+end_alignright
+
 
 ** まとめ (3,4章の貢献内容)
 
@@ -1014,7 +1042,9 @@ class DepthBuckets:
 
 ** 知見の応用: 無限グラフ上での A* の完全性
 
-既存研究のA*の完全性はゼロコスト問題では成り立たない
+A*の完全性の既存の証明 はゼロコスト問題では成り立たない
+
+書き方
 
  Dechter and Pearl (1985): [[spng:pearl-cost]]
 
@@ -1049,11 +1079,25 @@ class DepthBuckets:
 
     */充足解探索の理論的結果を最適解探索に援用可能!/*
 #+end_center
+
+** 最適解探索に充足解探索を「埋め込む」
+
+タイブレークのためにXをYして「うめこむ」(具体的に) 結果、大幅な性能向上
+
+  |-----------------------------------------+---------+---------|
+  |                                         |   LMcut |     M&S |
+  |-----------------------------------------+---------+---------|
+  | 既存手法 $[f,h,\text{lifo}]$            |     844 |     797 |
+  | B $[f,h,\langle d \rangle,\text{lifo}]$ |     839 |     775 |
+  |-----------------------------------------+---------+---------|
+  | 埋め込みあり                            | *911.9* | *832.3* |
+  |-----------------------------------------+---------+---------|
+
 ** まとめ (5章の貢献内容)
 
 + A* を *充足解探索の繰り返し* と再定義
   + この視点の利点:
-    + *最適解探索に充足解探索を埋め込める*: 実験でも性能向上 (結果は省略)
+    + *最適解探索に充足解探索を埋め込める*: 実験でも性能向上 (結果は省略) 省略せず
     + *充足解探索の理論的結果を、最適探索の理論的性質を調べるのに利用できる*
 # + 様々な既存の充足解探索手法が存在するため、多くの応用が考えられる
 #   + plateau内に制限した *マクロアクション* (cf. Marvin)
@@ -1061,23 +1105,27 @@ class DepthBuckets:
 
 #  + Direct analogue for model-based planners (SAT/IP/CSP-based planners)
 
+
+
 + → *充足解探索性能を上げれば最適解探索の性能も上がる*
 
   以降 *充足解探索のみ考えることとする*
 
 * (6章) 充足解探索の タイブレーク と 探索非局在化手法 の統合           :4min:
 
-+ GBFS  (貪欲最良優先探索) ::
-     A* と同じくノードをOPENリストに保存する。
-     ただし、 [h, * ] ( * :LIFO,FIFO,ROのいずれか) によってソート。 h が小さい順に展開 (f=g+h は用いない)
++ GBFS  (貪欲最良優先探索) : 充足解探索手法の基本的アルゴリズム ::
 
-     充足解探索手法。 多くの場合 最適性を保証しない *非許容的* 下界関数 と共に用いられる
+     評価関数 h によってノードをソートし、 h が最小のノードを展開
 
-+ *探索非局在化手法* とは ::
+     ただし、 h は *ゴールノードまでの距離の見積もり*
 
-     充足解探索は *非許容的 h* → *時折デタラメな値を返す* 
+     (非許容的: A*と異なり、下界であることを保証しない)
 
-     GBFSはhを貪欲に信頼 → *一定確率でhを無視して最悪ケースを回避したい*
++ GBFSの *探索非局在化手法* とは ::
+
+     充足解探索は *非許容的 h* を使う ＝ *hが下界でない値を返すことがある*
+
+     GBFSはhを貪欲に信頼 → 既存の探索非局在化手法 は *hを無視して最悪ケースを回避*
 
 ** GBFSにおける探索非局在化                                        :noexport:
 
@@ -1122,18 +1170,18 @@ class DepthBuckets:
 
 探索非局在化手法は *たくさん* ある
 
- + Diverse BFS (Imai, AAAI11) --- 複雑な指標を使って探索を非局在化
- + Monte-Carlo Random Walk (MRW) --- 一定確率でランダムウォーク+様々な追加
- + Epsilon-greedy GBFS --- *alt* ([h,*], [Random]) --- 時々ノードを乱択
- + Type-based GBFS --- *alt* ([h,*], <g,h>) --- g, h の組を乱択、その中からさらに乱択
- + GBFS-LE (local expansion) --- h が向上しなくなった場合にランダムウォークを開始
-   + GBFS-LS (local search), GBFS-MRW
+ + Diverse BFS (Imai, Kishimoto '11) --- 複雑な指標を使って探索を非局在化
+ + Monte-Carlo Random Walk (MRW, Nakhost and +Muller+ '09) --- 一定確率でランダムウォーク+様々な追加
+ + Epsilon-greedy GBFS (Valenzano '14) --- *alt* ([h,*], [Random]) --- 時々ノードを乱択
+ + Type-based GBFS (Xie et al '14) --- *alt* ([h,*], <g,h>) --- g, h の組を乱択、その中からさらに乱択
+ + GBFS-LE (Xie et al '14) --- h が向上しなくなった場合にランダムウォークを開始
+   + GBFS-LS, GBFS-MRW
 
  #+begin_larger
  + が、アドホック手法が多い
 
  #+begin_center
- + *これらをもっと /単純に、アドホックでなく、解析しやすくする/ 手法が必要*
+ + *既存手法をより /単純に、解析しやすくする/ 枠組みが必要*
  #+end_center
  #+end_larger
  
@@ -1145,13 +1193,11 @@ class DepthBuckets:
 
  $h$ : 下界値, $h^*$ : パーフェクトヒューリスティクス (解までの真の最小経路コスト)
 
- $h>h^*$ : Overestimation $h<h^*$ : Underestimation 
-
-$h$ は充足解探索ではデタラメな場合がありうる
+ $h<h^*$ : Underestimation, $h>h^*$ : *Overestimation* : 下界でなくなる 
 
  #+begin_center
  #+begin_larger
- + この理解で十分か?
+ + Heuristic Error は *非局在化の理解には十分ではない*
  #+end_larger
  #+end_center
 
@@ -1167,15 +1213,15 @@ $h$ は充足解探索ではデタラメな場合がありうる
 
  [[png:plateau/3]]
 
-*** plateau外 error
+*** Plateau外 error (GBFSのPlateau: 同じh値のノード集合)
 
  [[png:plateau/4]]
 
-*** plateau内 error
+*** Plateau内 error (GBFSのPlateau: 同じh値のノード集合)
 
  [[png:plateau/5]]
 
-*** plateau外 error & 非局在化
+*** Plateau外 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1191,7 +1237,7 @@ $h$ は充足解探索ではデタラメな場合がありうる
  #+end_row-fluid
  #+end_container-fluid
 
-*** plateau内 error & 非局在化
+*** Plateau内 error & 非局在化
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1218,7 +1264,7 @@ $h$ は充足解探索ではデタラメな場合がありうる
 
 + *目的: 同じ非局在化手法を plateau内とplateau外で用いることで、plateau内/外 error が独立であることを示す*
 
-+ *Type-GBFS* (plateau外) と *RandomDepth Tiebreaking* (plateau内) (かなり似た手法, ただしplateau内/外)
++ *Type-GBFS* (Xie et al. '14) (plateau外) と *RandomDepth Tiebreaking* (plateau内) (かなり似た手法, ただしplateau内/外)
 
   + Type GBFS --- *Randomize <g,h>*
 
@@ -1228,30 +1274,34 @@ $h$ は充足解探索ではデタラメな場合がありうる
 
   # + *g, h, d は全て深さに関連した指標*
 
-+ 結果: plateau *内 / 外* 非局在化だけで性能向上するドメインがある
++ 結果: plateau *内 / 外* 非局在化だけで性能向上するドメインがある (論文の表6.3.1)
 + 結果: それらに plateau *外 / 内* 非局在化を加えても悪影響がない → *効果は直行している*
-+ 結果: *内+外 同時に使うことでベンチマーク全体の成績が向上*
++ 結果: *内+外 同時に使うことでベンチマーク全体の成績が向上* 
+
+** 小さい表
 
 ** まとめ (6章の貢献内容)
 
-+ Plateau 内/外 error は *直行している* ので、常に両方を使うべきである
-+ *非局在化手法は知識なし(blind)探索手法* なので、
-
-  GBFS改善のためにはアドホックな手法ではなく *新たな知識なし探索手法=非局在化手法を考えるべき*
++ Plateau 内/外 error は *直行している*
+  + したがって、Plateau 内/外 非局在化は常に両方を使うべきである
 
 * (7章) 新たな非局在化手法の開発                                       :4min:
+
+*非局在化手法は評価関数に頼らない=知識なし(blind)探索手法* なので、
+
+GBFS改善のためにはアドホックな手法ではなく *新たな知識なし探索手法=非局在化手法を考えるべき*
 
 #+begin_quote
 Type GBFS: *Randomize <g,h>* g: 初期状態からのコスト, h: ゴールまでのコスト見積もり
 
 RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステップ数
 
-どちらも *探索深さに関連した指標* を非局在化
+どちらも *探索ノードの深さに関連した指標* を非局在化
 #+end_quote
 
 #+begin_larger
 #+begin_center
-*探索の幅方向に非局在化する手法を開発*
+*探索の幅方向に非局在化する手法を提案*
 #+end_center
 #+end_larger
 
@@ -1280,7 +1330,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 *** Random-Depth
  [[png:model/rd2]]
 
-** Bond Invasion Percolation (1983) (侵入型パーコレーション)
+** Bond Invasion Percolation (Wilkinson, Willemsen, '83) (侵入型パーコレーション)
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1295,7 +1345,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
    e.g., 水が石油を含む岩石に浸透
 
    bond = 辺 のこと
- + これを用いて探索幅の問題を解決
+ + これを用いてより *まばらに* 探索し、探索幅の問題を解決
  #+end_larger
  #+end_span6
  #+end_row-fluid
@@ -1334,7 +1384,7 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
  while (s = pop_min(OPEN)); do
     if s is visited:
       continue
-    for (edge,t) in expand(s); do     # an edge & successor t (unmarked ones only)
+    for (edge,t) in expand(s); do     # an edge & successor t
 
        # Each edge has a value
        if value(edge) is unset ; then
@@ -1404,53 +1454,37 @@ RandomDepth <d> : d ≡ 同じf,hを持つ最も近い先祖までのステッ�
 + 探索幅を減らし, 性能向上 (実験的に確認)
 + 深さ非局在化と併用してState of the Artを改善
 
-* まとめ
+* 博士論文の貢献
 
-非局在化タイブレークによる A* の高速化 (Asai, Fukunaga, AAAI2016) (JSAI 学生奨励賞)
+A*のタイブレークのより完全な分析 (3章)
 
-→ *なぜうまく行ったのか?*
+→ 非局在化タイブレークによる A* の高速化 (4章)
 
-最適解探索のタイブレークの一般化 (Asai, Fukunaga, JAIR 2017)
+最適解探索のタイブレークの一般化 (5章)
 
-→ 最適解探索を充足解探索の繰り返しに変換: *最適解探索を分析・改善するシンプルな枠組み*
+→ 最適解探索を充足解探索の繰り返しに変換:
 
-充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (Asai, Fukunaga, ICAPS 2017)
+→ *最適解探索を分析・改善するシンプルな枠組み*
 
-→ *非局在化手法は知識なし(乱択化)探索手法*  *最良優先探索(A^＊,GBFS)を分析・改善するシンプルな枠組み*
+充足解探索の タイブレーク手法 と 探索非局在化手法 の統合 (6章)
 
-フラクタル・全域木を用いた新たな非局在化手法
+→ *非局在化手法は知識なし(乱択化)探索手法*
+
+→ *最良優先探索( A^＊ ,GBFS)を分析・改善するシンプルな枠組み*
+
+フラクタル・最小全域木を用いた新たな非局在化手法 (7章)
 
 → *新たな知識なし探索手法で性能向上* → *新たな枠組みの有効性を実証*
 
 #+begin_center
-主題と目標: */古典プランニングで有効な 非局在化手法の開発・分析/*
+主題と目標: */大規模グラフ探索における 非局在化手法の開発・分析/*
 #+end_center
+
+お菓子 お茶ペット 審査員
 
 * 付録 (実験結果)
 
-** MTCSの分析をなぜしない?
-
-MTCS はプランニングではうまく行っていない。その理由を調べるのは議論の範囲外
-
-THTS (Schulte and Keller, 2014) --- プランニング向けのMCTS. 性能向上はわずか
-
-例: 解けた問題数
-
- GBFS328→THTS-WA* 344 (4%向上), 私の提案手法は GBFS192→237.7 (20%向上) (ベースラインは違う)
-
- ↑しかもこのGBFSは THTS上でのGBFSのエミュレーション
-
- (著者はTHTS+A*,THTS+UCTのような様々なバージョンを提案, しかも THTS+UCT は THTS+WA* に負けてる)
-
-ランダムウォーク自体は成功例がある。が、かなりad-hocな手法
-
-Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+etc. コンペで活躍, そこそこ効果的。
-
-
-
-** A*
-
-*** 評価 (用いた問題集)
+** A* RandomDepth タイブレーク 評価
 
   + IPC^1 問題集 (20〜50問)×(35種類)
     + 元のドメインはアクションの数だけを数える→非現実的
@@ -1570,12 +1604,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
   *［h, RD, RO］ は [h,FIFO] と [h,LIFO] より圧倒的に良い!*
   #+end_alignright
 
-
-
-** A* 2
-
-
-*** 最適プランニングに充足解探索を埋め込んで実験
+** A*に他の充足解探索を埋め込んで実験: 性能向上
 
   + 通常のA* :: $[f, h,$  * $]\;$ , ただし * は LIFO, FIFO, Random のいずれか
 
@@ -1589,7 +1618,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
   + ユニットコスト化した 非許容的下界関数 $\hat{h}^{FF}$ でタイブレーク ::
        $[f, \hat{h}^{FF}, *]$ , $[f, h, \hat{h}^{FF}, * ]$ -- cheaper, non-path-optimal heuristics
 
-  + $\hat{h}^{FF}$ に random depth [Asai, AAAI16] を組合せ ::
+  + $\hat{h}^{FF}$ に random depth を組合せ ::
        $[f, \hat{h}^{FF}, \langle d \rangle$ , * $]$
 
 *** Evaluation ($h=\text{LMcut}$, Zerocost domains)
@@ -1623,7 +1652,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
 
 *** 下界関数を二個評価する場合を減らすために動的に切り替え
 
-  $[f=g+h, \hat{h}^{FF}]$ --- $h$ と \hat{h}^{FF} の2つの下界関数を評価
+  $[f=g+h, \hat{h}^{FF}]$ --- $h$ と $\hat{h}^{FF}$ の2つの下界関数を評価
 
   + これが役に立つのはplateauが巨大な場合のみ (特にゼロコスト問題)
 
@@ -1663,10 +1692,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
   |   | If ゼロコストがある場合: C ; Else A                  |         | *832.3* |
   |---+------------------------------------------------------+---------+---------|
 
-
-** GBFS 1
-
-*** plateau内/外 error は 独立
+** GBFS plateau内/外 error は 独立: 実験
 
  #+begin_container-fluid
  #+begin_row-fluid
@@ -1687,11 +1713,7 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
  #+end_row-fluid
  #+end_container-fluid
 
-
-** GBFS 2
-
-*** Evaluation
-
+** GBFS+BIP 評価
 
   #+begin_container-fluid
   #+begin_row-fluid
@@ -1719,10 +1741,27 @@ Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+e
  [[png:icaps17-results3]]
  #+end_span7
  #+begin_span5
- + db^2 DB : plateau外に D,B を切り替え ; plateau内に d,b を切り替え
+ + db^2 DB : (各イテレーション毎) plateau外非局在化に D,B をに切り替え ; plateau内に d,b を切り替え
  + *深さ (d,D)* と *幅 (b,B)* で別の効果があるから
  + 効果がうまく重なりあって state of the art (LAMA) の性能を向上
  #+end_span5
  #+end_row-fluid
  #+end_container-fluid
 
+** MTCSの分析をなぜしない?
+
+MTCS はプランニングではうまく行っていない。その理由を調べるのは議論の範囲外
+
+THTS (Schulte and Keller, 2014) --- プランニング向けのMCTS. 性能向上はわずか
+
+例: 解けた問題数
+
+ GBFS328→THTS-WA* 344 (4%向上), 私の提案手法は GBFS192→237.7 (20%向上) (ベースラインは違う)
+
+ ↑しかもこのGBFSは THTS上でのGBFSのエミュレーション
+
+ (著者はTHTS+A*,THTS+UCTのような様々なバージョンを提案, しかも THTS+UCT は THTS+WA* に負けている)
+
+ランダムウォーク自体は成功例がある。が、かなりad-hocな手法
+
+Arvand (Nakhost 2009,2010) --- 適応的(長さ可変)ランダムウォーク+etc.
