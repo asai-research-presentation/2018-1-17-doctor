@@ -33,12 +33,6 @@ Masataro Asai, The University of Tokyo
 #+end_resume
 #+end_outline-text-1
 
-* 背景: グラフ探索
-
-大規模なグラフでの最短経路探索は重要な問題である。
-
-+ MSA GED スケジューリング プランニング
-
 * 背景 -- AIプランニング                                      :3min:noexport:
 
  #+begin_container-fluid
@@ -216,16 +210,20 @@ Masataro Asai, The University of Tokyo
 
  [[png:planning-related-field]]
 
-* 背景 -- 古典プランニング問題 (決定的,完全情報) -- Blocksworld        :3min:
-  
-#+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
+* 背景: 大規模なグラフでの最短経路探索
 
-#+begin_larger
-非古典的なさまざまな拡張
-#+begin_alignright
-(並列アクション,POMDP,HTN... どのAIの教科書にものっている)
-#+end_alignright
-#+end_larger
+[[png:graphsearch-purpose]]
+
+** 古典プランニング問題 (決定的,完全情報) -- Blocksworld               :3min:
+  
+ #+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
+
+ #+begin_larger
+ 非古典的なさまざまな拡張
+ #+begin_alignright
+ (並列アクション,POMDP,HTN... どのAIの教科書にものっている)
+ #+end_alignright
+ #+end_larger
 
 ** アクション = 条件付き状態遷移
 
