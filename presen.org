@@ -678,7 +678,7 @@ DQN = Subsymbolic (DLNN) + 強化学習 (DLNN)
 
 #+begin_note
 Parametric Complexity Theory では, プランニング問題が
-ゼロコストを含む場合は$W2$-complete, 正コストのみの場合 Para-NP-hard (Aghighi 2015)
+ゼロコストを含む場合はPara-NP-hard, 正コストのみの場合 $W2$-complete (Aghighi 2015)
 #+end_note
 
 ** ゼロコストがあると /*h*/ によるタイブレークが働かない
