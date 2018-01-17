@@ -1,4 +1,3 @@
-#+title: Diversification Mechanisms for Best-First Search (最良優先探索のための探索非局在化手法)
 #+author: Masataro Asai
 #+include: "head.org"
 #+LINK: img file:img/%s
@@ -12,15 +11,21 @@
 
 #+begin_outline-text-1
 #+begin_center
+#+begin_xlarge
+Diversification Mechanisms
+
+for Best-First Search
+
+(最良優先探索のための
+
+探索非局在化手法)
+#+end_xlarge
 #+begin_larger
 Masataro Asai, The University of Tokyo 
 
 (Advisor: Alex Fukunaga)
 #+end_larger
 #+end_center
-
-25min + 15min Q/A
-
 #+begin_note
 #+begin_alignright
 
@@ -210,7 +215,7 @@ Masataro Asai, The University of Tokyo
 
  [[png:planning-related-field]]
 
-* 背景: 大規模なグラフでの最短経路探索
+* 背景: 大規模なグラフでの経路探索
 
 [[png:graphsearch-purpose]]
 
@@ -218,12 +223,12 @@ Masataro Asai, The University of Tokyo
   
  #+HTML: <embed src="img/plan.svg" type="image/svg+xml"  />
 
- #+begin_larger
- 非古典的なさまざまな拡張
- #+begin_alignright
- (並列アクション,POMDP,HTN... どのAIの教科書にものっている)
- #+end_alignright
- #+end_larger
+ # #+begin_larger
+ # 非古典的なさまざまな拡張
+ # #+begin_alignright
+ # (並列アクション,POMDP,HTN... どのAIの教科書にものっている)
+ # #+end_alignright
+ # #+end_larger
 
 ** アクション = 条件付き状態遷移
 
@@ -1170,7 +1175,7 @@ class DepthBuckets:
  + が、アドホック手法が多い
 
  #+begin_center
- + *既存手法をより /単純に、解析しやすくする/ 枠組みが必要*
+ + 問題意識: *既存手法をより /単純に、解析しやすくする/ 枠組みが必要*
  #+end_center
  #+end_larger
  
